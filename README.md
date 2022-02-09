@@ -1,0 +1,2 @@
+# cryptovanities
+NFT Vanity plates
