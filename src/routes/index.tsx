@@ -286,12 +286,12 @@ function Hero() {
       <div className="lg:col-span-7">
         <div className="mb-6 flex items-center gap-2">
           <img
-            src="/hedera-coin.png"
+            src="/hedera-coin.webp"
             alt="Hedera Hashgraph coin with white lightning breaking out of the gold H"
             className="sky-blend aspect-square w-32 shrink-0 object-contain sm:w-40"
           />
           <img
-            src="/seal-rays.png"
+            src="/seal-rays.webp"
             alt="Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance"
             className="sky-blend aspect-square w-20 shrink-0 origin-center scale-[1.44] object-contain sm:w-24"
           />
@@ -574,7 +574,7 @@ function Give() {
         </ol>
         <div className="rounded-xl border border-border bg-surface p-5">
           <img
-            src="/club-hbar.png"
+            src="/club-hbar.webp"
             alt="Gold pin stamped Club H Bar"
             className="sky-blend mx-auto mb-5 w-full max-w-40 object-contain"
           />
