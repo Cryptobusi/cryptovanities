@@ -568,8 +568,11 @@ function Give() {
         Send Club Hbar {TOKEN} Coins to Clubhbar.ℏ {LOVE_ACCOUNT}
       </p>
       <p className="mt-5 max-w-3xl text-lg text-muted">
-        Lets The Practice Counting Coins In Collective to Fuel the Project: Providence Through
-        Provenance.
+        Lets Start The Exercise Counting{"\u00A0\u00A0"}Courage To Change.
+      </p>
+      <p className="mt-5 max-w-3xl text-lg text-fg">Fuel The Project,</p>
+      <p className="mt-3 max-w-3xl font-display text-3xl text-fg sm:text-4xl">
+        Providence Through Provenance
       </p>
     </section>
   );
