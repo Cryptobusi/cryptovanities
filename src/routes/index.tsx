@@ -483,9 +483,13 @@ function Give() {
       <img
         src="/club-hbar.webp"
         alt="Gold pin stamped Club H Bar"
-        className="sky-blend mb-8 w-full max-w-40 object-contain"
+        className="sky-blend mb-6 w-full max-w-40 object-contain"
       />
-      <p className="max-w-3xl text-lg leading-snug text-fg sm:text-xl">
+      <p className="max-w-3xl text-lg leading-snug text-fg">
+        One Coin Represents One Acknowledgement In Sovereignty, One Count In Community, One
+        Determination In Resurrection Of{"\u00A0\u00A0"}Humanity Back To Rightful Providence.
+      </p>
+      <p className="mt-5 max-w-3xl text-lg leading-snug text-fg sm:text-xl">
         Send $club hbar {TOKEN} Coins to{" "}
         <span className="whitespace-nowrap font-sans tracking-tighter">ClubHbar.ℏ</span> {LOVE_ACCOUNT}
       </p>
