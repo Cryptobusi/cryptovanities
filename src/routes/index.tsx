@@ -564,8 +564,9 @@ function Give() {
         alt="Gold pin stamped Club H Bar"
         className="sky-blend mb-8 w-full max-w-40 object-contain"
       />
-      <p className="max-w-3xl font-display text-3xl text-fg sm:text-4xl">
-        Send Club Hbar {TOKEN} Coins to ClubHbar.ℏ {LOVE_ACCOUNT}
+      <p className="max-w-3xl text-lg leading-snug text-fg sm:text-xl">
+        Send $club hbar {TOKEN} Coins to{" "}
+        <span className="whitespace-nowrap font-sans tracking-tighter">ClubHbar.ℏ</span> {LOVE_ACCOUNT}
       </p>
       <p className="mt-5 max-w-3xl text-lg text-muted">
         Lets Start The Exercise Counting{"\u00A0\u00A0"}Courage To Change.
