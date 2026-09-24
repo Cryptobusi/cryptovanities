@@ -75,7 +75,7 @@ const TIERS = [
   {
     id: "witness",
     name: "Witness",
-    fee: "$1",
+    fee: "$TBD",
     unit: "US",
     chosen: false,
     body: "Look. Do not take anyone’s word. The public trail is already yours.",
@@ -90,7 +90,7 @@ const TIERS = [
   {
     id: "sovereign",
     name: "Sovereign",
-    fee: "$100",
+    fee: "$TBD",
     unit: "US",
     chosen: true,
     body: "You keep the keys. You sign the work. You become capable of being the self you name.",
@@ -106,7 +106,7 @@ const TIERS = [
   {
     id: "council",
     name: "Council",
-    fee: "$1,000",
+    fee: "$TBD",
     unit: "US",
     chosen: false,
     body: "For houses that must remain accountable to themselves as they make everything else accountable.",
