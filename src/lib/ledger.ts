@@ -55,24 +55,14 @@ export const TRANCE_QUOTES: TranceQuote[] = [
 
 const TRANCE_ID = "363356784";
 
-export function messageToTrancesage(input: {
-  email: string;
-  message: string;
-  role: string;
-  fee?: string;
-}) {
-  const lines = [
+export function messageToTrancesage(input: { email: string; message: string; role: string }) {
+  const note = [
     "Ledger note from Egonomic Anonymous",
     `Seat: ${input.role}`,
-  ];
-  if (input.fee) lines.push(`Fee: ${input.fee}`);
-  lines.push(
-    "Send the fee with X Money to @trancesage.",
     `From: ${input.email}`,
     "",
     input.message.trim().slice(0, 1500),
-  );
-  const note = lines.join("\n");
+  ].join("\n");
   const params = new URLSearchParams({
     recipient_id: TRANCE_ID,
     text: note,
@@ -80,7 +70,7 @@ export function messageToTrancesage(input: {
   return `https://x.com/messages/compose?${params.toString()}`;
 }
 
-export function prepareLedger(input: { email: string; message: string; role: string; fee?: string }) {
+export function prepareLedger(input: { email: string; message: string; role: string }) {
   const quote = pickQuote(input.message, input.role);
   return { quote, dmUrl: messageToTrancesage(input) };
 }
