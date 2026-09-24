@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Copy, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { HashgraphMark } from "@/components/mark";
 import { prepareLedger } from "@/lib/ledger";
 
@@ -10,7 +10,7 @@ const NAV = [
   { href: "#thesis", label: "Thesis" },
   { href: "#provenance", label: "Provenance" },
   { href: "#tiers", label: "Tiers" },
-  { href: "#give", label: "Give" },
+  { href: "#give", label: "Coins" },
   { href: "#board", label: "Board" },
 ] as const;
 
@@ -184,7 +184,6 @@ const BOARD = [
 
 const LOVE_ACCOUNT = import.meta.env.VITE_HEDERA_ACCOUNT_ID || "0.0.527206";
 const TOKEN = import.meta.env.VITE_CLUB_TOKEN_ID || "0.0.4432765";
-const ACCOUNT_NAME = import.meta.env.VITE_ACCOUNT_NAME || "ClubHbar.ℏ";
 const X_HANDLE = import.meta.env.VITE_X_HANDLE || "trancesage";
 const LEDGER_KEY = "egonomic-ledger";
 
@@ -558,89 +557,19 @@ function Tiers() {
 }
 
 function Give() {
-  const [copied, setCopied] = useState(false);
-
-  async function copyAccount() {
-    try {
-      await navigator.clipboard.writeText(LOVE_ACCOUNT);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
-    }
-  }
-
-  const steps = [
-    `Open a Hedera wallet that holds $Club Hbar (token ${TOKEN}). Associate the token first if it is not already on the account.`,
-    "Send 100 or more $Club Hbar. No other coin. 100 is the minimum, not a cap.",
-    `Send it to ${ACCOUNT_NAME} — account ${LOVE_ACCOUNT}.`,
-    "Keep the receipt. The trail is the thanks.",
-  ];
-
   return (
     <section id="give" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-      <Eyebrow>The gift</Eyebrow>
-      <h2 className="mt-3 font-display text-4xl sm:text-5xl">Give as you would be counted.</h2>
-      <p className="mt-5 max-w-2xl text-muted">
-        A donation is not a fee. It is a signed honor — one hundred or more $Club Hbar, sent to
-        {ACCOUNT_NAME}, so the work may continue without a clerk and without a cage.
+      <img
+        src="/club-hbar.webp"
+        alt="Gold pin stamped Club H Bar"
+        className="sky-blend mb-8 w-full max-w-40 object-contain"
+      />
+      <p className="max-w-3xl font-display text-3xl text-fg sm:text-4xl">
+        Send Club Hbar {TOKEN} Coins to Clubhbar.ℏ {LOVE_ACCOUNT}
       </p>
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <ol className="space-y-4">
-          {steps.map((step, i) => (
-            <li key={step} className="grid grid-cols-[3rem_1fr] gap-3">
-              <span className="font-mono text-xs text-subtle">0{i + 1}</span>
-              <p className="text-sm text-muted">{step}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="rounded-xl border border-border bg-surface p-5">
-          <img
-            src="/club-hbar.webp"
-            alt="Gold pin stamped Club H Bar"
-            className="sky-blend mx-auto mb-5 w-full max-w-40 object-contain"
-          />
-          <p className="font-mono text-xs text-subtle uppercase">Send</p>
-          <p className="mt-2 font-display text-5xl">
-            100+ <span className="text-lg text-muted">$Club Hbar</span>
-          </p>
-          <dl className="mt-6 space-y-3 text-sm">
-            <div className="flex justify-between gap-4 border-t border-border pt-3">
-              <dt className="text-subtle">Wallet</dt>
-              <dd>{ACCOUNT_NAME}</dd>
-            </div>
-            <div className="flex justify-between gap-4 border-t border-border pt-3">
-              <dt className="text-subtle">Account</dt>
-              <dd className="font-mono">{LOVE_ACCOUNT}</dd>
-            </div>
-            <div className="flex justify-between gap-4 border-t border-border pt-3">
-              <dt className="text-subtle">Token</dt>
-              <dd className="font-mono">$Club Hbar · {TOKEN}</dd>
-            </div>
-          </dl>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={copyAccount}
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
-            >
-              {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-              {copied ? "Account copied" : "Copy account to send"}
-            </button>
-            <a
-              href={`https://hashscan.io/mainnet/account/${LOVE_ACCOUNT}`}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-border px-4 py-2 text-sm"
-            >
-              Open {ACCOUNT_NAME} on HashScan
-            </a>
-          </div>
-        </div>
-      </div>
-      <p className="mt-8 text-muted">For the better — no days later.</p>
-      <p className="mt-2 text-muted">
-        Self-cure through provenance. Count honestly. Keep the promises. Let go my ego.
+      <p className="mt-5 max-w-3xl text-lg text-muted">
+        Lets The Practice Counting Coins In Collective to Fuel the Project: Providence Through
+        Provenance.
       </p>
     </section>
   );
@@ -950,7 +879,7 @@ function SiteFooter() {
         </div>
         <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
           <a href="#give" className="hover:text-fg">
-            Give
+            Coins
           </a>
           <a href="https://hedera.com" className="hover:text-fg" target="_blank" rel="noreferrer">
             Hedera
