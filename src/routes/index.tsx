@@ -75,7 +75,7 @@ const TIERS = [
   {
     id: "witness",
     name: "Witness",
-    fee: "0",
+    fee: "100",
     unit: "$Club Hbar",
     xFee: "$1",
     chosen: false,
@@ -91,7 +91,7 @@ const TIERS = [
   {
     id: "sovereign",
     name: "Sovereign",
-    fee: "420",
+    fee: "1,000",
     unit: "$Club Hbar / season",
     xFee: "$20",
     chosen: true,
@@ -108,7 +108,7 @@ const TIERS = [
   {
     id: "council",
     name: "Council",
-    fee: "4,200",
+    fee: "100,000",
     unit: "$Club Hbar / season",
     xFee: "$200",
     chosen: false,
@@ -481,8 +481,7 @@ function Tiers() {
         <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees paid in coins of $Club Hbar.</h2>
         <p className="mt-5 max-w-2xl text-muted">
           Not in someone else’s currency of permission. $Club Hbar on Hedera — token {TOKEN}. A
-          season is a cycle of ninety days. Witnesses may look without a $Club Hbar fee, or pay $1 US
-          through X Money.
+          season is a cycle of ninety days. Witness is 100 $Club Hbar, or $1 US through X Money.
         </p>
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           {TIERS.map((tier) => (
