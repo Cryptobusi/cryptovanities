@@ -77,6 +77,7 @@ const TIERS = [
     name: "Witness",
     fee: "0",
     unit: "$Club Hbar",
+    xFee: "$1",
     chosen: false,
     body: "Look. Do not take anyone’s word. The public trail is already yours.",
     points: [
@@ -92,6 +93,7 @@ const TIERS = [
     name: "Sovereign",
     fee: "420",
     unit: "$Club Hbar / season",
+    xFee: "$20",
     chosen: true,
     body: "You keep the keys. You sign the work. You become capable of being the self you name.",
     points: [
@@ -99,7 +101,7 @@ const TIERS = [
       "Signed workflows — flows, runs, records",
       "Reusable KYC that does not leak the file",
       "Personal authority trail",
-      "Fees paid only in $Club Hbar",
+      "Fees in $Club Hbar, or in dollars through X Money",
     ],
     cta: "Claim sovereignty",
   },
@@ -108,6 +110,7 @@ const TIERS = [
     name: "Council",
     fee: "4,200",
     unit: "$Club Hbar / season",
+    xFee: "$200",
     chosen: false,
     body: "For houses that must remain accountable to themselves as they make everything else accountable.",
     points: [
@@ -478,7 +481,8 @@ function Tiers() {
         <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees paid in coins of $Club Hbar.</h2>
         <p className="mt-5 max-w-2xl text-muted">
           Not in someone else’s currency of permission. $Club Hbar on Hedera — token {TOKEN}. A
-          season is a cycle of ninety days. Witnesses pay nothing to see.
+          season is a cycle of ninety days. Witnesses may look without a $Club Hbar fee, or pay $1 US
+          through X Money.
         </p>
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           {TIERS.map((tier) => (
@@ -501,6 +505,7 @@ function Tiers() {
               <p className="mt-4 font-display text-4xl">
                 {tier.fee} <span className="font-sans text-sm text-muted">{tier.unit}</span>
               </p>
+              <p className="mt-2 text-sm text-muted">or {tier.xFee} US through X Money</p>
               <p className="mt-3 text-sm text-muted">{tier.body}</p>
               <ul className="mt-4 space-y-2 text-sm text-fg">
                 {tier.points.map((point) => (
@@ -510,16 +515,30 @@ function Tiers() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#ledger"
-                className="mt-6 inline-flex rounded-full border border-border px-4 py-2 text-sm text-fg"
-              >
-                {tier.cta}
-              </a>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <a
+                  href={`https://x.com/${X_HANDLE}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
+                >
+                  Pay {tier.xFee} with X Money
+                </a>
+                <a
+                  href="#ledger"
+                  className="inline-flex rounded-full border border-border px-4 py-2 text-sm text-fg"
+                >
+                  {tier.cta}
+                </a>
+              </div>
             </article>
           ))}
         </div>
-        <p className="mt-6 font-mono text-xs text-subtle">
+        <p className="mt-6 max-w-2xl text-sm text-muted">
+          X Money is inside the X app. Open Money, choose Send, and pay @{X_HANDLE}: $1 US for
+          Witness, $20 US for Sovereign, $200 US for Council. Put the tier name in the note.
+        </p>
+        <p className="mt-4 font-mono text-xs text-subtle">
           Hedera Token Service · $Club Hbar · {TOKEN} ·{" "}
           <a
             className="text-fg underline decoration-border underline-offset-4"
@@ -759,8 +778,7 @@ function LedgerForm() {
             @Trancesage chosen because it sits closest to what you wrote.
           </p>
           <p className="mt-4 font-mono text-xs text-subtle">
-            Fees, when due, in $Club Hbar · {TOKEN}. Gifts of 100 or more $Club Hbar to {ACCOUNT_NAME} (
-            {LOVE_ACCOUNT}). No other coin.
+            Fees in $Club Hbar · {TOKEN}, or in US dollars through X Money to @{X_HANDLE}. Gifts of 100 or more $Club Hbar to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
           </p>
         </div>
         {saved ? (
