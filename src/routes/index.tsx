@@ -577,12 +577,13 @@ function LedgerForm() {
 
   function onSubmit(event: FormEvent) {
     event.preventDefault();
-    const next = email.trim();
+    const next = email.trim().replace(/^@+/, "");
     const note = message.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(next)) {
-      setError("Leave a real address. We will not stack it into a dossier.");
+    if (!/^[A-Za-z0-9_]{1,15}$/.test(next)) {
+      setError("Leave a real X tag.");
       return;
     }
+    const tag = `@${next}`;
     if (note.length < 2) {
       setError("Leave a message. A blank note cannot choose a line.");
       return;
@@ -592,10 +593,10 @@ function LedgerForm() {
       return;
     }
     if (company.trim()) return;
-    const result = prepareLedger({ email: next, message: note, role });
+    const result = prepareLedger({ email: tag, message: note, role });
     window.open(result.dmUrl, "_blank", "noopener,noreferrer");
     const entry: LedgerEntry = {
-      email: next,
+      email: tag,
       message: note,
       role,
       at: new Date().toISOString(),
@@ -619,8 +620,8 @@ function LedgerForm() {
             Write your name toward the next season.
           </h2>
           <p className="mt-5 text-muted">
-            Leave an address and a message. Joining opens a direct message to @Trancesage with
-            your note already written — you send it from your own X account. The address is not
+            Leave an X tag and a message. Joining opens a direct message to @Trancesage with
+            your note already written — you send it from your own X account. The tag is not
             sold and not stacked into a dossier.
           </p>
           <p className="mt-4 text-sm text-fg">Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.</p>
@@ -638,18 +639,19 @@ function LedgerForm() {
           />
         ) : (
           <form onSubmit={onSubmit} className="rounded-xl border border-border bg-bg p-6">
-            <label htmlFor="ledger-email" className="text-sm text-muted">
-              Email
+            <label htmlFor="ledger-tag" className="text-sm text-muted">
+              X tag
             </label>
             <input
-              id="ledger-email"
-              type="email"
-              autoComplete="email"
+              id="ledger-tag"
+              type="text"
+              autoComplete="username"
               required
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               className="mt-2 w-full rounded-md border border-border bg-surface px-3 py-3 text-fg outline-none focus:border-ring"
-              placeholder="you@domain"
+              placeholder="@yourtag"
+              spellCheck={false}
             />
             <label htmlFor="ledger-message" className="mt-5 block text-sm text-muted">
               Message
