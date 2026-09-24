@@ -744,7 +744,12 @@ function LedgerForm() {
       return;
     }
     if (company.trim()) return;
-    const result = prepareLedger({ email: next, message: note, role });
+    const result = prepareLedger({
+      email: next,
+      message: note,
+      role,
+      fee: `${tier.fee} ${tier.unit}, or ${tier.xFee} US with X Money`,
+    });
     window.open(result.dmUrl, "_blank", "noopener,noreferrer");
     const entry: LedgerEntry = {
       email: next,
@@ -776,15 +781,28 @@ function LedgerForm() {
             sold and not stacked into a dossier. A receipt stays here, with a line from
             @Trancesage chosen because it sits closest to what you wrote.
           </p>
-          <p className="mt-4 font-mono text-xs text-subtle">
-            Fees in $Club Hbar · {TOKEN}, or in US dollars through X Money to @{X_HANDLE}. Gifts of 100 or more $Club Hbar to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
+          <div className="mt-6 space-y-3 text-sm">
+            {TIERS.map((tier) => (
+              <p key={tier.id} className="flex items-baseline justify-between gap-4 border-t border-border pt-3">
+                <span className="text-fg">{tier.name}</span>
+                <span className="text-right text-muted">
+                  {tier.fee} {tier.unit}
+                  <span className="mt-1 block text-fg">or {tier.xFee} US with X Money</span>
+                </span>
+              </p>
+            ))}
+          </div>
+          <p className="mt-5 text-sm text-fg">
+            Send the fee with X Money to @{X_HANDLE}. In the X app open Money, choose Send, and
+            put the seat name in the note. A gift, if you add one, is still 100 or more $Club
+            Hbar to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
           </p>
         </div>
         {saved ? (
           <Receipt
             saved={saved}
             tierName={tier.name}
-            fee={`${tier.fee} ${tier.unit}`}
+            fee={`${tier.fee} ${tier.unit}, or ${tier.xFee} US with X Money`}
             onReset={() => {
               localStorage.removeItem(LEDGER_KEY);
               setSaved(null);
@@ -850,7 +868,10 @@ function LedgerForm() {
                       />
                       {item.name}
                     </span>
-                    <span className="font-mono text-xs text-subtle">{item.fee}</span>
+                    <span className="text-right leading-tight">
+                      <span className="block font-mono text-xs text-fg">{item.fee} $Club Hbar</span>
+                      <span className="mt-1 block text-xs text-muted">or {item.xFee} X Money</span>
+                    </span>
                   </label>
                 ))}
               </div>
