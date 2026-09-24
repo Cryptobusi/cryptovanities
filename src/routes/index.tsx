@@ -565,7 +565,7 @@ function Give() {
         className="sky-blend mb-8 w-full max-w-40 object-contain"
       />
       <p className="max-w-3xl font-display text-3xl text-fg sm:text-4xl">
-        Send Club Hbar {TOKEN} Coins to Clubhbar.ℏ {LOVE_ACCOUNT}
+        Send Club Hbar {TOKEN} Coins to ClubHbar.ℏ {LOVE_ACCOUNT}
       </p>
       <p className="mt-5 max-w-3xl text-lg text-muted">
         Lets Start The Exercise Counting{"\u00A0\u00A0"}Courage To Change.
