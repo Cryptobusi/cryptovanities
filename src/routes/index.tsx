@@ -481,8 +481,23 @@ function Tiers() {
         <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees paid in coins of $Club Hbar.</h2>
         <p className="mt-5 max-w-2xl text-muted">
           Not in someone else’s currency of permission. $Club Hbar on Hedera — token {TOKEN}. A
-          season is a cycle of ninety days. Witness is 100 $Club Hbar, or $1 US through X Money.
+          season is a cycle of ninety days.
         </p>
+        <div className="mt-8 max-w-xl text-sm">
+          <div className="grid grid-cols-3 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
+            <span>Tier</span>
+            <span>$Club Hbar</span>
+            <span>X Money</span>
+          </div>
+          {TIERS.map((tier) => (
+            <div key={tier.id} className="grid grid-cols-3 gap-3 border-b border-border py-3">
+              <span className="text-fg">{tier.name}</span>
+              <span>{tier.fee}</span>
+              <span>{tier.xFee}</span>
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 text-sm text-fg">Send the fee through X Money to @{X_HANDLE}.</p>
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           {TIERS.map((tier) => (
             <article
@@ -533,9 +548,8 @@ function Tiers() {
             </article>
           ))}
         </div>
-        <p className="mt-6 max-w-2xl text-sm text-muted">
-          X Money is inside the X app. Open Money, choose Send, and pay @{X_HANDLE}: $1 US for
-          Witness, $100 US for Sovereign, $1,000 US for Council. Put the tier name in the note.
+        <p className="mt-6 max-w-2xl text-sm text-fg">
+          Send the fee through X Money to @{X_HANDLE}.
         </p>
         <p className="mt-4 font-mono text-xs text-subtle">
           Hedera Token Service · $Club Hbar · {TOKEN} ·{" "}
@@ -777,7 +791,7 @@ function LedgerForm() {
             @Trancesage chosen because it sits closest to what you wrote.
           </p>
           <p className="mt-4 font-mono text-xs text-subtle">
-            Fees in $Club Hbar · {TOKEN}, or in US dollars through X Money to @{X_HANDLE}. Gifts of 100 or more $Club Hbar to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
+            Send the fee through X Money to @{X_HANDLE}. Gifts of 100 or more $Club Hbar still go to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
           </p>
         </div>
         {saved ? (
