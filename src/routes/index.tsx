@@ -156,8 +156,8 @@ const BOARD = [
   },
   {
     date: "21 Sep",
-    href: "https://x.com/Trancesage/status/2102172595655229459",
-    text: "More lights within you illuminate, as the less shadows cast upon the gazes you stipulate, accept all as is, less should.",
+    href: "https://x.com/Trancesage/status/2101863844096233593",
+    text: "Unless the essence of your time is omnipotented in veil, just enough to guard rail you against the very freedom turns into freedumb. The Providence Through Provenance.",
   },
   {
     date: "21 Sep",
@@ -171,13 +171,23 @@ const BOARD = [
   },
   {
     date: "19 Sep",
-    href: "https://x.com/Trancesage/status/2101342391961596357",
-    text: "Vaccinate through provenance. Egonomic Anonymous. I becomes why, why becomes how, how becomes Wheee.",
+    href: "https://x.com/Trancesage/status/2101343345402351857",
+    text: "I am helpless but not hopeless and really dangerous. Providence Through Provenance, back to business of goods and honors.",
   },
   {
     date: "19 Sep",
-    href: "https://x.com/Trancesage/status/2101330755183919281",
-    text: "Egonomic Anonymous. Self cure through provenance.",
+    href: "https://x.com/Trancesage/status/2101342391961596357",
+    text: "Vaccinate through provenance. Egonomic Anonymous. I becomes why, why becomes how, how becomes Wheee. Providence Through Provenance.",
+  },
+  {
+    date: "19 Sep",
+    href: "https://x.com/Trancesage/status/2101326419745812780",
+    text: "This time lets make it self accountable, responsible every words uttered. Providence Through Provenance, promises kept in perpetuity.",
+  },
+  {
+    date: "17 Sep",
+    href: "https://x.com/Trancesage/status/2100683502572146843",
+    text: "The economy became egonomy? Lets learn to count and account accurately first. Providence Through Provenance.",
   },
 ] as const;
 
@@ -534,8 +544,7 @@ function Board() {
         </a>
       </div>
       <p className="mt-5 max-w-2xl text-muted">
-        The public board is the account. These are the recent lines, kept here so the thesis can
-        be read without leaving the page.
+        The public board is the account. Only the posts and replies on Providence Through Provenance.
       </p>
       <ol className="mt-10 divide-y divide-border border-y border-border">
         {BOARD.map((post) => (
