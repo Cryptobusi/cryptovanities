@@ -486,8 +486,8 @@ function Give() {
         className="sky-blend mb-6 w-full max-w-40 object-contain"
       />
       <p className="max-w-3xl text-lg leading-snug text-fg">
-        One Coin Represents One Acknowledgement In Sovereignty, One Count In Community, One
-        Determination In Resurrection Of{"\u00A0\u00A0"}Humanity Back To Rightful Providence.
+        One Coin Represents One Acknowledgement In Sovereignty, One Care In Community, One
+        Determination In Count Of{"\u00A0\u00A0"}Humanity Back To Rightful Providence.
       </p>
       <p className="mt-5 max-w-3xl text-lg leading-snug text-fg sm:text-xl">
         Send $club hbar {TOKEN} Coins to{" "}
