@@ -5,7 +5,7 @@ import appCss from "../styles.css?url";
 
 const APP_NAME = "Egonomic Anonymous";
 const APP_DESCRIPTION =
-  "Witness $TBD. Sovereign $TBD. Council $TBD. Send the fee through X Money to @trancesage.";
+  "Witness $TBD. Sovereign $TBD. Council $TBD. Send  $TBD through X Money to @trancesage.";
 
 export const Route = createRootRoute({
   head: () => ({

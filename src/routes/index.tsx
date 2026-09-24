@@ -477,7 +477,7 @@ function Tiers() {
         <Eyebrow>The settlement</Eyebrow>
         <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees.</h2>
         <p className="mt-5 max-w-2xl text-muted">
-          A season is a cycle of ninety days. Send the fee through X Money to @{X_HANDLE}.
+          A season is a cycle of ninety days. Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.
         </p>
         <div className="mt-8 max-w-md text-sm">
           <div className="grid grid-cols-2 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
@@ -526,7 +526,7 @@ function Tiers() {
                   rel="noreferrer"
                   className="inline-flex rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
                 >
-                  Pay {tier.fee} with X Money
+                  Send{"\u00A0\u00A0"}{tier.fee} with X Money
                 </a>
                 <a
                   href="#ledger"
@@ -539,7 +539,7 @@ function Tiers() {
           ))}
         </div>
         <p className="mt-6 max-w-2xl text-sm text-fg">
-          Send the fee through X Money to @{X_HANDLE}.
+          Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.
         </p>
         <p className="mt-4 font-mono text-xs text-subtle">
           Hedera Token Service · $Club Hbar · {TOKEN} ·{" "}
@@ -791,7 +791,7 @@ function LedgerForm() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-sm text-fg">Send the fee through X Money to @{X_HANDLE}.</p>
+          <p className="mt-4 text-sm text-fg">Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.</p>
         </div>
         {saved ? (
           <Receipt
