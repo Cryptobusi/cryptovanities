@@ -293,7 +293,7 @@ function Hero() {
           <img
             src="/seal-rays.webp"
             alt="Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance"
-            className="sky-blend aspect-square w-20 shrink-0 origin-center scale-[1.44] object-contain sm:w-24"
+            className="aspect-square w-20 shrink-0 origin-center scale-[1.44] object-contain sm:w-24"
           />
         </div>
         <Eyebrow>Secure · Transparent · Fair</Eyebrow>
