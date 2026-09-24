@@ -294,9 +294,9 @@ function Hero() {
             className="sky-blend aspect-square w-32 shrink-0 object-contain sm:w-40"
           />
           <img
-            src="/seal-rays.webp"
+            src="/seal-rays.webp?v=4"
             alt="Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance"
-            className="aspect-square w-20 shrink-0 origin-center scale-[1.44] object-contain sm:w-24"
+            className="h-auto w-40 shrink-0 sm:w-52"
           />
         </div>
         <Eyebrow>Secure · Transparent · Fair</Eyebrow>
@@ -787,12 +787,23 @@ function LedgerForm() {
           <p className="mt-5 text-muted">
             Leave an address and a message. Joining opens a direct message to @Trancesage with
             your note already written — you send it from your own X account. The address is not
-            sold and not stacked into a dossier. A receipt stays here, with a line from
-            @Trancesage chosen because it sits closest to what you wrote.
+            sold and not stacked into a dossier.
           </p>
-          <p className="mt-4 font-mono text-xs text-subtle">
-            Send the fee through X Money to @{X_HANDLE}. Gifts of 100 or more $Club Hbar still go to {ACCOUNT_NAME} ({LOVE_ACCOUNT}).
-          </p>
+          <div className="mt-6 max-w-md text-sm">
+            <div className="grid grid-cols-3 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
+              <span>Tier</span>
+              <span>$Club Hbar</span>
+              <span>X Money</span>
+            </div>
+            {TIERS.map((tier) => (
+              <div key={tier.id} className="grid grid-cols-3 gap-3 border-b border-border py-2 text-fg">
+                <span>{tier.name}</span>
+                <span>{tier.fee}</span>
+                <span>{tier.xFee}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-sm text-fg">Send the fee through X Money to @{X_HANDLE}.</p>
         </div>
         {saved ? (
           <Receipt
@@ -864,7 +875,10 @@ function LedgerForm() {
                       />
                       {item.name}
                     </span>
-                    <span className="font-mono text-xs text-subtle">{item.fee}</span>
+                    <span className="text-right leading-tight">
+                      <span className="block font-mono text-xs text-fg">{item.fee} $Club Hbar</span>
+                      <span className="block text-xs text-muted">{item.xFee} X Money</span>
+                    </span>
                   </label>
                 ))}
               </div>
