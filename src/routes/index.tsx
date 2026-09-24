@@ -172,7 +172,7 @@ const BOARD = [
   {
     date: "19 Sep",
     href: "https://x.com/Trancesage/status/2101342391961596357",
-    text: "Vaccinate through provenance. Economic Anonymous. I becomes why, why becomes how, how becomes Wheee.",
+    text: "Vaccinate through provenance. Egonomic Anonymous. I becomes why, why becomes how, how becomes Wheee.",
   },
   {
     date: "19 Sep",
@@ -440,7 +440,7 @@ function Path() {
           I becomes why, why becomes how, how becomes Wheee.
         </h2>
         <p className="mt-5 max-w-2xl text-muted">
-          Vaccinate through provenance. Economic anonymous — not as disappearance, but as the
+          Vaccinate through provenance. Egonomic anonymous — not as disappearance, but as the
           end of being qualified only by numbers in someone else’s account. You remain. The cage
           does not.
         </p>

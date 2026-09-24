@@ -37,7 +37,7 @@ export const TRANCE_QUOTES: TranceQuote[] = [
     tags: ["freedom", "free", "sovereign", "key", "choice", "time", "guard"],
   },
   {
-    text: "Vaccinate through provenance. Economic Anonymous. I becomes why, why becomes how, how becomes Wheee.",
+    text: "Vaccinate through provenance. Egonomic Anonymous. I becomes why, why becomes how, how becomes Wheee.",
     url: "https://x.com/Trancesage/status/2101342391961596357",
     tags: ["why", "how", "path", "ego", "become", "wheee", "life", "i"],
   },
