@@ -75,9 +75,8 @@ const TIERS = [
   {
     id: "witness",
     name: "Witness",
-    fee: "100",
-    unit: "$Club Hbar",
-    xFee: "$1",
+    fee: "$1",
+    unit: "US",
     chosen: false,
     body: "Look. Do not take anyone’s word. The public trail is already yours.",
     points: [
@@ -91,9 +90,8 @@ const TIERS = [
   {
     id: "sovereign",
     name: "Sovereign",
-    fee: "1,000",
-    unit: "$Club Hbar / season",
-    xFee: "$100",
+    fee: "$100",
+    unit: "US",
     chosen: true,
     body: "You keep the keys. You sign the work. You become capable of being the self you name.",
     points: [
@@ -101,16 +99,15 @@ const TIERS = [
       "Signed workflows — flows, runs, records",
       "Reusable KYC that does not leak the file",
       "Personal authority trail",
-      "Fees in $Club Hbar, or in dollars through X Money",
+      "Fees in dollars through X Money",
     ],
     cta: "Claim sovereignty",
   },
   {
     id: "council",
     name: "Council",
-    fee: "100,000",
-    unit: "$Club Hbar / season",
-    xFee: "$1,000",
+    fee: "$1,000",
+    unit: "US",
     chosen: false,
     body: "For houses that must remain accountable to themselves as they make everything else accountable.",
     points: [
@@ -478,26 +475,22 @@ function Tiers() {
     <section id="tiers" className="border-t border-border bg-bg/25">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
         <Eyebrow>The settlement</Eyebrow>
-        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees paid in coins of $Club Hbar.</h2>
+        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees.</h2>
         <p className="mt-5 max-w-2xl text-muted">
-          Not in someone else’s currency of permission. $Club Hbar on Hedera — token {TOKEN}. A
-          season is a cycle of ninety days.
+          A season is a cycle of ninety days. Send the fee through X Money to @{X_HANDLE}.
         </p>
-        <div className="mt-8 max-w-xl text-sm">
-          <div className="grid grid-cols-3 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
+        <div className="mt-8 max-w-md text-sm">
+          <div className="grid grid-cols-2 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
             <span>Tier</span>
-            <span>$Club Hbar</span>
-            <span>X Money</span>
+            <span>$</span>
           </div>
           {TIERS.map((tier) => (
-            <div key={tier.id} className="grid grid-cols-3 gap-3 border-b border-border py-3">
+            <div key={tier.id} className="grid grid-cols-2 gap-3 border-b border-border py-3">
               <span className="text-fg">{tier.name}</span>
               <span>{tier.fee}</span>
-              <span>{tier.xFee}</span>
             </div>
           ))}
         </div>
-        <p className="mt-5 text-sm text-fg">Send the fee through X Money to @{X_HANDLE}.</p>
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           {TIERS.map((tier) => (
             <article
@@ -516,10 +509,7 @@ function Tiers() {
                   </span>
                 ) : null}
               </div>
-              <p className="mt-4 font-display text-4xl">
-                {tier.fee} <span className="font-sans text-sm text-muted">{tier.unit}</span>
-              </p>
-              <p className="mt-2 text-sm text-muted">or {tier.xFee} US through X Money</p>
+              <p className="mt-4 font-display text-4xl">{tier.fee}</p>
               <p className="mt-3 text-sm text-muted">{tier.body}</p>
               <ul className="mt-4 space-y-2 text-sm text-fg">
                 {tier.points.map((point) => (
@@ -536,7 +526,7 @@ function Tiers() {
                   rel="noreferrer"
                   className="inline-flex rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
                 >
-                  Pay {tier.xFee} with X Money
+                  Pay {tier.fee} with X Money
                 </a>
                 <a
                   href="#ledger"
@@ -790,16 +780,14 @@ function LedgerForm() {
             sold and not stacked into a dossier.
           </p>
           <div className="mt-6 max-w-md text-sm">
-            <div className="grid grid-cols-3 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
+            <div className="grid grid-cols-2 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
               <span>Tier</span>
-              <span>$Club Hbar</span>
-              <span>X Money</span>
+              <span>$</span>
             </div>
             {TIERS.map((tier) => (
-              <div key={tier.id} className="grid grid-cols-3 gap-3 border-b border-border py-2 text-fg">
+              <div key={tier.id} className="grid grid-cols-2 gap-3 border-b border-border py-2 text-fg">
                 <span>{tier.name}</span>
                 <span>{tier.fee}</span>
-                <span>{tier.xFee}</span>
               </div>
             ))}
           </div>
@@ -875,10 +863,7 @@ function LedgerForm() {
                       />
                       {item.name}
                     </span>
-                    <span className="text-right leading-tight">
-                      <span className="block font-mono text-xs text-fg">{item.fee} $Club Hbar</span>
-                      <span className="block text-xs text-muted">{item.xFee} X Money</span>
-                    </span>
+                    <span className="font-mono text-sm text-fg">{item.fee}</span>
                   </label>
                 ))}
               </div>
@@ -994,7 +979,7 @@ function SiteFooter() {
         <a href={`https://x.com/${X_HANDLE}`} className="text-muted">
           @{X_HANDLE}
         </a>
-        , kept as an X post board. Fees and gifts in $Club Hbar. Ledgers do not repeal law. They
+        , kept as an X post board. Fees through X Money. Gifts in $Club Hbar. Ledgers do not repeal law. They
         shrink the cost of proving compliance. Isolated pilots recreate the mess they were meant
         to replace.
       </p>
