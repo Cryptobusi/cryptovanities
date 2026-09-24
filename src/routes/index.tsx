@@ -9,7 +9,6 @@ export const Route = createFileRoute("/")({ component: Home });
 const NAV = [
   { href: "#thesis", label: "Thesis" },
   { href: "#provenance", label: "Provenance" },
-  { href: "#tiers", label: "Tiers" },
   { href: "#give", label: "Coins" },
   { href: "#board", label: "Board" },
 ] as const;
@@ -206,7 +205,6 @@ function Home() {
         <Thesis />
         <Provenance />
         <Path />
-        <Tiers />
         <Give />
         <Witnesses />
         <Board />
@@ -469,93 +467,6 @@ function Path() {
   );
 }
 
-function Tiers() {
-  return (
-    <section id="tiers" className="border-t border-border bg-bg/25">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-        <Eyebrow>The settlement</Eyebrow>
-        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Fees.</h2>
-        <p className="mt-5 max-w-2xl text-muted">
-          A season is a cycle of ninety days. Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.
-        </p>
-        <div className="mt-8 max-w-md text-sm">
-          <div className="grid grid-cols-2 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
-            <span>Tier</span>
-            <span>$</span>
-          </div>
-          {TIERS.map((tier) => (
-            <div key={tier.id} className="grid grid-cols-2 gap-3 border-b border-border py-3">
-              <span className="text-fg">{tier.name}</span>
-              <span>{tier.fee}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {TIERS.map((tier) => (
-            <article
-              key={tier.id}
-              className={
-                tier.chosen
-                  ? "rounded-xl border border-primary bg-bg p-5"
-                  : "rounded-xl border border-border bg-bg p-5"
-              }
-            >
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-3xl">{tier.name}</h3>
-                {tier.chosen ? (
-                  <span className="font-mono text-xs tracking-wide text-subtle uppercase">
-                    Chosen
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-4 font-display text-4xl">{tier.fee}</p>
-              <p className="mt-3 text-sm text-muted">{tier.body}</p>
-              <ul className="mt-4 space-y-2 text-sm text-fg">
-                {tier.points.map((point) => (
-                  <li key={point} className="flex gap-2">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <a
-                  href={`https://x.com/${X_HANDLE}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
-                >
-                  Send{"\u00A0\u00A0"}{tier.fee} with X Money
-                </a>
-                <a
-                  href="#ledger"
-                  className="inline-flex rounded-full border border-border px-4 py-2 text-sm text-fg"
-                >
-                  {tier.cta}
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-        <p className="mt-6 max-w-2xl text-sm text-fg">
-          Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.
-        </p>
-        <p className="mt-4 font-mono text-xs text-subtle">
-          Hedera Token Service · $Club Hbar · {TOKEN} ·{" "}
-          <a
-            className="text-fg underline decoration-border underline-offset-4"
-            href="https://hashscan.io/mainnet/token/0.0.4432765"
-            target="_blank"
-            rel="noreferrer"
-          >
-            View on HashScan
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function Give() {
   return (
     <section id="give" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
@@ -572,8 +483,8 @@ function Give() {
         Lets Start The Exercise Counting{"\u00A0\u00A0"}Courage To Change.
       </p>
       <p className="mt-5 max-w-3xl text-lg text-fg">Fuel The Project,</p>
-      <p className="mt-3 max-w-3xl font-display text-3xl text-fg sm:text-4xl">
-        Providence Through Provenance
+      <p className="mt-3 whitespace-nowrap font-display text-[clamp(0.95rem,4.1vw,2.75rem)] leading-none text-fg">
+        The Providence Through Provenance
       </p>
     </section>
   );
@@ -712,18 +623,6 @@ function LedgerForm() {
             your note already written — you send it from your own X account. The address is not
             sold and not stacked into a dossier.
           </p>
-          <div className="mt-6 max-w-md text-sm">
-            <div className="grid grid-cols-2 gap-3 border-b border-border pb-2 font-mono text-xs tracking-wide text-subtle uppercase">
-              <span>Tier</span>
-              <span>$</span>
-            </div>
-            {TIERS.map((tier) => (
-              <div key={tier.id} className="grid grid-cols-2 gap-3 border-b border-border py-2 text-fg">
-                <span>{tier.name}</span>
-                <span>{tier.fee}</span>
-              </div>
-            ))}
-          </div>
           <p className="mt-4 text-sm text-fg">Send{"\u00A0\u00A0"}$TBD through X Money to @{X_HANDLE}.</p>
         </div>
         {saved ? (
