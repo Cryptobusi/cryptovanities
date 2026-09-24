@@ -93,7 +93,7 @@ const TIERS = [
     name: "Sovereign",
     fee: "1,000",
     unit: "$Club Hbar / season",
-    xFee: "$20",
+    xFee: "$100",
     chosen: true,
     body: "You keep the keys. You sign the work. You become capable of being the self you name.",
     points: [
@@ -110,7 +110,7 @@ const TIERS = [
     name: "Council",
     fee: "100,000",
     unit: "$Club Hbar / season",
-    xFee: "$200",
+    xFee: "$1,000",
     chosen: false,
     body: "For houses that must remain accountable to themselves as they make everything else accountable.",
     points: [
@@ -535,7 +535,7 @@ function Tiers() {
         </div>
         <p className="mt-6 max-w-2xl text-sm text-muted">
           X Money is inside the X app. Open Money, choose Send, and pay @{X_HANDLE}: $1 US for
-          Witness, $20 US for Sovereign, $200 US for Council. Put the tier name in the note.
+          Witness, $100 US for Sovereign, $1,000 US for Council. Put the tier name in the note.
         </p>
         <p className="mt-4 font-mono text-xs text-subtle">
           Hedera Token Service · $Club Hbar · {TOKEN} ·{" "}
