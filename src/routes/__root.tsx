@@ -5,7 +5,7 @@ import appCss from "../styles.css?url";
 
 const APP_NAME = "Egonomic Anonymous";
 const APP_DESCRIPTION =
-  "The Providence Through Provenance. A sovereign ledger that empowers self-sovereignty — origin, authority, and honor, proven on Hedera. Fees in $Club Hbar.";
+  "Witness 100 $Club Hbar or $1 US. Sovereign 1,000 or $100 US. Council 100,000 or $1,000 US. Send the fee with X Money to @trancesage.";
 
 export const Route = createRootRoute({
   head: () => ({
