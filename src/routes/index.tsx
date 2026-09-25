@@ -193,7 +193,7 @@ const BOARD = [
 ] as const;
 
 const LOVE_ACCOUNT = import.meta.env.VITE_HEDERA_ACCOUNT_ID || "0.0.527206";
-const TOKEN = import.meta.env.VITE_CLUB_TOKEN_ID || "0.0.10607411";
+const TOKEN = "0.0.10607411";
 const X_HANDLE = import.meta.env.VITE_X_HANDLE || "trancesage";
 const LEDGER_KEY = "egonomic-ledger";
 
