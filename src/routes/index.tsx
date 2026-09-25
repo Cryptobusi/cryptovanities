@@ -243,7 +243,15 @@ function SiteNav() {
         </a>
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="transition-colors hover:text-fg">
+            <a
+              key={item.href}
+              href={item.href}
+              className={
+                item.href === "/demo"
+                  ? "rounded-full bg-[#6e6c66] px-3 py-1.5 font-medium text-[#f3f0e8] transition-colors hover:bg-[#7d7b74]"
+                  : "transition-colors hover:text-fg"
+              }
+            >
               {item.label}
             </a>
           ))}
@@ -270,7 +278,11 @@ function SiteNav() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-md px-2 py-3 text-muted"
+              className={
+                item.href === "/demo"
+                  ? "rounded-full bg-[#6e6c66] px-3 py-3 text-center font-medium text-[#f3f0e8]"
+                  : "rounded-md px-2 py-3 text-muted"
+              }
               onClick={() => setOpen(false)}
             >
               {item.label}
@@ -446,9 +458,10 @@ function Provenance() {
               <a
                 key={item.title}
                 href={item.href}
-                className="bg-bg p-5 transition-colors hover:bg-surface sm:col-span-2"
+                className="bg-[#6e6c66] p-5 text-[#f3f0e8] transition-colors hover:bg-[#7d7b74] sm:col-span-2"
               >
-                {card}
+                <h3 className="font-display text-2xl">{item.title}</h3>
+                <p className="mt-2 text-sm text-[#e7e4dc]">{item.body}</p>
               </a>
             );
           }
