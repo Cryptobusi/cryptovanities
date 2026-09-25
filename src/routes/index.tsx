@@ -10,12 +10,13 @@ const NAV = [
   { href: "#thesis", label: "Thesis" },
   { href: "#provenance", label: "Provenance" },
   { href: "#give", label: "Coins" },
+  { href: "/demo", label: "Demo" },
   { href: "#board", label: "Board" },
 ] as const;
 
 const TRAIL = [
   { n: "01", title: "Origin", body: "Soil carbon, plot 14-N — signed" },
-  { n: "02", title: "Allowed", body: "Priya Morgan · limit 5,000 $Club Hbar" },
+  { n: "02", title: "Allowed", body: "Priya Morgan · limit 5,000 $Trust" },
   { n: "03", title: "Action", body: "Atlas agent issued the credit" },
   { n: "04", title: "Revoke", body: "Limit closed. The history remains." },
 ];
@@ -192,7 +193,7 @@ const BOARD = [
 ] as const;
 
 const LOVE_ACCOUNT = import.meta.env.VITE_HEDERA_ACCOUNT_ID || "0.0.527206";
-const TOKEN = import.meta.env.VITE_CLUB_TOKEN_ID || "0.0.4432765";
+const TOKEN = import.meta.env.VITE_CLUB_TOKEN_ID || "0.0.10607411";
 const X_HANDLE = import.meta.env.VITE_X_HANDLE || "trancesage";
 const LEDGER_KEY = "egonomic-ledger";
 
@@ -314,7 +315,7 @@ function Hero() {
         <p className="mt-4 max-w-xl text-muted">
           Egonomic Anonymous returns the prerogative of counting honestly: origin, authority,
           honor. Built on Hedera’s public clock and DOVU’s inspectable workflows. Fees settled
-          in coins of <span className="text-fg">$Club Hbar</span>.
+          in coins of <span className="text-fg">$Trust</span>.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -324,6 +325,12 @@ function Hero() {
             Begin the ledger
           </a>
           <a
+            href="/demo"
+            className="rounded-full border border-border px-5 py-3 text-sm text-fg"
+          >
+            Sealroom demo
+          </a>
+          <a
             href="#thesis"
             className="rounded-full border border-border px-5 py-3 text-sm text-fg"
           >
@@ -331,7 +338,7 @@ function Hero() {
           </a>
         </div>
         <p className="mt-8 font-mono text-xs text-subtle">
-          Hedera token {TOKEN} · $Club Hbar · Self-sovereignty
+          Hedera token {TOKEN} · $Trust · Self-sovereignty
         </p>
       </div>
       <aside className="rounded-xl border border-border bg-surface p-5 lg:col-span-5">
@@ -490,7 +497,7 @@ function Give() {
         Determination In Count Of{"\u00A0\u00A0"}Humanity Back To Rightful Providence.
       </p>
       <p className="mt-5 max-w-3xl text-lg leading-snug text-fg sm:text-xl">
-        Send $club hbar {TOKEN} Coins to{" "}
+        Send $Trust {TOKEN} Coins to{" "}
         <span className="whitespace-nowrap font-sans tracking-tighter">ClubHbar.ℏ</span> {LOVE_ACCOUNT}
       </p>
       <p className="mt-5 max-w-3xl text-lg text-muted">
@@ -808,6 +815,9 @@ function SiteFooter() {
           <a href="https://dovu.ai" className="hover:text-fg" target="_blank" rel="noreferrer">
             DOVU
           </a>
+          <a href="/demo" className="hover:text-fg">
+            Demo
+          </a>
           <a href="#ledger" className="hover:text-fg">
             Ledger
           </a>
@@ -826,7 +836,7 @@ function SiteFooter() {
         <a href={`https://x.com/${X_HANDLE}`} className="text-muted">
           @{X_HANDLE}
         </a>
-        , kept as an X post board. Fees through X Money. Gifts in $Club Hbar. Ledgers do not repeal law. They
+        , kept as an X post board. Fees through X Money. Gifts in $Trust. Ledgers do not repeal law. They
         shrink the cost of proving compliance. Isolated pilots recreate the mess they were meant
         to replace.
       </p>

@@ -89,3 +89,61 @@
     animation: none;
   }
 }
+
+@theme {
+  --color-ink: #12100e;
+  --color-panel: #1c1814;
+  --color-line: #3d342c;
+  --color-parchment: #f3ebdf;
+  --color-mute: #b4a494;
+  --color-copper: #e09455;
+  --color-copper-ink: #2a160c;
+  --color-seal: #d42b2b;
+  --color-seal-ink: #fff6f4;
+  --color-live: #1f9d55;
+  --color-live-ink: #f3fff6;
+}
+
+.seal {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-raised: #262019;
+  min-height: 100dvh;
+  background-color: var(--color-ink);
+  background-image: none;
+  color: var(--color-parchment);
+  font-family: var(--font-sans);
+}
+
+.seal h1,
+.seal h2,
+.seal h3 {
+  font-family: var(--font-display);
+}
+
+@keyframes save-flash {
+  0%,
+  16%,
+  36%,
+  56%,
+  100% {
+    background-color: var(--color-live);
+    color: var(--color-live-ink);
+  }
+  8%,
+  28%,
+  48% {
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
+  }
+}
+
+.save-flash {
+  animation: save-flash 1.05s linear 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .save-flash {
+    animation: none;
+  }
+}
