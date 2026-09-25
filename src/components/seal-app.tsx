@@ -10,7 +10,6 @@ import {
   Plus,
   ScrollText,
   Search,
-  Shell,
   Square,
   Trash2,
   X,
@@ -652,13 +651,13 @@ export function SealApp() {
                 aria-selected={desk === "console"}
                 aria-controls="panel-console"
                 onClick={() => setDesk((current) => (current === "console" ? null : "console"))}
+                aria-label={desk === "console" ? "Exit Sealroom" : "Enter Sealroom"}
                 className={cn(
-                  "inline-flex min-h-14 items-center gap-2 rounded-full px-6 font-display text-lg",
-                  desk === "console" ? "bg-seal text-seal-ink" : "border border-seal text-seal",
+                  "inline-flex min-h-14 items-center rounded-full border px-6 font-display text-lg",
+                  desk === "console" ? "border-seal text-seal" : "border-live text-live",
                 )}
               >
-                <Shell className="size-5" aria-hidden="true" />
-                Sealroom
+                {desk === "console" ? "Exit" : "Enter"}
               </button>
             </div>
           </div>
