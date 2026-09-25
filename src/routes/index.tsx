@@ -23,6 +23,11 @@ const TRAIL = [
 
 const WORK = [
   {
+    title: "Demo",
+    body: "Sealroom. Notarize my stuff, my actions. Timestamped, immutably recorded in NFTs.",
+    href: "/demo",
+  },
+  {
     title: "One timeline, many auditors",
     body: "A shipment, credit, or identity assertion is written once. Authorized parties see the same append-only history instead of reconciling local copies.",
   },
@@ -429,12 +434,30 @@ function Provenance() {
         flow.
       </p>
       <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
-        {WORK.map((item) => (
-          <article key={item.title} className="bg-bg p-5">
-            <h3 className="font-display text-2xl">{item.title}</h3>
-            <p className="mt-2 text-sm text-muted">{item.body}</p>
-          </article>
-        ))}
+        {WORK.map((item) => {
+          const card = (
+            <>
+              <h3 className="font-display text-2xl">{item.title}</h3>
+              <p className="mt-2 text-sm text-muted">{item.body}</p>
+            </>
+          );
+          if ("href" in item && item.href) {
+            return (
+              <a
+                key={item.title}
+                href={item.href}
+                className="bg-bg p-5 transition-colors hover:bg-surface sm:col-span-2"
+              >
+                {card}
+              </a>
+            );
+          }
+          return (
+            <article key={item.title} className="bg-bg p-5">
+              {card}
+            </article>
+          );
+        })}
       </div>
       <dl className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {STATS.map((stat) => (
