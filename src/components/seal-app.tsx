@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
@@ -155,31 +155,21 @@ export function SealApp() {
   useEffect(() => {
     const pending = useSealStore.persist.rehydrate();
     void Promise.resolve(pending).finally(() => {
-      useSealStore.setState({ hydrated: true });
+      useSealStore.setState({ hydrated: true, recording: false });
     });
   }, []);
 
   const accessOn = Boolean(ledger && ledger.balanceCents > LOW_CENTS && party?.xHandle);
-  const wasAccess = useRef(false);
 
   useEffect(() => {
-    if (!hydrated) return;
-    const turnedOn = accessOn && !wasAccess.current;
-    wasAccess.current = accessOn;
-    if (!accessOn) {
-      const state = useSealStore.getState();
-      if (state.recording && sessionIsOpen(state.openEvents)) {
-        addEvent({ kind: "phone", where: "This phone", detail: "Receipt stopped" });
-        addEvent({ kind: "phone", where: "This phone", detail: "Access stopped" });
-      }
-      if (state.recording) setRecording(false);
-      return;
+    if (!hydrated || accessOn) return;
+    const state = useSealStore.getState();
+    if (!state.recording) return;
+    if (sessionIsOpen(state.openEvents)) {
+      addEvent({ kind: "phone", where: "This phone", detail: "Receipt stopped" });
+      addEvent({ kind: "phone", where: "This phone", detail: "Access stopped" });
     }
-    if (!turnedOn) return;
-    setRecording(true);
-    if (!sessionIsOpen(useSealStore.getState().openEvents)) {
-      addEvent({ kind: "phone", where: "This phone", detail: "Receipt started" });
-    }
+    setRecording(false);
   }, [hydrated, accessOn, addEvent, setRecording]);
 
   useEffect(() => {

@@ -125,7 +125,7 @@ export const useSealStore = create<SealState>()(
       inbox: [],
       executorAccess: false,
       refillAsked: false,
-      recording: true,
+      recording: false,
       setParty: (party) => set({ party }),
       addEvent: (event) =>
         set((state) => ({
@@ -292,7 +292,6 @@ export const useSealStore = create<SealState>()(
         inbox: state.inbox,
         executorAccess: state.executorAccess,
         refillAsked: state.refillAsked,
-        recording: state.recording,
       }),
     },
   ),
