@@ -300,6 +300,7 @@ function Home() {
     <div className="relative min-h-dvh text-fg">
       <SiteNav />
       <main>
+        <HeroMarks />
         <Opening />
         <Hero />
         <Thesis />
@@ -313,6 +314,59 @@ function Home() {
         <Refrain where="end" />
       </main>
       <SiteFooter />
+    </div>
+  );
+}
+
+function HeroMarks() {
+  const marks = [
+    {
+      src: "/hedera-coin.webp",
+      href: "https://hedera.com",
+      alt: "Hedera Hashgraph coin with white lightning breaking out of the gold H",
+      square: true,
+    },
+    {
+      src: "/seal-rays.webp?v=5",
+      href: `https://x.com/${X_HANDLE}`,
+      alt: "Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance",
+      square: false,
+    },
+    {
+      src: "/hederica-seal.webp",
+      href: "https://hol.org",
+      alt: "Egonomic Anonymous seal: Hederica, hashtag legomiego, at Trancesage, Ignoramius Rokedamius Maximus",
+      square: false,
+    },
+    {
+      src: "/hederica-mark.webp",
+      href: "https://dovu.ai",
+      alt: "Hederica and hashtag legomiego in gold, at Trancesage, inside a purple and pink frame",
+      square: false,
+    },
+  ];
+
+  return (
+    <div className="mx-auto flex max-w-6xl items-center gap-2 px-5 pt-6 sm:px-8">
+      {marks.map((mark) => (
+        <a
+          key={mark.src}
+          href={mark.href}
+          target="_blank"
+          rel="noreferrer"
+          className="w-0 min-w-0 flex-1"
+        >
+          <img
+            src={mark.src}
+            alt={mark.alt}
+            className={
+              mark.square
+                ? "sky-blend aspect-square w-full object-contain"
+                : "h-auto w-full object-contain"
+            }
+          />
+        </a>
+      ))}
     </div>
   );
 }
@@ -430,28 +484,6 @@ function Hero() {
   return (
     <section id="top" className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
       <div className="lg:col-span-7">
-        <div className="mb-6 flex items-center gap-2">
-          <img
-            src="/hedera-coin.webp"
-            alt="Hedera Hashgraph coin with white lightning breaking out of the gold H"
-            className="sky-blend aspect-square w-0 min-w-0 flex-1 object-contain"
-          />
-          <img
-            src="/seal-rays.webp?v=5"
-            alt="Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance"
-            className="h-auto w-0 min-w-0 flex-1 object-contain"
-          />
-          <img
-            src="/hederica-seal.webp"
-            alt="Egonomic Anonymous seal: Hederica, hashtag legomiego, at Trancesage, Ignoramius Rokedamius Maximus"
-            className="h-auto w-0 min-w-0 flex-1 object-contain"
-          />
-          <img
-            src="/hederica-mark.webp"
-            alt="Hederica and hashtag legomiego in gold, at Trancesage, inside a purple and pink frame"
-            className="h-auto w-0 min-w-0 flex-1 object-contain"
-          />
-        </div>
         <Eyebrow>Secure · Transparent · Fair</Eyebrow>
         <h1 className="mt-4 font-display text-5xl leading-none font-medium tracking-tight text-fg sm:text-7xl">
           The Providence Through Provenance
@@ -679,11 +711,61 @@ function Path() {
 function Give() {
   return (
     <section id="give" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
-      <img
-        src="/club-hbar.webp"
-        alt="Gold pin stamped Club H Bar"
-        className="sky-blend mb-6 w-full max-w-40 object-contain"
-      />
+      <h2 className="font-display text-4xl text-fg sm:text-5xl">Invitation:</h2>
+      <div className="mt-6 flex items-center gap-4 sm:gap-8">
+        <a
+          href="https://discord.gg/club-hbar"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Club H Bar on Discord"
+          className="shrink-0"
+        >
+          <img
+            src="/club-hbar.webp"
+            alt="Gold pin stamped Club H Bar"
+            className="sky-blend w-28 object-contain sm:w-40"
+          />
+        </a>
+        <div className="flex min-w-0 flex-1 flex-col gap-3">
+          <p className="font-mono text-[11px] tracking-widest text-subtle uppercase">
+            Purchase $Trust
+          </p>
+          <a
+            href="https://www.hashpack.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-3 rounded-lg border border-border bg-surface/70 px-3 py-2.5"
+          >
+            <img
+              src="/hashpack-mark.png"
+              alt=""
+              className="h-11 w-11 shrink-0 rounded-md object-cover"
+            />
+            <span className="min-w-0">
+              <span className="block text-sm text-fg">HashPack</span>
+              <span className="block truncate font-mono text-[11px] text-muted">www.hashpack.app</span>
+            </span>
+          </a>
+          <a
+            href="https://www.saucerswap.finance/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-3 rounded-lg border border-border bg-surface/70 px-3 py-2.5"
+          >
+            <img
+              src="/saucerswap-logo.png"
+              alt=""
+              className="h-11 w-11 shrink-0 rounded-full object-cover"
+            />
+            <span className="min-w-0">
+              <span className="block text-sm text-fg">SaucerSwap</span>
+              <span className="block truncate font-mono text-[11px] text-muted">
+                www.saucerswap.finance
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
       <p className="max-w-3xl text-lg leading-snug text-fg">
         One Coin Represents One Acknowledgement In Sovereignty, One Care In Community, One
         Determination In Count Of{"\u00A0\u00A0"}Humanity Back To Rightful Providence.
