@@ -1,25 +1,108 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { HashgraphMark } from "@/components/mark";
+import { SiteFooter, SiteNav } from "@/components/site-chrome";
 import { prepareLedger } from "@/lib/ledger";
 
 export const Route = createFileRoute("/")({ component: Home });
 
-const NAV = [
-  { href: "#thesis", label: "Thesis" },
-  { href: "#provenance", label: "Provenance" },
-  { href: "#give", label: "Coins" },
-  { href: "/demo", label: "Demo" },
-  { href: "#board", label: "Board" },
+const SCENARIOS = [
+  {
+    id: "credit",
+    label: "The credit",
+    steps: [
+      {
+        n: "01",
+        title: "Origin",
+        body: "Soil carbon, plot 14-N — signed",
+        why: "The plot, the method, and the signer are bound before a credit exists. Origin is not a story told later to fit the sale.",
+      },
+      {
+        n: "02",
+        title: "Allowed",
+        body: "Priya Morgan · limit 5,000 $Trust",
+        why: "Authority is a grant with a ceiling, not a blank key. She may issue up to the limit. She may not invent a larger one.",
+      },
+      {
+        n: "03",
+        title: "Action",
+        body: "Atlas agent issued the credit",
+        why: "The agent acted inside that grant. The act is timestamped with the permission it used. Software does not get a quieter standard than a person.",
+      },
+      {
+        n: "04",
+        title: "Revoke",
+        body: "Limit closed. The history remains.",
+        why: "Closing the limit does not erase the credit. Both facts stay: what was allowed, and when it stopped being allowed.",
+      },
+    ],
+    matters:
+      "Without the trail, the buyer takes a registry’s word, and the registry takes Priya’s. With it, anyone reads the same order of events. A dispute becomes a query, not a reconstruction from inboxes.",
+  },
+  {
+    id: "shipment",
+    label: "The shipment",
+    steps: [
+      {
+        n: "01",
+        title: "Origin",
+        body: "Grain lot, silo 7 — weighed at the gate",
+        why: "Weight, lot, and the hand that signed are written once. A later invoice cannot quietly become the origin.",
+      },
+      {
+        n: "02",
+        title: "Allowed",
+        body: "Harbor clerk · 48-hour release, this buyer only",
+        why: "The clerk may release this lot, in this window, to this buyer. Not reprice it. Not substitute another silo.",
+      },
+      {
+        n: "03",
+        title: "Action",
+        body: "Released. Buyer and seller read the same line.",
+        why: "The shipment and the permission travel together. The buyer does not wait on a PDF from the seller’s office.",
+      },
+      {
+        n: "04",
+        title: "Revoke",
+        body: "Window closed at dawn. The release stands.",
+        why: "After the window, a second release against the same lot cannot be backdated. What already moved is not undone.",
+      },
+    ],
+    matters:
+      "A shipment argued from inboxes is a negotiation. A shipment with one append-only trail is a fact both sides already share. Proving compliance costs as much as reading — not as much as hiring another office to retell it.",
+  },
+  {
+    id: "credential",
+    label: "The credential",
+    steps: [
+      {
+        n: "01",
+        title: "Origin",
+        body: "S. Voss · credential issued, keys kept",
+        why: "The credential is issued once and stays with the bearer. A second institution does not become the new origin of the person.",
+      },
+      {
+        n: "02",
+        title: "Allowed",
+        body: "The house may check validity. It may not take the file.",
+        why: "Permission to inspect is not permission to collect. The grant names what may be asked, and nothing more.",
+      },
+      {
+        n: "03",
+        title: "Action",
+        body: "Checked. The door opens. The dossier stays.",
+        why: "The check is written at the moment it happens. Nobody reconstructs, later, what was shown and what was withheld.",
+      },
+      {
+        n: "04",
+        title: "Revoke",
+        body: "Withdrawn twelve minutes later. The check remains.",
+        why: "The past check stands. A check after the withdrawal fails. Both are on the trail. The file was never surrendered.",
+      },
+    ],
+    matters:
+      "Repeat proof is a failure of memory. The trail remembers the grant without hoarding the person. You are not a dossier. You are a lineage that can be proven — and closed.",
+  },
 ] as const;
-
-const TRAIL = [
-  { n: "01", title: "Origin", body: "Soil carbon, plot 14-N — signed" },
-  { n: "02", title: "Allowed", body: "Priya Morgan · limit 5,000 $Trust" },
-  { n: "03", title: "Action", body: "Atlas agent issued the credit" },
-  { n: "04", title: "Revoke", body: "Limit closed. The history remains." },
-];
 
 const WORK = [
   {
@@ -130,7 +213,7 @@ const STATS = [
   { value: "~10,000", label: "TPS on Hedera" },
   { value: "3–5s", label: "Absolute finality" },
   { value: "Carbon−", label: "Certified negative" },
-  { value: "$0.0001", label: "Average write" },
+  { value: "$0.001", label: "Average write" },
 ];
 
 const WITNESSES = [
@@ -217,87 +300,122 @@ function Home() {
     <div className="relative min-h-dvh text-fg">
       <SiteNav />
       <main>
+        <Opening />
         <Hero />
         <Thesis />
         <Provenance />
+        <Refrain where="middle" />
         <Path />
         <Give />
         <Witnesses />
         <Board />
         <LedgerForm />
+        <Refrain where="end" />
       </main>
       <SiteFooter />
     </div>
   );
 }
 
-function SiteNav() {
-  const [open, setOpen] = useState(false);
-
+function Opening() {
   return (
-    <header className="sticky top-0 z-20 border-b border-border/80 bg-bg/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
-        <a href="#top" className="flex items-center gap-2.5 text-fg">
-          <HashgraphMark className="size-7" />
-          <span className="font-display text-lg tracking-tight">Egonomic Anonymous</span>
-        </a>
-        <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={
-                item.href === "/demo"
-                  ? "rounded-full bg-[#6e6c66] px-3 py-1.5 font-medium text-[#f3f0e8] transition-colors hover:bg-[#7d7b74]"
-                  : "transition-colors hover:text-fg"
-              }
-            >
-              {item.label}
-            </a>
-          ))}
+    <section id="opening" className="border-b border-border">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+        <Eyebrow>From @Trancesage</Eyebrow>
+        <h2 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
+          They printed the money. I am keeping the book.
+        </h2>
+        <p className="mt-5 max-w-2xl text-lg text-muted">
+          Gold and silver were already money: durable, scarce. A bank then charged interest on paper
+          it had just invented. The price stopped telling the truth. I mean to stand where a state
+          stands.
+        </p>
+        <p className="mt-5 max-w-2xl text-muted">
+          That book is Providence Through Provenance: an origin no one can rewrite. A public ledger.
+          AI cheap enough to audit the powerful.
+        </p>
+        <div className="mt-10 max-w-3xl">
+          <h3 className="font-display text-2xl">If it cannot be shown, it is only a story.</h3>
+          <p className="mt-3 text-muted">
+            Claim, title, price, transfer — a trail neither of us owns, on Hedera. Cheap intelligence
+            makes equal standing a query, not a speech. Interest paid out returns, or the books
+            drain.
+          </p>
+          <p className="mt-3 text-muted">
+            Menger, Mises, Hume, Diamond’s <span className="text-fg">Collapse</span> — arguments I
+            record, not a model I invent.
+          </p>
+        </div>
+        <p className="mt-10 max-w-3xl border-l border-primary pl-5 font-display text-2xl leading-snug text-fg">
+          I have not beaten the printer. #LeGoMiEgo marks the unfinished work.
+        </p>
+        <p className="mt-6 font-mono text-xs text-subtle">
           <a
-            href="#ledger"
-            className="rounded-full bg-primary px-4 py-2 font-medium text-primary-fg"
+            href={`https://x.com/${X_HANDLE}`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-fg underline decoration-border underline-offset-4"
           >
-            Begin the ledger
+            @{X_HANDLE}
           </a>
-        </nav>
-        <button
-          type="button"
-          className="inline-flex size-11 items-center justify-center rounded-md border border-border text-fg md:hidden"
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        </p>
       </div>
-      {open ? (
-        <nav className="flex flex-col gap-1 border-t border-border px-5 py-3 md:hidden">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={
-                item.href === "/demo"
-                  ? "rounded-full bg-[#6e6c66] px-3 py-3 text-center font-medium text-[#f3f0e8]"
-                  : "rounded-md px-2 py-3 text-muted"
-              }
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#ledger"
-            className="mt-1 rounded-full bg-primary px-4 py-3 text-center font-medium text-primary-fg"
-            onClick={() => setOpen(false)}
-          >
-            Begin the ledger
-          </a>
-        </nav>
-      ) : null}
-    </header>
+    </section>
+  );
+}
+
+function Refrain({ where }: { where: "middle" | "end" }) {
+  const end = where === "end";
+  return (
+    <section
+      id={end ? "recall-end" : "recall"}
+      className="border-y border-border bg-bg/25"
+      aria-label={end ? "The account, a last time" : "The account, again"}
+    >
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
+        <Eyebrow>{end ? "Once more, so it stays" : "Again, with the detail"}</Eyebrow>
+        <h2 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
+          They printed the money. I am keeping the book.
+        </h2>
+        {end ? (
+          <p className="mt-5 max-w-2xl text-lg text-muted">
+            You have met this line. Meet it again. A thing said once is a slogan. A thing said
+            three times, with the embarrassing part left in, is how a person remembers.
+          </p>
+        ) : null}
+        <p className="mt-5 max-w-2xl text-muted">
+          {end
+            ? "Gold and silver were money before anyone booked a room to announce them. The bank invented the paper, then charged rent for the invention. I would applaud. It was my purchasing power leaving by the side door."
+            : "Gold and silver did the job without a committee, a logo, or a man in a lanyard explaining the logo. Then a bank charged interest on paper it had printed that morning. I have seen restaurant bills with more shame, and the restaurant at least fed me. The price stopped telling the truth and then asked to be trusted. That is not a market. That is a witness coaching itself."}
+        </p>
+        <p className="mt-3 max-w-2xl text-muted">
+          {end
+            ? "Providence Through Provenance is the name, not a spell. Foresight you can check. An origin that does not grow new memories after you sign. The ledger is public. A private book is a diary, and diaries are for crushes."
+            : "That book is Providence Through Provenance: an origin no one gets to edit after the sale, including me, which is the annoying part. A public ledger. A private one is a diary with a lock and a better lawyer. I am not here for the feelings, and the lawyer can wait in the hall."}
+        </p>
+        <p className="mt-3 max-w-2xl text-muted">
+          {end
+            ? "The intelligence does not tire, does not golf, and does not lose the file in a merger. Auditing the powerful stops being a career. It becomes a Tuesday."
+            : "AI cheap enough that auditing the powerful is no longer a profession with a lobby, a retreat, and a tote bag. It is a Tuesday. Tuesdays do not take a percentage."}
+        </p>
+        <h3 className="mt-10 font-display text-2xl">If it cannot be shown, it is only a story.</h3>
+        <p className="mt-3 max-w-2xl text-muted">
+          {end
+            ? "Claim, title, price, transfer. I have heard enough stories from people with letterhead. The trail sits on Hedera, owned by neither of us. A clerk who must be believed is a confident folder. Interest that only leaves is not a system. It is a hole with a lobbyist."
+            : "Claim, title, price, transfer — a trail neither of us owns, on Hedera. A clerk you must believe is a folder with opinions and a pension. I have nothing against the pension. I have something against the opinions. Cheap intelligence makes equal standing a query, not a speech with a microphone. Interest paid out returns, or the books are a drain with excellent manners."}
+        </p>
+        <p className="mt-3 max-w-2xl text-muted">
+          {end
+            ? "Menger said where money came from. Mises said what happens when no one can calculate. Hume and Diamond’s Collapse brought the warning. They did the thinking. I am only writing it where a footnote cannot wander off."
+            : "Menger, Mises, Hume, Diamond’s Collapse. They did the hard thinking. I am nailing it to the wall so it cannot retire into a footnote, which is where a good argument goes to be praised, cited, and ignored."}
+        </p>
+        <p className="mt-10 max-w-3xl border-l border-primary pl-5 font-display text-2xl leading-snug text-fg">
+          {end
+            ? "I have not beaten the printer. Anyone who says they have is selling you a newer printer. #LeGoMiEgo marks the work while the ink is wet. If one line survives the walk to the door, let it be the first."
+            : "I have not beaten the printer. It had a head start, better stationery, and a building named after the confidence. The building can stay. The book is coming with me. #LeGoMiEgo marks the unfinished work, which is a polite way to say I am not done annoying it."}
+        </p>
+      </div>
+    </section>
   );
 }
 
@@ -306,6 +424,9 @@ function Eyebrow({ children }: { children: string }) {
 }
 
 function Hero() {
+  const [scenarioId, setScenarioId] = useState<(typeof SCENARIOS)[number]["id"]>("credit");
+  const scenario = SCENARIOS.find((item) => item.id === scenarioId) ?? SCENARIOS[0];
+
   return (
     <section id="top" className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:py-24">
       <div className="lg:col-span-7">
@@ -313,12 +434,22 @@ function Hero() {
           <img
             src="/hedera-coin.webp"
             alt="Hedera Hashgraph coin with white lightning breaking out of the gold H"
-            className="sky-blend aspect-square w-32 shrink-0 object-contain sm:w-40"
+            className="sky-blend aspect-square w-0 min-w-0 flex-1 object-contain"
           />
           <img
-            src="/seal-rays.webp?v=4"
+            src="/seal-rays.webp?v=5"
             alt="Egonomic Anonymous seal with gold rays, dollar club Hbar, hashtag legomiego, Providence Through Provenance"
-            className="h-auto w-40 shrink-0 sm:w-52"
+            className="h-auto w-0 min-w-0 flex-1 object-contain"
+          />
+          <img
+            src="/hederica-seal.webp"
+            alt="Egonomic Anonymous seal: Hederica, hashtag legomiego, at Trancesage, Ignoramius Rokedamius Maximus"
+            className="h-auto w-0 min-w-0 flex-1 object-contain"
+          />
+          <img
+            src="/hederica-mark.webp"
+            alt="Hederica and hashtag legomiego in gold, at Trancesage, inside a purple and pink frame"
+            className="h-auto w-0 min-w-0 flex-1 object-contain"
           />
         </div>
         <Eyebrow>Secure · Transparent · Fair</Eyebrow>
@@ -326,13 +457,13 @@ function Hero() {
           The Providence Through Provenance
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted">
-          You do not find the self as an object hidden in a drawer. You become capable of being
-          it — and the record of that becoming can be proven.
+          I got tired of a self filed in someone else’s cabinet. If I became it, the record can show
+          it.
         </p>
         <p className="mt-4 max-w-xl text-muted">
-          Egonomic Anonymous returns the prerogative of counting honestly: origin, authority,
-          honor. Built on Hedera’s public clock and DOVU’s inspectable workflows. Fees settled
-          in coins of <span className="text-fg">$Trust</span>.
+          I built Egonomic Anonymous to count origin, authority, and honor in the open. Hedera keeps
+          the clock. DOVU keeps the work inspectable. Fees settle in{" "}
+          <span className="text-fg">$Trust</span>.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
@@ -363,20 +494,45 @@ function Hero() {
           Authority trail · illustrative
         </p>
         <p className="mt-2 font-display text-2xl">Nobody has to take your word for it.</p>
+        <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Example trails">
+          {SCENARIOS.map((item) => {
+            const selected = item.id === scenario.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setScenarioId(item.id)}
+                className={
+                  selected
+                    ? "rounded-full bg-primary px-3 py-2 text-sm font-medium text-primary-fg"
+                    : "rounded-full border border-border px-3 py-2 text-sm text-fg"
+                }
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </div>
         <ol className="mt-6 space-y-4">
-          {TRAIL.map((step) => (
+          {scenario.steps.map((step) => (
             <li key={step.n} className="grid grid-cols-[3rem_1fr] gap-3 border-t border-border pt-4">
               <span className="font-mono text-xs text-subtle">{step.n}</span>
               <div>
                 <p className="text-sm font-medium text-fg">{step.title}</p>
-                <p className="text-sm text-muted">{step.body}</p>
+                <p className="text-sm text-fg">{step.body}</p>
+                <p className="mt-1 text-sm text-muted">{step.why}</p>
               </div>
             </li>
           ))}
         </ol>
-        <p className="mt-5 text-sm text-subtle">
+        <p className="mt-5 border-t border-border pt-4 text-sm text-muted">
+          <span className="font-medium text-fg">Why it matters. </span>
+          {scenario.matters}
+        </p>
+        <p className="mt-3 text-sm text-subtle">
           Written by neither party. Checked by anyone. Anchored on Hedera — 3–5 second finality,
-          carbon-negative, ~$0.0001 a write.
+          carbon-negative, ~$0.001 a write.
         </p>
       </aside>
     </section>
@@ -592,6 +748,11 @@ function Board() {
       </div>
       <p className="mt-5 max-w-2xl text-muted">
         The public board is the account. Only the posts and replies on Providence Through Provenance.
+      </p>
+      <p className="mt-4">
+        <a href="/board" className="text-sm text-fg underline decoration-border underline-offset-4">
+          See this week's board →
+        </a>
       </p>
       <ol className="mt-10 divide-y divide-border border-y border-border">
         {BOARD.map((post) => (
@@ -821,61 +982,5 @@ function Receipt({
         Write a different name
       </button>
     </div>
-  );
-}
-
-function SiteFooter() {
-  return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <a href="https://egonomicanonymous.live" className="font-display text-2xl">
-            EgonomicAnonymous.live
-          </a>
-          <p className="mt-2 max-w-md text-sm text-muted">
-            The Providence Through Provenance. Empowering self-sovereignty. Secure, transparent,
-            and fair.
-          </p>
-          <p className="mt-3 font-mono text-xs text-subtle">#LeGoMiEgo</p>
-        </div>
-        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-          <a href="#give" className="hover:text-fg">
-            Coins
-          </a>
-          <a href="https://hedera.com" className="hover:text-fg" target="_blank" rel="noreferrer">
-            Hedera
-          </a>
-          <a href="#board" className="hover:text-fg">
-            X board
-          </a>
-          <a href="https://dovu.ai" className="hover:text-fg" target="_blank" rel="noreferrer">
-            DOVU
-          </a>
-          <a href="/demo" className="hover:text-fg">
-            Demo
-          </a>
-          <a href="#ledger" className="hover:text-fg">
-            Ledger
-          </a>
-          <a
-            href={`https://x.com/${X_HANDLE}`}
-            className="hover:text-fg"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @{X_HANDLE}
-          </a>
-        </nav>
-      </div>
-      <p className="mx-auto max-w-6xl px-5 pb-10 text-xs text-subtle sm:px-8">
-        Rails drawn from Hedera and DOVU; voice from the open writings of{" "}
-        <a href={`https://x.com/${X_HANDLE}`} className="text-muted">
-          @{X_HANDLE}
-        </a>
-        , kept as an X post board. Fees through X Money. Gifts in $Trust. Ledgers do not repeal law. They
-        shrink the cost of proving compliance. Isolated pilots recreate the mess they were meant
-        to replace.
-      </p>
-    </footer>
   );
 }
