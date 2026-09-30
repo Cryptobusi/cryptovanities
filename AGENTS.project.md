@@ -7,8 +7,9 @@ This is the baseline for the next session. Do not roll it back. Later edits star
 - Public URL: https://egonomicanonymous.live
 - Vercel project: `egonomicanonymous` (team `cryptovanities-9466`)
 - Production deploys only from GitHub `Cryptobusi/cryptovanities`, branch `main`
-- Remembered commit: `abc4d0d`
-- Parent of this note: `54811fb` ("Add a TRUST Tokenomics button.")
+- Remembered commit: `c525732`
+- Page commit: `54811fb` ("Add a TRUST Tokenomics button.")
+- `abc4d0d` was amended away. Do not look it up. Start the next session from `origin/main`.
 - Tag: `remembered-2026-09-29-tokenomics`
 
 A Grok export to `Cryptobusi/star-acorn-jade-craft` does not update the public site. That repo has no Vercel project. To publish, copy this workspace onto `cryptovanities` `main` and push. Leave `.project_id`, `README.md`, and `.gitignore` on that repo as they are.
