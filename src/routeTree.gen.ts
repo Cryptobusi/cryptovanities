@@ -9,6 +9,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BoardRouteImport } from './routes/board'
 import { Route as ChargeRouteImport } from './routes/charge'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as DesertRouteImport } from './routes/desert'
 import { Route as FloorRouteImport } from './routes/floor'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as HedgeRouteImport } from './routes/hedge'
@@ -35,6 +36,11 @@ const ChargeRoute = ChargeRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesertRoute = DesertRouteImport.update({
+  id: '/desert',
+  path: '/desert',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FloorRoute = FloorRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
+  '/desert': typeof DesertRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
+  '/desert': typeof DesertRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
+  '/desert': typeof DesertRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -115,10 +124,10 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/charge' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  fullPaths: '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/charge' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
-  id: '__root__' | '/' | '/board' | '/charge' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  to: '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  id: '__root__' | '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -126,6 +135,7 @@ export interface RootRouteChildren {
   BoardRoute: typeof BoardRoute
   ChargeRoute: typeof ChargeRoute
   DemoRoute: typeof DemoRoute
+  DesertRoute: typeof DesertRoute
   FloorRoute: typeof FloorRoute
   HelpRoute: typeof HelpRoute
   HedgeRoute: typeof HedgeRoute
@@ -137,83 +147,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/board': {
-      id: '/board'
-      path: '/board'
-      fullPath: '/board'
-      preLoaderRoute: typeof BoardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/charge': {
-      id: '/charge'
-      path: '/charge'
-      fullPath: '/charge'
-      preLoaderRoute: typeof ChargeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo': {
-      id: '/demo'
-      path: '/demo'
-      fullPath: '/demo'
-      preLoaderRoute: typeof DemoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/floor': {
-      id: '/floor'
-      path: '/floor'
-      fullPath: '/floor'
-      preLoaderRoute: typeof FloorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/help': {
-      id: '/help'
-      path: '/help'
-      fullPath: '/help'
-      preLoaderRoute: typeof HelpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hedge': {
-      id: '/hedge'
-      path: '/hedge'
-      fullPath: '/hedge'
-      preLoaderRoute: typeof HedgeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/market': {
-      id: '/market'
-      path: '/market'
-      fullPath: '/market'
-      preLoaderRoute: typeof MarketRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mint': {
-      id: '/mint'
-      path: '/mint'
-      fullPath: '/mint'
-      preLoaderRoute: typeof MintRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/show': {
-      id: '/show'
-      path: '/show'
-      fullPath: '/show'
-      preLoaderRoute: typeof ShowRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/stack': {
-      id: '/stack'
-      path: '/stack'
-      fullPath: '/stack'
-      preLoaderRoute: typeof StackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    '/': { id: '/'; path: '/'; fullPath: '/'; preLoaderRoute: typeof IndexRouteImport; parentRoute: typeof rootRouteImport }
+    '/board': { id: '/board'; path: '/board'; fullPath: '/board'; preLoaderRoute: typeof BoardRouteImport; parentRoute: typeof rootRouteImport }
+    '/charge': { id: '/charge'; path: '/charge'; fullPath: '/charge'; preLoaderRoute: typeof ChargeRouteImport; parentRoute: typeof rootRouteImport }
+    '/demo': { id: '/demo'; path: '/demo'; fullPath: '/demo'; preLoaderRoute: typeof DemoRouteImport; parentRoute: typeof rootRouteImport }
+    '/desert': { id: '/desert'; path: '/desert'; fullPath: '/desert'; preLoaderRoute: typeof DesertRouteImport; parentRoute: typeof rootRouteImport }
+    '/floor': { id: '/floor'; path: '/floor'; fullPath: '/floor'; preLoaderRoute: typeof FloorRouteImport; parentRoute: typeof rootRouteImport }
+    '/help': { id: '/help'; path: '/help'; fullPath: '/help'; preLoaderRoute: typeof HelpRouteImport; parentRoute: typeof rootRouteImport }
+    '/hedge': { id: '/hedge'; path: '/hedge'; fullPath: '/hedge'; preLoaderRoute: typeof HedgeRouteImport; parentRoute: typeof rootRouteImport }
+    '/market': { id: '/market'; path: '/market'; fullPath: '/market'; preLoaderRoute: typeof MarketRouteImport; parentRoute: typeof rootRouteImport }
+    '/mint': { id: '/mint'; path: '/mint'; fullPath: '/mint'; preLoaderRoute: typeof MintRouteImport; parentRoute: typeof rootRouteImport }
+    '/show': { id: '/show'; path: '/show'; fullPath: '/show'; preLoaderRoute: typeof ShowRouteImport; parentRoute: typeof rootRouteImport }
+    '/stack': { id: '/stack'; path: '/stack'; fullPath: '/stack'; preLoaderRoute: typeof StackRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -222,6 +167,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoardRoute: BoardRoute,
   ChargeRoute: ChargeRoute,
   DemoRoute: DemoRoute,
+  DesertRoute: DesertRoute,
   FloorRoute: FloorRoute,
   HelpRoute: HelpRoute,
   HedgeRoute: HedgeRoute,
@@ -230,9 +176,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShowRoute: ShowRoute,
   StackRoute: StackRoute,
 }
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
 import type { createStart } from '@tanstack/react-start'
