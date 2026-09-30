@@ -18,6 +18,7 @@ const READ = [
   { label: "Hedge", to: "/hedge" },
   { label: "Invoice", href: "/hedge#steps" },
   { label: "Show", to: "/show" },
+  { label: "Charge", to: "/charge" },
   { label: "Provenance", href: "/#provenance" },
   { label: "Board", to: "/board" },
 ] as const;
