@@ -8,6 +8,7 @@ const USE = [
   { label: "Floor", to: "/floor" },
   { label: "Market", to: "/market" },
   { label: "Coins", href: "/#give" },
+  { label: "Explore", href: "https://hedera.kiloscribe.com/" },
   { label: "Sealroom", to: "/demo" },
 ] as const;
 
@@ -27,8 +28,14 @@ function NavLink({ item, className, onClick }: { item: NavItem; className: strin
       </Link>
     );
   }
+  const external = item.href.startsWith("http");
   return (
-    <a href={item.href} className={className} onClick={onClick}>
+    <a
+      href={item.href}
+      className={className}
+      onClick={onClick}
+      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+    >
       {item.label}
     </a>
   );

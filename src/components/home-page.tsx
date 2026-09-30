@@ -294,7 +294,7 @@ function Price() {
         the risk charge.
       </p>
       <div className="mt-8 flex items-center gap-4 sm:gap-8">
-        <a href="https://discord.gg/club-hbar" target="_blank" rel="noreferrer" aria-label="Club H Bar on Discord" className="shrink-0">
+        <a href="https://hedera.kiloscribe.com/" target="_blank" rel="noreferrer" aria-label="Explore on Kiloscribe" className="shrink-0">
           <img src="/club-hbar.webp" alt="Gold pin stamped Club H Bar" className="sky-blend w-28 object-contain sm:w-40" />
         </a>
         <div className="flex min-w-0 flex-1 flex-col gap-3">
