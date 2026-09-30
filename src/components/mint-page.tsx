@@ -9,7 +9,7 @@ const RULES = [
   {
     n: "02",
     title: "Listed seigniorage",
-    body: "The right to issue a new unit has a posted price. That price is public before the auction, not discovered in a press conference after the print.",
+    body: "The right to issue a new unit has a posted price. That price is public before the auction, not discovered in a press conference after the fact.",
   },
   {
     n: "03",
@@ -109,12 +109,13 @@ export function MintPage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">
-          Listed charge
+        Next note: after the floor and the listed prices, the remainder is titled.{" "}
+        <Link to="/desert" className="text-fg underline decoration-border underline-offset-4">
+          Read Desert
         </Link>
         {" · "}
-        <Link to="/hedge" className="text-fg underline decoration-border underline-offset-4">
-          Conversion
+        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">
+          Listed charge
         </Link>
         {" · "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
