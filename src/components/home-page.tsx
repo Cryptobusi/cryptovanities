@@ -1,33 +1,8 @@
-import { useEffect, useState } from "react";
-import {
-  AGENT_DUTIES,
-  CLUB_ACCOUNT,
-  dmUrl,
-  FLOORS,
-  HANDLE,
-  HOME_POSTS,
-  LEDGER_KEY,
-  MARKS,
-  pickQuote,
-  SEATS,
-  STATS,
-  SUPPLY,
-  HOLDERS,
-  TRAILS,
-  TRUST_TOKEN,
-  WORK,
-  type Quote,
-} from "@/lib/site-data";
-
-type SavedNote = {
-  email: string;
-  message: string;
-  role: string;
-  at: string;
-  quote: string;
-  quoteUrl: string;
-  dmUrl: string;
-};
+import { MARKS } from "@/lib/site-data";
+import { Opening, Hero, Thesis } from "@/components/home-front";
+import { Provenance, Agents } from "@/components/home-mid";
+import { Price } from "@/components/home-price";
+import { BoardPreview, Invitation } from "@/components/home-end";
 
 export function HomePage() {
   return (
