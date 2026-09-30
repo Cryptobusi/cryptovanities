@@ -109,12 +109,13 @@ export function ChargePage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
-          What the tape shows
+        Next note: seigniorage is its own listed price.{" "}
+        <Link to="/mint" className="text-fg underline decoration-border underline-offset-4">
+          Read the meter
         </Link>
         {" · "}
-        <Link to="/hedge" className="text-fg underline decoration-border underline-offset-4">
-          Conversion
+        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
+          What the tape shows
         </Link>
         {" · "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
