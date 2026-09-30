@@ -93,7 +93,11 @@ export function StackPage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        Next note: checkout hedging — how an invoice becomes basket units without pretending it is cash.{" "}
+        Checkout hedging — how an invoice becomes basket units without pretending it is cash.{" "}
+        <Link to="/hedge" className="text-fg underline decoration-border underline-offset-4">
+          Read the conversion
+        </Link>
+        {" · "}
         <a href="/#thesis" className="text-fg underline decoration-border underline-offset-4">
           Back to the thesis
         </a>
