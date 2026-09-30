@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BoardRouteImport } from './routes/board'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as FloorRouteImport } from './routes/floor'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as MarketRouteImport } from './routes/market'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +31,62 @@ const DemoRoute = DemoRouteImport.update({
   path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FloorRoute = FloorRouteImport.update({
+  id: '/floor',
+  path: '/floor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/demo': typeof DemoRoute
+  '/floor': typeof FloorRoute
+  '/help': typeof HelpRoute
+  '/market': typeof MarketRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/demo': typeof DemoRoute
+  '/floor': typeof FloorRoute
+  '/help': typeof HelpRoute
+  '/market': typeof MarketRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/board': typeof BoardRoute
   '/demo': typeof DemoRoute
+  '/floor': typeof FloorRoute
+  '/help': typeof HelpRoute
+  '/market': typeof MarketRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/demo'
+  fullPaths: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/demo'
-  id: '__root__' | '/' | '/board' | '/demo'
+  to: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
+  id: '__root__' | '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BoardRoute: typeof BoardRoute
   DemoRoute: typeof DemoRoute
+  FloorRoute: typeof FloorRoute
+  HelpRoute: typeof HelpRoute
+  MarketRoute: typeof MarketRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +112,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/floor': {
+      id: '/floor'
+      path: '/floor'
+      fullPath: '/floor'
+      preLoaderRoute: typeof FloorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +140,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BoardRoute: BoardRoute,
   DemoRoute: DemoRoute,
+  FloorRoute: FloorRoute,
+  HelpRoute: HelpRoute,
+  MarketRoute: MarketRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

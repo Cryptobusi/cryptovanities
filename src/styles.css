@@ -2,9 +2,8 @@
 
 @theme {
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", "Iowan Old Style", Palatino, Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Palatino, Georgia, serif;
   --color-bg: #0c0d0c;
   --color-surface: #151614;
   --color-raised: #1c1d1a;
@@ -15,82 +14,7 @@
   --color-primary-fg: #0c0d0c;
   --color-border: #2a2b28;
   --color-ring: #cfcab8;
-
-  --radius-sm: 0.375rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1.125rem;
-  --radius-xl: 1.5rem;
-}
-
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
-  body {
-    background-color: var(--color-bg);
-    background-image: url("/stars.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    color: var(--color-fg);
-    font-family: var(--font-sans);
-    line-height: 1.55;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-wrap: balance;
-    font-family: var(--font-display);
-  }
-
-  p {
-    text-wrap: pretty;
-  }
-
-  button:not(:disabled),
-  [role="button"]:not(:disabled) {
-    cursor: pointer;
-  }
-
-  ::selection {
-    background: var(--color-primary);
-    color: var(--color-primary-fg);
-  }
-}
-
-.sky-blend {
-  -webkit-mask-image: radial-gradient(circle, #000 62%, transparent 86%);
-  mask-image: radial-gradient(circle, #000 62%, transparent 86%);
-}
-
-@keyframes orbit-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.orbit-spin {
-  transform-origin: 200px 200px;
-  animation: orbit-spin 48s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .orbit-spin {
-    animation: none;
-  }
-}
-
-@theme {
+  --color-gold: #c9a45c;
   --color-ink: #12100e;
   --color-panel: #1c1814;
   --color-line: #3d342c;
@@ -104,46 +28,26 @@
   --color-live-ink: #f3fff6;
 }
 
-.seal {
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --color-raised: #262019;
-  min-height: 100dvh;
-  background-color: var(--color-ink);
-  background-image: none;
-  color: var(--color-parchment);
-  font-family: var(--font-sans);
-}
-
-.seal h1,
-.seal h2,
-.seal h3 {
-  font-family: var(--font-display);
-}
-
-@keyframes save-flash {
-  0%,
-  16%,
-  36%,
-  56%,
-  100% {
-    background-color: var(--color-live);
-    color: var(--color-live-ink);
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  8%,
-  28%,
-  48% {
-    background-color: var(--color-parchment);
-    color: var(--color-ink);
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
   }
 }
 
-.save-flash {
-  animation: save-flash 1.05s linear 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .save-flash {
-    animation: none;
-  }
+.sky-blend {
+  -webkit-mask-image: radial-gradient(circle, #000 62%, #0000 86%);
+  mask-image: radial-gradient(circle, #000 62%, #0000 86%);
 }

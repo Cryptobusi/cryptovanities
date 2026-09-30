@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SealApp } from "@/components/seal-app";
+import { Sealroom } from "@/components/sealroom";
+import { SiteChrome } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/demo")({
+  component: Demo,
   head: () => ({
     meta: [
       { title: "Sealroom demo · Egonomic Anonymous" },
@@ -12,13 +14,12 @@ export const Route = createFileRoute("/demo")({
       },
     ],
   }),
-  component: Demo,
 });
 
 function Demo() {
   return (
-    <div className="seal">
-      <SealApp />
-    </div>
+    <SiteChrome>
+      <Sealroom />
+    </SiteChrome>
   );
 }

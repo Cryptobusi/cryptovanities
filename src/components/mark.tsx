@@ -1,20 +1,6 @@
-import { cn } from "@/lib/utils";
-
-type MarkProps = {
-  className?: string;
-  decorative?: boolean;
-};
-
-export function HashgraphMark({ className, decorative = true }: MarkProps) {
+export function Mark({ className = "size-7" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      className={cn("text-fg", className)}
-      fill="none"
-      aria-hidden={decorative}
-      role={decorative ? "presentation" : "img"}
-    >
-      {decorative ? null : <title>Egonomic Anonymous</title>}
+    <svg viewBox="0 0 32 32" className={className} fill="none" aria-hidden>
       <circle cx="16" cy="16" r="2.4" fill="currentColor" />
       <circle cx="16" cy="5.5" r="1.6" fill="currentColor" opacity="0.9" />
       <circle cx="25.2" cy="11" r="1.6" fill="currentColor" opacity="0.85" />
