@@ -584,7 +584,120 @@ function Agents() {
   );
 }
 
+function TrustTokenomics() {
+  const supply = [
+    ["Minted so far", "100,000,000,000"],
+    ["Ceiling tonight", "100,264,486,301"],
+    ["Still unminted", "264,486,301"],
+    ["Circulating", "8,427,795,535"],
+    ["Still in vesting contracts", "91,572,204,464"],
+  ];
+  const buckets = [
+    ["Ecosystem", "40 billion", "No cliff, then 3 years", "36.57 billion"],
+    ["Community", "25 billion", "180-day cliff, then 2 years", "All of it"],
+    ["Treasury", "15 billion", "1-year cliff, then 4 years", "All of it"],
+    ["Team", "10 billion", "1-year cliff, then 3 years", "All of it"],
+    ["Partners", "5 billion", "180-day cliff, then 3 years", "All of it"],
+    ["Liquidity", "5 billion", "Released at launch", "None. All 5 billion was claimed"],
+  ];
+
+  return (
+    <div id="trust-tokenomics" className="mt-6 max-w-3xl space-y-8 rounded-lg border border-border bg-bg p-5">
+      <div>
+        <h3 className="font-display text-2xl">What it pays for</h3>
+        <p className="mt-3 text-sm text-muted">
+          $TRUST is DOVU’s meter for writing authority state on Hedera. Reading that record is free.
+          Changing it is what the token is for. The supply rules are published at{" "}
+          <a
+            href="https://trust.dovu.ai/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-fg underline decoration-border underline-offset-4"
+          >
+            trust.dovu.ai
+          </a>
+          .
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          On Authority Trail, a write is a change to shared authority: registering an identity,
+          publishing a role list, granting a role, denying a request, or revoking one. The developer
+          page prices examples at 100, 2,500, and 10,000 TRUST. Those fees are the demand. The token
+          is not a share of DOVU, not a vote, and not a claim on the treasury.
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          On this site it is used more narrowly. A listed write is about $0.001, settled in $TRUST,
+          and one coin can count as one acknowledgement. That dollar price is this site’s price. It
+          is not the protocol’s fee, and it does not change how many tokens exist.
+        </p>
+      </div>
+      <div>
+        <h3 className="font-display text-2xl">Supply</h3>
+        <p className="mt-3 text-sm text-muted">
+          Genesis on 25 June 2026 was 100,000,000,000 TRUST. Nothing has been minted since. The
+          chain still shows that same total. The Hedera token record itself has no max supply. The
+          cap is the issuer’s contract: supply may not exceed genesis × 1.01ⁿ, compounding once a
+          year from that date. There is no vote to raise the rate.
+        </p>
+        <dl className="mt-4 divide-y divide-border border-y border-border">
+          {supply.map(([label, value]) => (
+            <div key={label} className="flex items-baseline justify-between gap-4 py-2 text-sm">
+              <dt className="text-muted">{label}</dt>
+              <dd className="font-mono text-fg">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-3 text-sm text-muted">
+          The ceiling grows by about 2.7 million TRUST a day. That headroom is not circulating. It
+          is minted only when claimed, and only to one fixed recipient. Until then, the total stays
+          100 billion.
+        </p>
+      </div>
+      <div>
+        <h3 className="font-display text-2xl">Who holds the 100 billion</h3>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[36rem] text-left text-sm">
+            <thead className="font-mono text-xs tracking-wide text-subtle uppercase">
+              <tr>
+                <th className="py-2 pr-3 font-normal">Bucket</th>
+                <th className="py-2 pr-3 font-normal">Share</th>
+                <th className="py-2 pr-3 font-normal">Unlock</th>
+                <th className="py-2 font-normal">Still in the contract</th>
+              </tr>
+            </thead>
+            <tbody>
+              {buckets.map(([bucket, share, unlock, held]) => (
+                <tr key={bucket} className="border-t border-border">
+                  <td className="py-2 pr-3 text-fg">{bucket}</td>
+                  <td className="py-2 pr-3 text-muted">{share}</td>
+                  <td className="py-2 pr-3 text-muted">{unlock}</td>
+                  <td className="py-2 text-muted">{held}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-3 text-sm text-muted">
+          About 97.6 million has vested to the ecosystem and not been claimed. Community, treasury,
+          team, and partners have not started vesting. The first of those cliffs is 180 days from 25
+          June 2026.
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          The 8.43 billion circulating is exactly two claimed amounts: 3.43 billion from the
+          ecosystem and the 5 billion liquidity release. The SaucerSwap DOVU/TRUST pool holds about
+          2.8 billion of that. It is inventory, not a second mint.
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          Two treasuries are easy to mix up. Account 0.0.10607410 is the issuance controller and
+          holds none. The 15 billion treasury allocation sits in a different contract, 0.0.10607423.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Give() {
+  const [tokenomicsOpen, setTokenomicsOpen] = useState(false);
+
   return (
     <section id="give" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-24">
       <Eyebrow>The price</Eyebrow>
@@ -701,13 +814,22 @@ function Give() {
             {TOKEN}
           </a>
           , created 2026-06-25. The supply minted so far is 100,000,000,000 TRUST. At 4 decimals the
-          chain stores 1,000,000,000,000,000 smallest units. That is not a cap: the supply type is
-          infinite, and a supply key can mint more. The treasury account currently holds none. Fees
-          settle to{" "}
+          chain stores 1,000,000,000,000,000 smallest units. The issuer's ceiling is a separate rule.
+          Fees settle to{" "}
           <span className="whitespace-nowrap font-sans tracking-tighter text-fg">ClubHbar.ℏ</span>{" "}
           {LOVE_ACCOUNT}. Buy it in HashPack or on SaucerSwap. This page does not take it at
           checkout. It does not vote and it does not pay a yield.
         </p>
+        <button
+          type="button"
+          aria-expanded={tokenomicsOpen}
+          aria-controls="trust-tokenomics"
+          onClick={() => setTokenomicsOpen((open) => !open)}
+          className="mt-6 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg"
+        >
+          TRUST Tokenomics
+        </button>
+        {tokenomicsOpen ? <TrustTokenomics /> : null}
       </div>
     </section>
   );
