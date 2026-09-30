@@ -16,6 +16,7 @@ import { Route as FloorRouteImport } from './routes/floor'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as HedgeRouteImport } from './routes/hedge'
 import { Route as MarketRouteImport } from './routes/market'
+import { Route as ShowRouteImport } from './routes/show'
 import { Route as StackRouteImport } from './routes/stack'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const MarketRoute = MarketRouteImport.update({
   path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShowRoute = ShowRouteImport.update({
+  id: '/show',
+  path: '/show',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StackRoute = StackRouteImport.update({
   id: '/stack',
   path: '/stack',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
+  '/show': typeof ShowRoute
   '/stack': typeof StackRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
+  '/show': typeof ShowRoute
   '/stack': typeof StackRoute
 }
 export interface FileRoutesById {
@@ -88,14 +96,15 @@ export interface FileRoutesById {
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
+  '/show': typeof ShowRoute
   '/stack': typeof StackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/stack'
+  fullPaths: '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/show' | '/stack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/stack'
-  id: '__root__' | '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/stack'
+  to: '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/show' | '/stack'
+  id: '__root__' | '/' | '/board' | '/demo' | '/floor' | '/help' | '/hedge' | '/market' | '/show' | '/stack'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +115,7 @@ export interface RootRouteChildren {
   HelpRoute: typeof HelpRoute
   HedgeRoute: typeof HedgeRoute
   MarketRoute: typeof MarketRoute
+  ShowRoute: typeof ShowRoute
   StackRoute: typeof StackRoute
 }
 
@@ -160,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/show': {
+      id: '/show'
+      path: '/show'
+      fullPath: '/show'
+      preLoaderRoute: typeof ShowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stack': {
       id: '/stack'
       path: '/stack'
@@ -178,6 +195,7 @@ const rootRouteChildren: RootRouteChildren = {
   HelpRoute: HelpRoute,
   HedgeRoute: HedgeRoute,
   MarketRoute: MarketRoute,
+  ShowRoute: ShowRoute,
   StackRoute: StackRoute,
 }
 export const routeTree = rootRouteImport
