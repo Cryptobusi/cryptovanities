@@ -15,6 +15,7 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as FloorRouteImport } from './routes/floor'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as MarketRouteImport } from './routes/market'
+import { Route as StackRouteImport } from './routes/stack'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const MarketRoute = MarketRouteImport.update({
   path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StackRoute = StackRouteImport.update({
+  id: '/stack',
+  path: '/stack',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/market': typeof MarketRoute
+  '/stack': typeof StackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/market': typeof MarketRoute
+  '/stack': typeof StackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,14 @@ export interface FileRoutesById {
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/market': typeof MarketRoute
+  '/stack': typeof StackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
+  fullPaths: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market' | '/stack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
-  id: '__root__' | '/' | '/board' | '/demo' | '/floor' | '/help' | '/market'
+  to: '/' | '/board' | '/demo' | '/floor' | '/help' | '/market' | '/stack'
+  id: '__root__' | '/' | '/board' | '/demo' | '/floor' | '/help' | '/market' | '/stack'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,6 +96,7 @@ export interface RootRouteChildren {
   FloorRoute: typeof FloorRoute
   HelpRoute: typeof HelpRoute
   MarketRoute: typeof MarketRoute
+  StackRoute: typeof StackRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -133,6 +143,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stack': {
+      id: '/stack'
+      path: '/stack'
+      fullPath: '/stack'
+      preLoaderRoute: typeof StackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -143,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   FloorRoute: FloorRoute,
   HelpRoute: HelpRoute,
   MarketRoute: MarketRoute,
+  StackRoute: StackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
