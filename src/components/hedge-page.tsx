@@ -79,7 +79,7 @@ export function HedgePage() {
         is the rule. This page is the conversion.
       </p>
 
-      <ol className="mt-12 space-y-4">
+      <ol id="steps" className="mt-12 scroll-mt-24 space-y-4">
         {STEPS.map((step) => (
           <li key={step.n} className="rounded-lg border border-border bg-surface p-5">
             <p className="font-mono text-xs text-subtle">{step.n}</p>
