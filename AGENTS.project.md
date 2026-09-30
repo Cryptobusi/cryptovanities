@@ -19,6 +19,6 @@ A Grok export to `Cryptobusi/star-acorn-jade-craft` does not update the public s
 - Actions: Issue on the tape, Put an agent on the tape, Begin the ledger.
 - Thesis is five rules: Floor, Mint, Issue, Tape, Residual. Profit is what remains after the floor and the risk charge.
 - Agents section: four duties. An agent does not mint and does not set the basket.
-- Coins is a price list. Witness is free. An issuer write is about $0.001. An agent is one seat.
+- Coins and `/board` explain $Trust: the fee and the acknowledgement unit, not legal tender. Raw supply at 4 decimals is 10,000,000 TRUST.
 - The repeated refrains, the Wheee path, and the witness quotes are gone.
 - Hero still has four marks on one row. Board still links to `/board`.

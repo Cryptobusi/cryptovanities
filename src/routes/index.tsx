@@ -664,11 +664,49 @@ function Give() {
           </article>
         ))}
       </div>
-      <p className="mt-8 max-w-2xl text-sm text-muted">
-        Fees settle in $Trust {TOKEN} to{" "}
-        <span className="whitespace-nowrap font-sans tracking-tighter text-fg">ClubHbar.ℏ</span>{" "}
-        {LOVE_ACCOUNT}.
-      </p>
+      <div className="mt-10 max-w-3xl">
+        <h3 className="font-display text-2xl">What $Trust is for</h3>
+        <p className="mt-3 text-muted">
+          $Trust is the fee and the acknowledgement unit. It is not a second printer, and it is not
+          legal tender.
+        </p>
+        <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div>
+            <dt className="text-sm text-fg">Pay a write</dt>
+            <dd className="mt-1 text-sm text-muted">
+              A line on the tape is about $0.001, settled in $Trust.
+            </dd>
+          </div>
+          <div>
+            <dt className="text-sm text-fg">Count an acknowledgement</dt>
+            <dd className="mt-1 text-sm text-muted">
+              One coin, one acknowledgement. A count, not a share of the treasury.
+            </dd>
+          </div>
+          <div>
+            <dt className="text-sm text-fg">State a limit</dt>
+            <dd className="mt-1 text-sm text-muted">
+              Authority is a ceiling in $Trust. The grant may not grow itself.
+            </dd>
+          </div>
+        </dl>
+        <p className="mt-6 text-sm text-muted">
+          Fungible on Hedera,{" "}
+          <a
+            href={`https://hashscan.io/mainnet/token/${TOKEN}`}
+            target="_blank"
+            rel="noreferrer"
+            className="text-fg underline decoration-border underline-offset-4"
+          >
+            {TOKEN}
+          </a>
+          , created 2026-06-25. Treasury 0.0.10607410. The raw supply is 100,000,000,000 units of 4
+          decimals, which is 10,000,000 TRUST. Fees settle to{" "}
+          <span className="whitespace-nowrap font-sans tracking-tighter text-fg">ClubHbar.ℏ</span>{" "}
+          {LOVE_ACCOUNT}. Buy it in HashPack or on SaucerSwap. This page does not take it at
+          checkout. It does not vote, pay a yield, or let anyone mint more of it.
+        </p>
+      </div>
     </section>
   );
 }
