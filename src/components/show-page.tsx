@@ -107,6 +107,11 @@ export function ShowPage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
+        Next note: the listed risk charge, taken before residual title.{" "}
+        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">
+          Read the price
+        </Link>
+        {" · "}
         <Link to="/hedge" hash="steps" className="text-fg underline decoration-border underline-offset-4">
           Invoice conversion
         </Link>
@@ -114,10 +119,6 @@ export function ShowPage() {
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
           Against fiat
         </Link>
-        {" · "}
-        <a href="/#thesis" className="text-fg underline decoration-border underline-offset-4">
-          Thesis
-        </a>
         .
       </p>
     </div>
