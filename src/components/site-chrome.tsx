@@ -14,6 +14,7 @@ const USE = [
 
 const READ = [
   { label: "Thesis", href: "/#thesis" },
+  { label: "Stack", to: "/stack" },
   { label: "Provenance", href: "/#provenance" },
   { label: "Board", to: "/board" },
 ] as const;
