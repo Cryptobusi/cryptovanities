@@ -20,6 +20,7 @@ const READ = [
   { label: "Show", to: "/show" },
   { label: "Charge", to: "/charge" },
   { label: "Mint", to: "/mint" },
+  { label: "Desert", to: "/desert" },
   { label: "Provenance", href: "/#provenance" },
   { label: "Board", to: "/board" },
 ] as const;
