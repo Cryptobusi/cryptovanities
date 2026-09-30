@@ -115,8 +115,9 @@ export function HedgePage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        <Link to="/floor" hash="desk" className="text-fg underline decoration-border underline-offset-4">
-          The working form
+        Next note: what the tape shows, and what it withholds.{" "}
+        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
+          Read the rule
         </Link>
         {" · "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
