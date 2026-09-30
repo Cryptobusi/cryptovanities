@@ -7,7 +7,7 @@ This is the baseline for the next session. Do not roll it back. Later edits star
 - Public URL: https://egonomicanonymous.live
 - Vercel project: `egonomicanonymous` (team `cryptovanities-9466`)
 - Production deploys only from GitHub `Cryptobusi/cryptovanities`, branch `main`
-- Remembered commit: `16a5918`
+- Remembered commit: `3e1fc08`
 - Tag: `remembered-2026-09-29-rails`
 - Commit message: "Apply the preview: same rails, a listed write, an agent seat."
 
