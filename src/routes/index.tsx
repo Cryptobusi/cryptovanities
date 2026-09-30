@@ -700,11 +700,13 @@ function Give() {
           >
             {TOKEN}
           </a>
-          , created 2026-06-25. Treasury 0.0.10607410. The raw supply is 100,000,000,000 units of 4
-          decimals, which is 10,000,000 TRUST. Fees settle to{" "}
+          , created 2026-06-25. The supply minted so far is 100,000,000,000 TRUST. At 4 decimals the
+          chain stores 1,000,000,000,000,000 smallest units. That is not a cap: the supply type is
+          infinite, and a supply key can mint more. The treasury account currently holds none. Fees
+          settle to{" "}
           <span className="whitespace-nowrap font-sans tracking-tighter text-fg">ClubHbar.ℏ</span>{" "}
           {LOVE_ACCOUNT}. Buy it in HashPack or on SaucerSwap. This page does not take it at
-          checkout. It does not vote, pay a yield, or let anyone mint more of it.
+          checkout. It does not vote and it does not pay a yield.
         </p>
       </div>
     </section>

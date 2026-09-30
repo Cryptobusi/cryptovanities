@@ -369,7 +369,9 @@ function TrustPanel() {
       <p className="xb-copy">
         The fee and the acknowledgement unit. Not a second printer, and not legal tender. A write is
         about $0.001. One coin is one acknowledgement, not a share of the treasury. A limit stated in
-        $Trust cannot grow itself. The raw supply, at {token.decimals} decimals, is 10,000,000 TRUST.
+        $Trust cannot grow itself. The supply minted so far is 100,000,000,000 TRUST. At{" "}
+        {token.decimals} decimals the chain stores 1,000,000,000,000,000 smallest units. That is not
+        a cap.
       </p>
     </section>
   );
