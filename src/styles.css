@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", Palatino, Georgia, serif;
   --font-display: "Cormorant Garamond", "Iowan Old Style", Palatino, Georgia, serif;
   --color-bg: #0c0d0c;
   --color-surface: #151614;
