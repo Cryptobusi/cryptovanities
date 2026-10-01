@@ -14,17 +14,17 @@ const LAYERS = [
   {
     n: "03",
     title: "Issue",
-    body: "An invoice, a bond, an escrow, an option — named paper on the same rail. At checkout that paper takes a market discount into basket units. The hedge is a second named instrument: a forward, a put, or an escrowed pile of units that pays the difference when the discount moves.",
+    body: "An invoice, a bond, an escrow, an option — named paper on the same rail. At checkout that paper takes a market discount into basket units. The hedge is a second named instrument sized by a posted ratio, not by a private regression.",
   },
   {
     n: "04",
     title: "Tape",
-    body: "The receivable, the hedge, the risk charge, and the conversion are four lines. If any line cannot be shown, checkout refuses. A private side letter is not a hedge. It is a story.",
+    body: "The receivable, the live discount, the posted ratio, the hedge, and the risk charge are on the ticket. If any line cannot be shown, checkout refuses. A private side letter is not a hedge. It is a story.",
   },
   {
     n: "05",
     title: "Agent",
-    body: "The agent watches the conversion, not the firm’s luck. It flags a discount that only works off the tape. It refuses a settlement with no provenance. A failed hedge is a recorded loss. The agent does not mint to cover it.",
+    body: "The agent watches the conversion, not the firm's luck. It flags a discount that only works off the tape. A failed insured ratio is a recorded loss for the collective that posted it. The agent does not mint to cover it.",
   },
   {
     n: "06",
@@ -46,8 +46,8 @@ const STEPS = [
   },
   {
     n: "03",
-    title: "Lock the conversion",
-    body: "The firm buys or writes a hedge that settles in basket units on the due date. The counterparty posts units or posts other paper that itself discounts in public. Both sides are named.",
+    title: "Read the posted ratio",
+    body: "Hedgers and risk-assessor collectives post a prevailing ratio for that class. They insure it. The number sits on the calculation. Nobody at the register runs a volatility formula.",
   },
   {
     n: "04",
@@ -57,7 +57,7 @@ const STEPS = [
   {
     n: "05",
     title: "Settle at checkout",
-    body: "On the day, the invoice converts at the live discount. The hedge pays or takes the gap. The register sees basket units. Nobody is asked to pretend the invoice was cash.",
+    body: "Among posted, insured quotes for that class on that day, checkout takes the most favorable after the listed charge. The invoice converts at live d. The insured ratio pays the gap those collectives advertised. Face was never cash.",
   },
 ];
 
@@ -68,11 +68,11 @@ export function HedgePage() {
       <h1 className="mt-3 max-w-3xl font-display text-5xl leading-none sm:text-6xl">Paper is not cash at the register.</h1>
       <p className="mt-5 max-w-2xl text-lg text-muted">
         Named credit may be issued by anyone. It does not clear at legal-tender par. Checkout converts it into basket
-        units at a live discount. A hedge is how a payroll or an inventory still closes when that discount moves.
+        units at a live discount. Cover size is a posted ratio, insured by the collectives who wrote it.
       </p>
       <p className="mt-4 max-w-2xl text-muted">
-        Fiat hides this inside par deposits and then socializes the gap. Here the gap is priced in public, written on the
-        tape, and charged before residual title.{" "}
+        Fiat hides the gap inside par deposits. Here the gap is priced in public, written on the tape, and charged before
+        residual title.{" "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
           The stack contrast
         </Link>{" "}
@@ -88,6 +88,24 @@ export function HedgePage() {
           </li>
         ))}
       </ol>
+
+      <section className="mt-14 rounded-lg border border-border bg-surface p-5">
+        <h2 className="font-display text-3xl">Posted ratio</h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          A collective of hedgers and assessors posts one number per class: how much cover they will stand behind. That
+          number is on the ticket next to face and live d. Thin class posts a smaller ratio and a wider charge. Known
+          class posts a tighter ratio. If nobody will insure the class, there is no ratio — only the haircut.
+        </p>
+        <p className="mt-4 max-w-2xl text-muted">
+          Most favorable at checkout means: among live, insured posts for that class, take the quote that leaves the
+          holder better after the listed charge. Not a private letter. Not last week's official rate frozen so paper
+          looks like cash. The collective that posted the winning ratio pays the gap they advertised. They do not get a
+          mint window.
+        </p>
+        <p className="mt-4 max-w-2xl font-mono text-sm text-fg">
+          Register = conversion + insured payout − listed charge. Floor stays senior and outside the invoice.
+        </p>
+      </section>
 
       <section className="mt-14">
         <h2 className="font-display text-3xl">Across the layers</h2>
@@ -105,23 +123,27 @@ export function HedgePage() {
       <section className="mt-14 border-t border-border pt-10">
         <h2 className="font-display text-3xl">What must not happen</h2>
         <p className="mt-4 max-w-2xl text-muted">
-          A frozen discount is par by another name. A hedge that only the treasury can write is a charter. An agent that
-          covers a failed hedge by minting is a second sovereign. A conversion that cannot be shown is not checkout.
+          A frozen discount is par by another name. A ratio only the treasury can post is a charter. An agent that covers
+          a failed insured ratio by minting is a second sovereign. A conversion that cannot be shown is not checkout.
         </p>
         <p className="mt-4 max-w-2xl text-muted">
-          If the market for discounts is thin, the honest result is a wide haircut, not a quiet club. The floor still
+          If the market is thin, the honest result is a wide haircut and no ratio, not a quiet club. The floor still
           pays. The residual still waits.
         </p>
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        Next note: what the tape shows, and what it withholds.{" "}
-        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
-          Read the rule
+        Walk it on{" "}
+        <Link to="/enter" className="text-fg underline decoration-border underline-offset-4">
+          Enter
         </Link>
         {" · "}
-        <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
-          Against fiat
+        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
+          Tape
+        </Link>
+        {" · "}
+        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">
+          Charge
         </Link>
         {" · "}
         <a href="/#thesis" className="text-fg underline decoration-border underline-offset-4">
