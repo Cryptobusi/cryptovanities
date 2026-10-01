@@ -114,12 +114,13 @@ export function DesertPage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        <Link to="/mint" className="text-fg underline decoration-border underline-offset-4">
-          The meter
+        Next note: software does not get a quieter standard.{" "}
+        <Link to="/agent" className="text-fg underline decoration-border underline-offset-4">
+          Read the duty
         </Link>
         {" · "}
-        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">
-          Listed charge
+        <Link to="/mint" className="text-fg underline decoration-border underline-offset-4">
+          The meter
         </Link>
         {" · "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
