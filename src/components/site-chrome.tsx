@@ -5,6 +5,7 @@ import { Mark } from "@/components/mark";
 
 const DESK = [
   { label: "Enter", to: "/enter" },
+  { label: "Catalog", to: "/catalog" },
   { label: "Floor", to: "/floor" },
   { label: "Market", to: "/market" },
   { label: "Coins", href: "/#give" },
@@ -118,6 +119,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <p className="font-mono text-xs tracking-widest text-subtle uppercase">Desk</p>
             <div className="mt-3 flex flex-col gap-2">
               <Link to="/enter" className="hover:text-fg">Enter</Link>
+              <Link to="/catalog" className="hover:text-fg">Catalog</Link>
               <Link to="/floor" className="hover:text-fg">Floor</Link>
               <Link to="/market" className="hover:text-fg">Market</Link>
               <Link to="/demo" className="hover:text-fg">Sealroom</Link>
@@ -129,9 +131,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <div className="mt-3 flex flex-col gap-2">
               <a href="/#thesis" className="hover:text-fg">Thesis</a>
               <Link to="/notes" className="hover:text-fg">Notes (all chapters)</Link>
+              <Link to="/hedge" className="hover:text-fg">Hedge</Link>
               <Link to="/board" className="hover:text-fg">Board</Link>
               <Link to="/help" className="hover:text-fg">Help</Link>
-              <a href="/#ledger" className="hover:text-fg">Ledger</a>
             </div>
           </div>
         </div>
