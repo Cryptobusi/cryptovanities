@@ -22,6 +22,8 @@ const READ = [
   { label: "Mint", to: "/mint" },
   { label: "Desert", to: "/desert" },
   { label: "Agent", to: "/agent" },
+  { label: "Thin", to: "/thin" },
+  { label: "Claim", to: "/claim" },
   { label: "Provenance", href: "/#provenance" },
   { label: "Board", to: "/board" },
 ] as const;
