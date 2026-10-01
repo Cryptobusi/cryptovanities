@@ -8,6 +8,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AgentRouteImport } from './routes/agent'
 import { Route as BoardRouteImport } from './routes/board'
+import { Route as CatalogRouteImport } from './routes/catalog'
 import { Route as ChargeRouteImport } from './routes/charge'
 import { Route as ClaimRouteImport } from './routes/claim'
 import { Route as DemoRouteImport } from './routes/demo'
@@ -26,6 +27,7 @@ import { Route as ThinRouteImport } from './routes/thin'
 const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
 const AgentRoute = AgentRouteImport.update({ id: '/agent', path: '/agent', getParentRoute: () => rootRouteImport } as any)
 const BoardRoute = BoardRouteImport.update({ id: '/board', path: '/board', getParentRoute: () => rootRouteImport } as any)
+const CatalogRoute = CatalogRouteImport.update({ id: '/catalog', path: '/catalog', getParentRoute: () => rootRouteImport } as any)
 const ChargeRoute = ChargeRouteImport.update({ id: '/charge', path: '/charge', getParentRoute: () => rootRouteImport } as any)
 const ClaimRoute = ClaimRouteImport.update({ id: '/claim', path: '/claim', getParentRoute: () => rootRouteImport } as any)
 const DemoRoute = DemoRouteImport.update({ id: '/demo', path: '/demo', getParentRoute: () => rootRouteImport } as any)
@@ -45,6 +47,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
+  '/catalog': typeof CatalogRoute
   '/charge': typeof ChargeRoute
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
@@ -64,6 +67,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
+  '/catalog': typeof CatalogRoute
   '/charge': typeof ChargeRoute
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
@@ -84,6 +88,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
+  '/catalog': typeof CatalogRoute
   '/charge': typeof ChargeRoute
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
@@ -101,16 +106,17 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
-  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgentRoute: typeof AgentRoute
   BoardRoute: typeof BoardRoute
+  CatalogRoute: typeof CatalogRoute
   ChargeRoute: typeof ChargeRoute
   ClaimRoute: typeof ClaimRoute
   DemoRoute: typeof DemoRoute
@@ -132,6 +138,7 @@ declare module '@tanstack/react-router' {
     '/': { id: '/'; path: '/'; fullPath: '/'; preLoaderRoute: typeof IndexRouteImport; parentRoute: typeof rootRouteImport }
     '/agent': { id: '/agent'; path: '/agent'; fullPath: '/agent'; preLoaderRoute: typeof AgentRouteImport; parentRoute: typeof rootRouteImport }
     '/board': { id: '/board'; path: '/board'; fullPath: '/board'; preLoaderRoute: typeof BoardRouteImport; parentRoute: typeof rootRouteImport }
+    '/catalog': { id: '/catalog'; path: '/catalog'; fullPath: '/catalog'; preLoaderRoute: typeof CatalogRouteImport; parentRoute: typeof rootRouteImport }
     '/charge': { id: '/charge'; path: '/charge'; fullPath: '/charge'; preLoaderRoute: typeof ChargeRouteImport; parentRoute: typeof rootRouteImport }
     '/claim': { id: '/claim'; path: '/claim'; fullPath: '/claim'; preLoaderRoute: typeof ClaimRouteImport; parentRoute: typeof rootRouteImport }
     '/demo': { id: '/demo'; path: '/demo'; fullPath: '/demo'; preLoaderRoute: typeof DemoRouteImport; parentRoute: typeof rootRouteImport }
@@ -153,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgentRoute: AgentRoute,
   BoardRoute: BoardRoute,
+  CatalogRoute: CatalogRoute,
   ChargeRoute: ChargeRoute,
   ClaimRoute: ClaimRoute,
   DemoRoute: DemoRoute,
