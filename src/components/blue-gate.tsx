@@ -3,6 +3,7 @@ import { dmUrl, HANDLE } from "@/lib/site-data";
 import { checkBlueHandle } from "@/lib/gate.functions";
 
 const PASS_KEY = "ea-blue-pass";
+const BLUE_SUBSCRIBE = "https://x.com/i/premium_sign_up";
 
 type Phase = "check" | "form" | "film" | "in";
 
@@ -38,11 +39,8 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
     started.current = Date.now();
     try {
       const saved = sessionStorage.getItem(PASS_KEY);
-      if (saved && isOwner(saved)) setPhase("in");
-      else {
-        sessionStorage.removeItem(PASS_KEY);
-        setPhase("form");
-      }
+      if (saved) setPhase("in");
+      else setPhase("form");
     } catch {
       setPhase("form");
     }
@@ -90,7 +88,12 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
       window.setTimeout(() => setGrow(true), 40);
       window.setTimeout(finishFilm, 6200);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "The door did not open.");
+      const message = cause instanceof Error ? cause.message : "";
+      if (message && !message.includes("not an X handle")) {
+        window.location.assign(BLUE_SUBSCRIBE);
+        return;
+      }
+      setError(message || "That is not an X handle.");
     } finally {
       setBusy(false);
     }
@@ -102,11 +105,9 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-dvh bg-bg text-fg">
       {phase === "form" ? (
-        <form onSubmit={submit} className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-6 px-6">
-          <p className="font-mono text-xs tracking-widest text-subtle uppercase">Door</p>
-          <h1 className="font-display text-4xl">Blue check only.</h1>
-          <p className="text-muted">An X handle with the blue mark. The film fills the screen, then the site opens.</p>
-          <label className="block text-sm text-muted">
+        <form onSubmit={submit} className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-6 px-6">
+          <img src="/legomiego-frame.jpg" alt="" className="size-56 object-contain" />
+          <label className="block w-full text-sm text-muted">
             X handle
             <input
               required
@@ -119,7 +120,7 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
           </label>
           <p className="text-sm text-fg">Only X handle with blue check may enter</p>
           {error ? <p className="text-sm text-muted">{error}</p> : null}
-          <button type="submit" disabled={busy} className="border border-border px-4 py-3 text-fg disabled:opacity-50">
+          <button type="submit" disabled={busy} className="w-full border border-border px-4 py-3 text-fg disabled:opacity-50">
             {busy ? "Reading the mark…" : "Confirm access"}
           </button>
         </form>
