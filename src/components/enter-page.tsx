@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { DeskClerk } from "@/components/desk-clerk";
 import { TRUST_TOKEN } from "@/lib/site-data";
 
 type Seat = "witness" | "household" | "firm" | "treasury" | "agent";
@@ -67,7 +68,7 @@ export function EnterPage() {
   const [locked, setLocked] = useState(false);
   const [settled, setSettled] = useState(false);
   const [lines, setLines] = useState<Line[]>([]);
-  const [note, setNote] = useState("Pick a seat, or press Watch. The desk does not print.");
+  const [note, setNote] = useState("Pick a seat. Ask the clerk if a line is unclear.");
   const [playing, setPlaying] = useState(false);
   const playRef = useRef<number | null>(null);
 
@@ -123,7 +124,7 @@ export function EnterPage() {
       return;
     }
     setLocked(true);
-    add({ n: "H", title: "Hedge", body: `Put struck at 10%. Pays the gap if d moves past the strike.` });
+    add({ n: "H", title: "Hedge", body: `Put struck at 10%. Pays the gap if live d moves past the strike.` });
     add({ n: "C", title: "Risk charge", body: `${money(face * chargeRate)} taken now. Class price, not a friend price.` });
     setNote("Charge taken at signature. The put does not mint the gap.");
     setStep(5);
@@ -160,7 +161,7 @@ export function EnterPage() {
     reset();
     setSeat("firm");
     setPlaying(true);
-    setNote("Watching: reserve, name, write, read d, lock, settle.");
+    setNote("Walking the six steps.");
     const script = [
       () => reserve(),
       () => setStep(2),
@@ -182,13 +183,12 @@ export function EnterPage() {
       <p className="font-mono text-xs tracking-widest text-subtle uppercase">Working desk · mock</p>
       <h1 className="mt-3 max-w-3xl font-display text-5xl leading-none sm:text-6xl">Enter. Then walk the invoice.</h1>
       <p className="mt-5 max-w-2xl text-lg text-muted">
-        Instruction lives on this desk, not as a second menu. Watch runs the six steps. Then do them by hand. This page
-        does not sign Hedera. A real write is about $0.001 in $Trust ({TRUST_TOKEN}).
+        No video. The clerk on this page answers the step you are on. A real write is about $0.001 in $Trust ({TRUST_TOKEN}).
       </p>
 
       <div className="mt-6 flex flex-wrap gap-3">
         <button type="button" onClick={watch} className="rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-fg">
-          {playing ? "Watching…" : "Watch the desk"}
+          {playing ? "Walking…" : "Walk the six steps"}
         </button>
         <button type="button" onClick={reset} className="rounded-full border border-border px-4 py-3 text-sm text-fg">
           Clear
@@ -278,9 +278,11 @@ export function EnterPage() {
         ))}
       </ol>
 
+      <DeskClerk step={step} seat={seat} />
+
       <p className="mt-10 text-sm text-muted">
-        Chapters stay on <Link to="/notes" className="underline decoration-border underline-offset-4">Notes</Link>. Seal a local act on{" "}
-        <Link to="/demo" className="underline decoration-border underline-offset-4">Sealroom</Link>. Invoice rules on{" "}
+        Chapters on <Link to="/notes" className="underline decoration-border underline-offset-4">Notes</Link>. Local seal on{" "}
+        <Link to="/demo" className="underline decoration-border underline-offset-4">Sealroom</Link>. Rules on{" "}
         <Link to="/hedge" className="underline decoration-border underline-offset-4">Hedge</Link>.
       </p>
     </div>
