@@ -9,27 +9,27 @@ const LAYERS = [
   {
     n: "02",
     title: "Mint",
-    body: "The hedge is not a second printer. It locks a conversion into basket units already issued or already scheduled. If the auction is the only way new units exist, the hedge prices that auction. It does not skip it.",
+    body: "The hedge is not a second printer. A short book takes a recorded loss. The agent does not mint to cover it.",
   },
   {
     n: "03",
     title: "Issue",
-    body: "An invoice, a bond, an escrow, an option — named paper on the same rail. At checkout that paper takes a market discount into basket units. The hedge is a second named instrument sized by a posted ratio, not by a private regression.",
+    body: "Invoice and cover are two named instruments. Cover size is the posted ratio on a subscription book for that class.",
   },
   {
     n: "04",
     title: "Tape",
-    body: "The receivable, the live discount, the posted ratio, the hedge, and the risk charge are on the ticket. If any line cannot be shown, checkout refuses. A private side letter is not a hedge. It is a story.",
+    body: "Receivable, live d, posted ratio, each line of the book, and the listed charge. Missing line, no checkout.",
   },
   {
     n: "05",
     title: "Agent",
-    body: "The agent watches the conversion, not the firm's luck. It flags a discount that only works off the tape. A failed insured ratio is a recorded loss for the collective that posted it. The agent does not mint to cover it.",
+    body: "Refuse a ratio with no Funds on the tape. Record a failed line as a loss. Do not print.",
   },
   {
     n: "06",
     title: "Residual",
-    body: "The listed risk charge is taken before profit is titled. What remains after the floor take and that charge is Desert. A hedge that hides the charge is confiscation in reverse.",
+    body: "Charge is taken before Desert is titled. A pretty ratio that hides the charge is confiscation in reverse.",
   },
 ];
 
@@ -37,27 +37,27 @@ const STEPS = [
   {
     n: "01",
     title: "Write the receivable",
-    body: "A firm issues an invoice on the rail. Face value is a number in paper, not in basket units. The due date is on the tape.",
+    body: "Face is paper. Due date on the tape.",
   },
   {
     n: "02",
-    title: "Read the live discount",
-    body: "Checkout already publishes a conversion of that class of paper into basket units. Thin paper pays more. Known paper pays less. There is no par club.",
+    title: "Read live d",
+    body: "Conversion = face × (1 − d). No par club.",
   },
   {
     n: "03",
-    title: "Read the posted ratio",
-    body: "Hedgers and risk-assessor collectives post a prevailing ratio for that class. They may insure it. The number sits on the calculation. Nobody at the register runs a volatility formula.",
+    title: "Read the class book",
+    body: "Default cover is a subscription book for that class. Several named lines. Posted Funds. Posted ratio. Not a private letter and not a volatility worksheet.",
   },
   {
     n: "04",
-    title: "Pay the risk charge",
-    body: "The charge is listed for that instrument class. It is taken when the hedge is written, not after a failure. The floor contribution is senior to both.",
+    title: "Pay the listed charge",
+    body: "Taken when written. Senior only to Desert. Junior to the floor.",
   },
   {
     n: "05",
-    title: "Settle at checkout",
-    body: "Among posted quotes for that class on that day, checkout takes the most favorable after the listed charge. If the quote was insured, that collective pays the advertised gap. Face was never cash.",
+    title: "Settle",
+    body: "Among live books with Funds still posted, take the quote that leaves the holder better after the charge. That is most favorable. Not last week's official rate.",
   },
 ];
 
@@ -67,10 +67,26 @@ export function HedgePage() {
       <p className="font-mono text-xs tracking-widest text-subtle uppercase">Checkout</p>
       <h1 className="mt-3 max-w-3xl font-display text-5xl leading-none sm:text-6xl">Paper is not cash at the register.</h1>
       <p className="mt-5 max-w-2xl text-lg text-muted">
-        Named credit may be issued by anyone. It does not clear at legal-tender par. Checkout converts it into basket
-        units at a live discount. Cover size is a posted ratio. Collective insurance is one way to stand behind that
-        ratio. It is not the only way, and it is not required for checkout to exist.
+        Highest stable ratio is not the biggest number. It is the cover a book will still honor after a shock, with Funds
+        on the tape and no mint behind it.
       </p>
+
+      <section id="chosen" className="mt-12 rounded-lg border border-border bg-surface p-5">
+        <h2 className="font-display text-3xl">Chosen cover</h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          Subscription class book. Lloyd's-shaped lines on a mutual-shaped class: several named stamps share one invoice
+          class, each with posted Funds, a modest posted ratio, and a listed charge. Members of a line can be called if
+          that line is short. The floor cannot be called. The mint cannot refill the book.
+        </p>
+        <p className="mt-4 max-w-2xl font-mono text-sm text-fg">
+          Desk default ratio for known 30-day mill paper: 0.60. Thin new class: no book, haircut only.
+        </p>
+        <p className="mt-4 max-w-2xl text-sm text-muted">
+          Why not 1.00: that is par. Why not a lone mutual: one harvest hits every member at once. Why not a lone Name:
+          one failure kills the post. Why not h* from a spreadsheet: the register does not run a regression. Lines plus a
+          posted 0.60 survive a bad year better than a smiling 0.95 that vanishes.
+        </p>
+      </section>
 
       <ol id="steps" className="mt-12 scroll-mt-24 space-y-4">
         {STEPS.map((step) => (
@@ -82,53 +98,22 @@ export function HedgePage() {
         ))}
       </ol>
 
-      <section id="insurance" className="mt-14 rounded-lg border border-border bg-surface p-5">
-        <h2 className="font-display text-3xl">Collective insurance — an alternative</h2>
-        <p className="mt-4 max-w-2xl text-muted">
-          A named pool of hedgers and assessors posts a ratio and posts units (or paper that itself discounts) against
-          the gap they advertised. Checkout can take that quote. It can also take a bilateral hedge with no pool. Both
-          must show on the tape. Neither may mint.
-        </p>
-        <p className="mt-4 max-w-2xl text-muted">
-          How realistic: same shape as a mutual, a P&I club, or a trade-credit insurer — people who know a class put
-          capital behind a published number. It works when the class is written often enough that losses average, and
-          when the pool cannot refill from the mint. It fails when one name is the whole book, when the pool is a front
-          for treasury, or when "insured" means a promise with no posted units.
-        </p>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div>
-            <h3 className="font-display text-2xl">For</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
-              <li>No volatility homework at the register.</li>
-              <li>Ratio and charge sit on the same ticket.</li>
-              <li>Loss lands on the names who posted, not on the floor and not on a silent mint.</li>
-              <li>Thin class can simply refuse to insure — the haircut stays honest.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-display text-2xl">Against</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
-              <li>A pool that never takes a loss is a club, not insurance.</li>
-              <li>"Most favorable" without posted capital is a beauty contest.</li>
-              <li>Correlation: one bad harvest can hit every mill invoice at once.</li>
-              <li>Assessors who also issue the paper have a conflict the tape must show.</li>
-            </ul>
-          </div>
-        </div>
-        <p className="mt-6 max-w-2xl font-mono text-sm text-fg">
-          Optional. Checkout still runs with a bilateral hedge, or with haircut only.
-        </p>
+      <section className="mt-14">
+        <h2 className="font-display text-3xl">Options reviewed</h2>
+        <ol className="mt-6 space-y-3 text-sm text-muted">
+          <li><span className="text-fg">Haircut only.</span> Most honest when no book will post. Ratio = 0. Stable. No cover.</li>
+          <li><span className="text-fg">Bilateral put.</span> Fine for one name. Dies with that name.</li>
+          <li><span className="text-fg">Computed h*.</span> Highest on a calm sample. Unusable at the register.</li>
+          <li><span className="text-fg">Single mutual.</span> Good calls. Bad correlation. Supplement lands on the same class that just failed.</li>
+          <li><span className="text-fg">Subscription class book.</span> Chosen. Split lines, posted Funds, ratio capped at what a call can defend. Default 0.60 on known mill paper.</li>
+        </ol>
       </section>
 
-      <section className="mt-14 rounded-lg border border-border bg-surface p-5">
-        <h2 className="font-display text-3xl">Posted ratio</h2>
+      <section id="insurance" className="mt-14 rounded-lg border border-border bg-surface p-5">
+        <h2 className="font-display text-3xl">Still optional</h2>
         <p className="mt-4 max-w-2xl text-muted">
-          One number per class on the ticket next to face and live d. Most favorable at checkout means the best live
-          quote after the listed charge, among posts that still have capital on the tape. Not a private letter. Not last
-          week's official rate.
-        </p>
-        <p className="mt-4 max-w-2xl font-mono text-sm text-fg">
-          Register = conversion + payout − listed charge. Floor stays senior and outside the invoice.
+          A bilateral hedge or haircut-only checkout remains valid. Collective insurance remains a way to stand behind a
+          line. None of them get a mint window. Register = conversion + book payout − listed charge. Floor stays outside.
         </p>
       </section>
 
@@ -145,20 +130,12 @@ export function HedgePage() {
         </ol>
       </section>
 
-      <section className="mt-14 border-t border-border pt-10">
-        <h2 className="font-display text-3xl">What must not happen</h2>
-        <p className="mt-4 max-w-2xl text-muted">
-          A frozen discount is par. A ratio only the treasury can post is a charter. An agent that covers a failed pool
-          by minting is a second sovereign. Insurance with no posted units is a story.
-        </p>
-      </section>
-
       <p className="mt-10 text-sm text-muted">
         Walk it on <Link to="/enter" className="text-fg underline decoration-border underline-offset-4">Enter</Link>
         {" · "}
-        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">Tape</Link>
+        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">Charge</Link>
         {" · "}
-        <Link to="/charge" className="text-fg underline decoration-border underline-offset-4">Charge</Link>.
+        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">Tape</Link>.
       </p>
     </div>
   );
