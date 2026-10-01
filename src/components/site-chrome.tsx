@@ -14,6 +14,7 @@ const USE = [
 
 const READ = [
   { label: "Thesis", href: "/#thesis" },
+  { label: "Notes", to: "/notes" },
   { label: "Stack", to: "/stack" },
   { label: "Hedge", to: "/hedge" },
   { label: "Invoice", href: "/hedge#steps" },
@@ -143,6 +144,21 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
               </a>
             </div>
           </nav>
+        </div>
+        <div className="mx-auto max-w-6xl border-t border-border px-5 py-8 sm:px-8">
+          <p className="font-mono text-xs tracking-widest text-subtle uppercase">Dissertation</p>
+          <p className="mt-2 max-w-2xl text-sm text-muted">
+            The complete thesis with index. View on the site, then request a download. The request opens a confirmation
+            message to @trancesage that you send from your own X account.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link to="/notes" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
+              View the notes
+            </Link>
+            <Link to="/notes" hash="download" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg">
+              Request download
+            </Link>
+          </div>
         </div>
         <p className="mx-auto max-w-6xl px-5 pb-10 text-xs text-subtle sm:px-8">
           Rails drawn from Hedera and DOVU; voice from the open writings of{" "}
