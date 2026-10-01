@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mark } from "@/components/mark";
 
 const DESK = [
+  { label: "Enter", to: "/enter" },
   { label: "Floor", to: "/floor" },
   { label: "Market", to: "/market" },
   { label: "Sealroom", to: "/demo" },
@@ -47,12 +48,7 @@ function NavLink({ item, className, onClick }: { item: NavItem; className: strin
   }
   const external = item.href.startsWith("http");
   return (
-    <a
-      href={item.href}
-      className={className}
-      onClick={onClick}
-      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-    >
+    <a href={item.href} className={className} onClick={onClick} {...(external ? { target: "_blank", rel: "noreferrer" } : {})}>
       {item.label}
     </a>
   );
@@ -84,13 +80,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
               <img src="/sealroom-desk-mark.webp" alt="" className="sky-blend size-10 object-contain" />
             </Link>
           </nav>
-          <button
-            type="button"
-            className="inline-flex size-11 items-center justify-center rounded-md border border-border text-fg lg:hidden"
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((value) => !value)}
-          >
+          <button type="button" className="inline-flex size-11 items-center justify-center rounded-md border border-border text-fg lg:hidden" aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((value) => !value)}>
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
@@ -125,9 +115,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <a href="https://egonomicanonymous.live" className="font-display text-2xl">
               EgonomicAnonymous.live
             </a>
-            <p className="mt-2 max-w-md text-sm text-muted">
-              The Providence Through Provenance. Empowering self-sovereignty. Secure, transparent, and fair.
-            </p>
+            <p className="mt-2 max-w-md text-sm text-muted">The Providence Through Provenance. Empowering self-sovereignty. Secure, transparent, and fair.</p>
             <p className="mt-3 font-mono text-xs text-subtle">#LeGoMiEgo</p>
           </div>
           <nav className="grid gap-6 text-sm text-muted sm:grid-cols-3" aria-label="Footer">
@@ -148,9 +136,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                 {MORE.map((item) => (
                   <NavLink key={`fm-${item.label}`} item={item} className="hover:text-fg" />
                 ))}
-                <a href="/#ledger" className="hover:text-fg">
-                  Ledger
-                </a>
+                <a href="/#ledger" className="hover:text-fg">Ledger</a>
               </div>
             </div>
             <div>
@@ -165,24 +151,14 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         </div>
         <div className="mx-auto max-w-6xl border-t border-border px-5 py-8 sm:px-8">
           <p className="font-mono text-xs tracking-widest text-subtle uppercase">Book</p>
-          <p className="mt-2 max-w-2xl text-sm text-muted">
-            Open Notes. Leave an X tag. Send the drafted message to @trancesage. Then Print → Save as PDF.
-          </p>
+          <p className="mt-2 max-w-2xl text-sm text-muted">Open Notes. Leave an X tag. Send the drafted message to @trancesage. Then Print → Save as PDF.</p>
           <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/notes" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
-              View the notes
-            </Link>
-            <Link to="/notes" hash="download" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg">
-              Request download
-            </Link>
+            <Link to="/notes" className="rounded-full border border-border px-4 py-2 text-sm text-fg">View the notes</Link>
+            <Link to="/enter" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg">Enter the program</Link>
           </div>
         </div>
         <p className="mx-auto max-w-6xl px-5 pb-10 text-xs text-subtle sm:px-8">
-          Rails drawn from Hedera and DOVU; voice from the open writings of{" "}
-          <a href="https://x.com/trancesage" className="text-muted">
-            @trancesage
-          </a>
-          . Fees through X Money. Gifts in $Trust.
+          Rails drawn from Hedera and DOVU; voice from the open writings of <a href="https://x.com/trancesage" className="text-muted">@trancesage</a>. Fees through X Money. Gifts in $Trust.
         </p>
       </footer>
     </div>
