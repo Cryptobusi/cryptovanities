@@ -7,7 +7,6 @@ const DESK = [
   { label: "Enter", to: "/enter" },
   { label: "Floor", to: "/floor" },
   { label: "Market", to: "/market" },
-  { label: "Sealroom", to: "/demo" },
   { label: "Coins", href: "/#give" },
 ] as const;
 
@@ -20,7 +19,6 @@ const READ = [
 const NOTES = [
   { label: "Stack", to: "/stack" },
   { label: "Hedge", to: "/hedge" },
-  { label: "Invoice", href: "/hedge#steps" },
   { label: "Show", to: "/show" },
   { label: "Charge", to: "/charge" },
   { label: "Mint", to: "/mint" },
@@ -66,7 +64,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <span className="font-display text-lg tracking-tight">Egonomic Anonymous</span>
           </Link>
           <nav className="hidden items-center gap-x-4 text-sm text-muted lg:flex" aria-label="Site">
-            {DESK.filter((item) => item.label !== "Sealroom").map((item) => (
+            {DESK.map((item) => (
               <NavLink key={item.label} item={item} className="transition-colors hover:text-fg" />
             ))}
             <span className="h-4 w-px bg-border" aria-hidden="true" />
@@ -90,13 +88,12 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             {DESK.map((item) => (
               <NavLink key={item.label} item={item} className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)} />
             ))}
+            <Link to="/demo" className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)}>
+              Sealroom
+            </Link>
             <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Read</p>
             {READ.map((item) => (
               <NavLink key={`r-${item.label}`} item={item} className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)} />
-            ))}
-            <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Notes</p>
-            {NOTES.map((item) => (
-              <NavLink key={item.label} item={item} className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)} />
             ))}
             <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">More</p>
             {MORE.map((item) => (
@@ -110,55 +107,36 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       </header>
       <main>{children}</main>
       <footer className="border-t border-border">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:px-8 md:grid-cols-[1fr_2fr]">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:px-8 md:grid-cols-3">
           <div>
             <a href="https://egonomicanonymous.live" className="font-display text-2xl">
               EgonomicAnonymous.live
             </a>
-            <p className="mt-2 max-w-md text-sm text-muted">The Providence Through Provenance. Empowering self-sovereignty. Secure, transparent, and fair.</p>
-            <p className="mt-3 font-mono text-xs text-subtle">#LeGoMiEgo</p>
+            <p className="mt-2 max-w-md text-sm text-muted">The Providence Through Provenance.</p>
           </div>
-          <nav className="grid gap-6 text-sm text-muted sm:grid-cols-3" aria-label="Footer">
-            <div>
-              <p className="font-mono text-xs tracking-widest text-subtle uppercase">Desk</p>
-              <div className="mt-3 flex flex-col gap-2">
-                {DESK.map((item) => (
-                  <NavLink key={item.label} item={item} className="hover:text-fg" />
-                ))}
-              </div>
+          <div className="text-sm text-muted">
+            <p className="font-mono text-xs tracking-widest text-subtle uppercase">Desk</p>
+            <div className="mt-3 flex flex-col gap-2">
+              <Link to="/enter" className="hover:text-fg">Enter</Link>
+              <Link to="/floor" className="hover:text-fg">Floor</Link>
+              <Link to="/market" className="hover:text-fg">Market</Link>
+              <Link to="/demo" className="hover:text-fg">Sealroom</Link>
+              <a href="/#give" className="hover:text-fg">Coins</a>
             </div>
-            <div>
-              <p className="font-mono text-xs tracking-widest text-subtle uppercase">Read</p>
-              <div className="mt-3 flex flex-col gap-2">
-                {READ.map((item) => (
-                  <NavLink key={`fr-${item.label}`} item={item} className="hover:text-fg" />
-                ))}
-                {MORE.map((item) => (
-                  <NavLink key={`fm-${item.label}`} item={item} className="hover:text-fg" />
-                ))}
-                <a href="/#ledger" className="hover:text-fg">Ledger</a>
-              </div>
+          </div>
+          <div className="text-sm text-muted">
+            <p className="font-mono text-xs tracking-widest text-subtle uppercase">Read</p>
+            <div className="mt-3 flex flex-col gap-2">
+              <a href="/#thesis" className="hover:text-fg">Thesis</a>
+              <Link to="/notes" className="hover:text-fg">Notes (all chapters)</Link>
+              <Link to="/board" className="hover:text-fg">Board</Link>
+              <Link to="/help" className="hover:text-fg">Help</Link>
+              <a href="/#ledger" className="hover:text-fg">Ledger</a>
             </div>
-            <div>
-              <p className="font-mono text-xs tracking-widest text-subtle uppercase">Notes</p>
-              <div className="mt-3 flex flex-col gap-2">
-                {NOTES.map((item) => (
-                  <NavLink key={`fn-${item.label}`} item={item} className="hover:text-fg" />
-                ))}
-              </div>
-            </div>
-          </nav>
-        </div>
-        <div className="mx-auto max-w-6xl border-t border-border px-5 py-8 sm:px-8">
-          <p className="font-mono text-xs tracking-widest text-subtle uppercase">Book</p>
-          <p className="mt-2 max-w-2xl text-sm text-muted">Open Notes. Leave an X tag. Send the drafted message to @trancesage. Then Print → Save as PDF.</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/notes" className="rounded-full border border-border px-4 py-2 text-sm text-fg">View the notes</Link>
-            <Link to="/enter" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-fg">Enter the program</Link>
           </div>
         </div>
         <p className="mx-auto max-w-6xl px-5 pb-10 text-xs text-subtle sm:px-8">
-          Rails drawn from Hedera and DOVU; voice from the open writings of <a href="https://x.com/trancesage" className="text-muted">@trancesage</a>. Fees through X Money. Gifts in $Trust.
+          Voice of <a href="https://x.com/trancesage" className="text-muted">@trancesage</a>. Fees through X Money. Gifts in $Trust.
         </p>
       </footer>
     </div>
