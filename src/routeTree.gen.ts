@@ -6,6 +6,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgentRouteImport } from './routes/agent'
 import { Route as BoardRouteImport } from './routes/board'
 import { Route as ChargeRouteImport } from './routes/charge'
 import { Route as DemoRouteImport } from './routes/demo'
@@ -18,69 +19,23 @@ import { Route as MintRouteImport } from './routes/mint'
 import { Route as ShowRouteImport } from './routes/show'
 import { Route as StackRouteImport } from './routes/stack'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BoardRoute = BoardRouteImport.update({
-  id: '/board',
-  path: '/board',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChargeRoute = ChargeRouteImport.update({
-  id: '/charge',
-  path: '/charge',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoRoute = DemoRouteImport.update({
-  id: '/demo',
-  path: '/demo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DesertRoute = DesertRouteImport.update({
-  id: '/desert',
-  path: '/desert',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FloorRoute = FloorRouteImport.update({
-  id: '/floor',
-  path: '/floor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HelpRoute = HelpRouteImport.update({
-  id: '/help',
-  path: '/help',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HedgeRoute = HedgeRouteImport.update({
-  id: '/hedge',
-  path: '/hedge',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MarketRoute = MarketRouteImport.update({
-  id: '/market',
-  path: '/market',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MintRoute = MintRouteImport.update({
-  id: '/mint',
-  path: '/mint',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ShowRoute = ShowRouteImport.update({
-  id: '/show',
-  path: '/show',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StackRoute = StackRouteImport.update({
-  id: '/stack',
-  path: '/stack',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
+const AgentRoute = AgentRouteImport.update({ id: '/agent', path: '/agent', getParentRoute: () => rootRouteImport } as any)
+const BoardRoute = BoardRouteImport.update({ id: '/board', path: '/board', getParentRoute: () => rootRouteImport } as any)
+const ChargeRoute = ChargeRouteImport.update({ id: '/charge', path: '/charge', getParentRoute: () => rootRouteImport } as any)
+const DemoRoute = DemoRouteImport.update({ id: '/demo', path: '/demo', getParentRoute: () => rootRouteImport } as any)
+const DesertRoute = DesertRouteImport.update({ id: '/desert', path: '/desert', getParentRoute: () => rootRouteImport } as any)
+const FloorRoute = FloorRouteImport.update({ id: '/floor', path: '/floor', getParentRoute: () => rootRouteImport } as any)
+const HelpRoute = HelpRouteImport.update({ id: '/help', path: '/help', getParentRoute: () => rootRouteImport } as any)
+const HedgeRoute = HedgeRouteImport.update({ id: '/hedge', path: '/hedge', getParentRoute: () => rootRouteImport } as any)
+const MarketRoute = MarketRouteImport.update({ id: '/market', path: '/market', getParentRoute: () => rootRouteImport } as any)
+const MintRoute = MintRouteImport.update({ id: '/mint', path: '/mint', getParentRoute: () => rootRouteImport } as any)
+const ShowRoute = ShowRouteImport.update({ id: '/show', path: '/show', getParentRoute: () => rootRouteImport } as any)
+const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
@@ -95,6 +50,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
@@ -110,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agent': typeof AgentRoute
   '/board': typeof BoardRoute
   '/charge': typeof ChargeRoute
   '/demo': typeof DemoRoute
@@ -124,14 +81,15 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
-  id: '__root__' | '/' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  to: '/' | '/agent' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
+  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentRoute: typeof AgentRoute
   BoardRoute: typeof BoardRoute
   ChargeRoute: typeof ChargeRoute
   DemoRoute: typeof DemoRoute
@@ -148,6 +106,7 @@ export interface RootRouteChildren {
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': { id: '/'; path: '/'; fullPath: '/'; preLoaderRoute: typeof IndexRouteImport; parentRoute: typeof rootRouteImport }
+    '/agent': { id: '/agent'; path: '/agent'; fullPath: '/agent'; preLoaderRoute: typeof AgentRouteImport; parentRoute: typeof rootRouteImport }
     '/board': { id: '/board'; path: '/board'; fullPath: '/board'; preLoaderRoute: typeof BoardRouteImport; parentRoute: typeof rootRouteImport }
     '/charge': { id: '/charge'; path: '/charge'; fullPath: '/charge'; preLoaderRoute: typeof ChargeRouteImport; parentRoute: typeof rootRouteImport }
     '/demo': { id: '/demo'; path: '/demo'; fullPath: '/demo'; preLoaderRoute: typeof DemoRouteImport; parentRoute: typeof rootRouteImport }
@@ -164,6 +123,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentRoute: AgentRoute,
   BoardRoute: BoardRoute,
   ChargeRoute: ChargeRoute,
   DemoRoute: DemoRoute,
