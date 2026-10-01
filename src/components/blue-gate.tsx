@@ -4,7 +4,7 @@ import { checkBlueHandle } from "@/lib/gate.functions";
 
 const PASS_KEY = "ea-blue-pass";
 
-type Phase = "check" | "form" | "film" | "in" | "out";
+type Phase = "check" | "form" | "film" | "in";
 
 function stamp(date: Date) {
   return new Intl.DateTimeFormat("en-US", {
@@ -71,7 +71,12 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
       `Website viewed: ${duration(now.getTime() - started.current)}`,
     ].join("\n");
     window.open(dmUrl(`@${pass.handle}`, note, "site-view"), "_blank", "noopener,noreferrer");
-    setPhase("out");
+    try {
+      sessionStorage.setItem(PASS_KEY, pass.handle);
+    } catch {
+      /* private mode still gets this visit */
+    }
+    setPhase("in");
   }
 
   async function submit(event: React.FormEvent) {
@@ -100,7 +105,7 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
         <form onSubmit={submit} className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-6 px-6">
           <p className="font-mono text-xs tracking-widest text-subtle uppercase">Door</p>
           <h1 className="font-display text-4xl">Blue check only.</h1>
-          <p className="text-muted">An X handle with the blue mark. After the film, only @{HANDLE} enters.</p>
+          <p className="text-muted">An X handle with the blue mark. The film fills the screen, then the site opens.</p>
           <label className="block text-sm text-muted">
             X handle
             <input
@@ -112,6 +117,7 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
               className="mt-2 w-full border border-border bg-bg px-3 py-3 text-fg"
             />
           </label>
+          <p className="text-sm text-fg">Only X handle with blue check may enter</p>
           {error ? <p className="text-sm text-muted">{error}</p> : null}
           <button type="submit" disabled={busy} className="border border-border px-4 py-3 text-fg disabled:opacity-50">
             {busy ? "Reading the mark…" : "Confirm access"}
@@ -129,13 +135,6 @@ export function BlueGate({ children }: { children: React.ReactNode }) {
             className="max-h-none max-w-none object-cover transition-transform duration-[5600ms] ease-in"
             style={{ width: "100vmin", height: "100vmin", transform: grow ? "scale(1.85)" : "scale(0.22)" }}
           />
-        </div>
-      ) : null}
-      {phase === "out" ? (
-        <div className="mx-auto flex min-h-dvh max-w-md flex-col justify-center gap-4 px-6">
-          <p className="font-mono text-xs tracking-widest text-subtle uppercase">Closed</p>
-          <h1 className="font-display text-4xl">The film ends here.</h1>
-          <p className="text-muted">Only @{HANDLE} enters after it. The view — handle, time, and how long the site was open — is the note to @{HANDLE}.</p>
         </div>
       ) : null}
     </div>
