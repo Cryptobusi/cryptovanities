@@ -15,9 +15,14 @@ const USE = [
 const READ = [
   { label: "Thesis", href: "/#thesis" },
   { label: "Notes", to: "/notes" },
+  { label: "Invoice", href: "/hedge#steps" },
+  { label: "Provenance", href: "/#provenance" },
+  { label: "Board", to: "/board" },
+] as const;
+
+const CHAPTERS = [
   { label: "Stack", to: "/stack" },
   { label: "Hedge", to: "/hedge" },
-  { label: "Invoice", href: "/hedge#steps" },
   { label: "Show", to: "/show" },
   { label: "Charge", to: "/charge" },
   { label: "Mint", to: "/mint" },
@@ -25,11 +30,12 @@ const READ = [
   { label: "Agent", to: "/agent" },
   { label: "Thin", to: "/thin" },
   { label: "Claim", to: "/claim" },
-  { label: "Provenance", href: "/#provenance" },
-  { label: "Board", to: "/board" },
 ] as const;
 
-type NavItem = (typeof USE)[number] | (typeof READ)[number];
+type NavItem =
+  | (typeof USE)[number]
+  | (typeof READ)[number]
+  | (typeof CHAPTERS)[number];
 
 function NavLink({ item, className, onClick }: { item: NavItem; className: string; onClick?: () => void }) {
   if ("to" in item) {
@@ -100,6 +106,10 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             ))}
             <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Read</p>
             {READ.map((item) => (
+              <NavLink key={`r-${item.label}`} item={item} className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)} />
+            ))}
+            <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Notes</p>
+            {CHAPTERS.map((item) => (
               <NavLink key={item.label} item={item} className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)} />
             ))}
             <a href="/#ledger" className="rounded-md px-2 py-3 text-fg" onClick={() => setOpen(false)}>
@@ -126,7 +136,10 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
                 <NavLink key={item.label} item={item} className="hover:text-fg" />
               ))}
               {READ.map((item) => (
-                <NavLink key={item.label} item={item} className="hover:text-fg" />
+                <NavLink key={`f-${item.label}`} item={item} className="hover:text-fg" />
+              ))}
+              {CHAPTERS.map((item) => (
+                <NavLink key={`c-${item.label}`} item={item} className="hover:text-fg" />
               ))}
               <a href="/#ledger" className="hover:text-fg">
                 Ledger
@@ -148,8 +161,8 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         <div className="mx-auto max-w-6xl border-t border-border px-5 py-8 sm:px-8">
           <p className="font-mono text-xs tracking-widest text-subtle uppercase">Dissertation</p>
           <p className="mt-2 max-w-2xl text-sm text-muted">
-            The complete thesis with index. View on the site, then request a download. The request opens a confirmation
-            message to @trancesage that you send from your own X account.
+            Open Notes. Leave an X tag. Send the drafted message to @trancesage from your own account. Then Print → Save
+            as PDF.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link to="/notes" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
