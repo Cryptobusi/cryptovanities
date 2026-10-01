@@ -53,7 +53,7 @@ function Marks() {
             onEnded={() => setLive(true)}
             className="w-full rounded-2xl"
           />
-          <div className="absolute inset-x-0 top-[12%] bottom-[14%] grid grid-cols-4">
+          <div className="absolute inset-x-[8%] top-[28%] bottom-[30%] grid grid-cols-4">
             {MARKS.map((mark) => (
               <button
                 key={mark.src}
