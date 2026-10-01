@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { HANDLE, TRUST_TOKEN } from "@/lib/site-data";
 
 const PARTIES = [
   {
@@ -14,9 +16,9 @@ const PARTIES = [
     fee: "$0.001 a write",
     first: "The floor is already your first claim. Issue named credit only after that.",
     steps: [
-      "Read the floor claim. Survival is not priced at the door.",
+      "Read the floor claim.",
       "Bind a name on Sealroom if you want a local seal.",
-      "Write a receivable on the same rail as anyone else. It is not cash at par.",
+      "Write a receivable. It is not cash at par.",
       "If payroll cannot bear the discount, lock a hedge and pay the listed charge.",
     ],
   },
@@ -25,48 +27,98 @@ const PARTIES = [
     title: "Firm",
     fee: "$0.001 a write",
     first: "Invoice, hedge, charge, checkout — four lines or no settle.",
-    steps: [
-      "Name the class of paper. Thin books quote wide.",
-      "Convert at the live discount. Do not freeze par.",
-      "Pay the listed risk charge when the paper is written.",
-      "Title Desert only after the floor take and the listed prices.",
-    ],
+    steps: ["Name the class of paper.", "Convert at the live discount.", "Pay the listed charge when written.", "Title Desert only after the takes."],
   },
   {
     id: "treasury",
     title: "Treasury",
     fee: "Same window as a household",
     first: "No weekend facility. No par club.",
-    steps: [
-      "Buy units only on the listed mint schedule.",
-      "Do not mint to cover a failed hedge or a missed floor period.",
-      "Issue named paper on the same rail. It discounts at checkout.",
-      "Publish every act. An unpublished mandate is not policy.",
-    ],
+    steps: ["Buy units only on the listed mint.", "Do not mint to cover a hole.", "Issue named paper that discounts.", "Publish every act."],
   },
   {
     id: "agent",
     title: "Agent",
     fee: "1 seat",
     first: "Clerk of posted rules. Not a second sovereign.",
-    steps: [
-      "Catch a double mint. Flag a price off the tape.",
-      "Pay the floor on the clock. Do not choose who deserves the basket.",
-      "Refuse a settlement with no provenance. The refusal is a line.",
-      "Do not mint, set the basket, vote unsupervised, or harvest Desert.",
-    ],
+    steps: ["Catch a double mint.", "Pay the floor on the clock.", "Refuse a settlement with no provenance.", "Do not mint or harvest Desert."],
   },
 ] as const;
 
+const MILE = [
+  { id: "read", label: "Read the thesis and one note" },
+  { id: "seat", label: "Pick a seat: witness, household, firm, treasury, or agent" },
+  { id: "tag", label: "Leave an X tag on the ledger (optional for witness)" },
+  { id: "associate", label: "Associate $Trust 0.0.10607411 in HashPack if you will pay a write" },
+  { id: "seal", label: "Seal one act on Sealroom (local record; not a Hedera write)" },
+  { id: "invoice", label: "If you issue: write face, due date, class — four lines at checkout" },
+] as const;
+
+const KEY = "ea-enter-mile";
+
 export function EnterPage() {
+  const [done, setDone] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) setDone(JSON.parse(raw) as Record<string, boolean>);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  function toggle(id: string) {
+    setDone((prev) => {
+      const next = { ...prev, [id]: !prev[id] };
+      localStorage.setItem(KEY, JSON.stringify(next));
+      return next;
+    });
+  }
+
   return (
     <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 lg:py-16">
       <p className="font-mono text-xs tracking-widest text-subtle uppercase">Program</p>
       <h1 className="mt-3 max-w-3xl font-display text-5xl leading-none sm:text-6xl">Everyone enters on the same rail.</h1>
       <p className="mt-5 max-w-2xl text-lg text-muted">
-        This is the working program. It does not print units. It does not clear paper at par. It does not move X Money
-        from this page. It tells each party the order: reserve the floor, write the tape, then issue, then trade.
+        Public-goods desks use a short first mile: values, a seat, a first task. Trade-credit clubs submit headline
+        invoices to a shared book. Hedera requires a token association before a unit can arrive. This page takes those
+        three. It refuses a stamp dossier and a matching pool that reprints the mint.
       </p>
+
+      <section className="mt-10 rounded-lg border border-border bg-surface p-5">
+        <h2 className="font-display text-3xl">First mile</h2>
+        <p className="mt-3 text-sm text-muted">Checked on this browser only. Not a dossier.</p>
+        <ul className="mt-5 space-y-3">
+          {MILE.map((item) => (
+            <li key={item.id}>
+              <label className="flex cursor-pointer items-start gap-3 text-muted">
+                <input type="checkbox" checked={Boolean(done[item.id])} onChange={() => toggle(item.id)} className="mt-1 accent-primary" />
+                <span>{item.label}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-10 rounded-lg border border-border bg-surface p-5">
+        <h2 className="font-display text-3xl">Associate the fee unit</h2>
+        <p className="mt-3 max-w-2xl text-muted">
+          Hedera will not receive {TRUST_TOKEN} until the account associates it. HashPack: Assets → Add Token → paste
+          the id → Associate. A listed write is about $0.001. This page does not take the keys.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a href="https://www.hashpack.app/" target="_blank" rel="noreferrer" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
+            HashPack
+          </a>
+          <a href={`https://hashscan.io/mainnet/token/${TRUST_TOKEN}`} target="_blank" rel="noreferrer" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
+            Hashscan {TRUST_TOKEN}
+          </a>
+          <a href="https://www.saucerswap.finance/" target="_blank" rel="noreferrer" className="rounded-full border border-border px-4 py-2 text-sm text-fg">
+            SaucerSwap
+          </a>
+        </div>
+      </section>
 
       <ol className="mt-12 grid gap-3 sm:grid-cols-4">
         {[
@@ -104,11 +156,11 @@ export function EnterPage() {
       </div>
 
       <section className="mt-14 border-t border-border pt-10">
-        <h2 className="font-display text-3xl">What this program will not do</h2>
+        <h2 className="font-display text-3xl">Taken. Refused.</h2>
         <p className="mt-4 max-w-2xl text-muted">
-          It will not freeze a discount so paper looks like cash. It will not open a mint window for one name. It will
-          not let an agent cover a hole with new units. It will not take a dossier in exchange for a seat. $Trust pays
-          the write and counts an acknowledgement. It is not legal tender.
+          Taken: a first-mile checklist; a seat before a task; headline invoice fields; a required token association.
+          Refused: Gitcoin-style stamp harvesting, a matching pool that reprints the meter, a club that clears at par,
+          a typeform dossier. @{HANDLE} receives a drafted note only if you send it.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <a href="/#ledger" className="rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-fg">
