@@ -17,6 +17,7 @@ import { Route as HelpRouteImport } from './routes/help'
 import { Route as HedgeRouteImport } from './routes/hedge'
 import { Route as MarketRouteImport } from './routes/market'
 import { Route as MintRouteImport } from './routes/mint'
+import { Route as NotesRouteImport } from './routes/notes'
 import { Route as ShowRouteImport } from './routes/show'
 import { Route as StackRouteImport } from './routes/stack'
 import { Route as ThinRouteImport } from './routes/thin'
@@ -33,9 +34,12 @@ const HelpRoute = HelpRouteImport.update({ id: '/help', path: '/help', getParent
 const HedgeRoute = HedgeRouteImport.update({ id: '/hedge', path: '/hedge', getParentRoute: () => rootRouteImport } as any)
 const MarketRoute = MarketRouteImport.update({ id: '/market', path: '/market', getParentRoute: () => rootRouteImport } as any)
 const MintRoute = MintRouteImport.update({ id: '/mint', path: '/mint', getParentRoute: () => rootRouteImport } as any)
+const NotesRoute = NotesRouteImport.update({ id: '/notes', path: '/notes', getParentRoute: () => rootRouteImport } as any)
 const ShowRoute = ShowRouteImport.update({ id: '/show', path: '/show', getParentRoute: () => rootRouteImport } as any)
 const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getParentRoute: () => rootRouteImport } as any)
 const ThinRoute = ThinRouteImport.update({ id: '/thin', path: '/thin', getParentRoute: () => rootRouteImport } as any)
+
+const paths = ['/', '/agent', '/board', '/charge', '/claim', '/demo', '/desert', '/floor', '/help', '/hedge', '/market', '/mint', '/notes', '/show', '/stack', '/thin'] as const
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -50,6 +54,7 @@ export interface FileRoutesByFullPath {
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
   '/mint': typeof MintRoute
+  '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
   '/thin': typeof ThinRoute
@@ -67,6 +72,7 @@ export interface FileRoutesByTo {
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
   '/mint': typeof MintRoute
+  '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
   '/thin': typeof ThinRoute
@@ -85,16 +91,17 @@ export interface FileRoutesById {
   '/hedge': typeof HedgeRoute
   '/market': typeof MarketRoute
   '/mint': typeof MintRoute
+  '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
   '/thin': typeof ThinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack' | '/thin'
+  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack' | '/thin'
-  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/show' | '/stack' | '/thin'
+  to: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -110,6 +117,7 @@ export interface RootRouteChildren {
   HedgeRoute: typeof HedgeRoute
   MarketRoute: typeof MarketRoute
   MintRoute: typeof MintRoute
+  NotesRoute: typeof NotesRoute
   ShowRoute: typeof ShowRoute
   StackRoute: typeof StackRoute
   ThinRoute: typeof ThinRoute
@@ -129,6 +137,7 @@ declare module '@tanstack/react-router' {
     '/hedge': { id: '/hedge'; path: '/hedge'; fullPath: '/hedge'; preLoaderRoute: typeof HedgeRouteImport; parentRoute: typeof rootRouteImport }
     '/market': { id: '/market'; path: '/market'; fullPath: '/market'; preLoaderRoute: typeof MarketRouteImport; parentRoute: typeof rootRouteImport }
     '/mint': { id: '/mint'; path: '/mint'; fullPath: '/mint'; preLoaderRoute: typeof MintRouteImport; parentRoute: typeof rootRouteImport }
+    '/notes': { id: '/notes'; path: '/notes'; fullPath: '/notes'; preLoaderRoute: typeof NotesRouteImport; parentRoute: typeof rootRouteImport }
     '/show': { id: '/show'; path: '/show'; fullPath: '/show'; preLoaderRoute: typeof ShowRouteImport; parentRoute: typeof rootRouteImport }
     '/stack': { id: '/stack'; path: '/stack'; fullPath: '/stack'; preLoaderRoute: typeof StackRouteImport; parentRoute: typeof rootRouteImport }
     '/thin': { id: '/thin'; path: '/thin'; fullPath: '/thin'; preLoaderRoute: typeof ThinRouteImport; parentRoute: typeof rootRouteImport }
@@ -148,6 +157,7 @@ const rootRouteChildren: RootRouteChildren = {
   HedgeRoute: HedgeRoute,
   MarketRoute: MarketRoute,
   MintRoute: MintRoute,
+  NotesRoute: NotesRoute,
   ShowRoute: ShowRoute,
   StackRoute: StackRoute,
   ThinRoute: ThinRoute,
