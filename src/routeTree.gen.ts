@@ -12,6 +12,7 @@ import { Route as ChargeRouteImport } from './routes/charge'
 import { Route as ClaimRouteImport } from './routes/claim'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as DesertRouteImport } from './routes/desert'
+import { Route as EnterRouteImport } from './routes/enter'
 import { Route as FloorRouteImport } from './routes/floor'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as HedgeRouteImport } from './routes/hedge'
@@ -29,6 +30,7 @@ const ChargeRoute = ChargeRouteImport.update({ id: '/charge', path: '/charge', g
 const ClaimRoute = ClaimRouteImport.update({ id: '/claim', path: '/claim', getParentRoute: () => rootRouteImport } as any)
 const DemoRoute = DemoRouteImport.update({ id: '/demo', path: '/demo', getParentRoute: () => rootRouteImport } as any)
 const DesertRoute = DesertRouteImport.update({ id: '/desert', path: '/desert', getParentRoute: () => rootRouteImport } as any)
+const EnterRoute = EnterRouteImport.update({ id: '/enter', path: '/enter', getParentRoute: () => rootRouteImport } as any)
 const FloorRoute = FloorRouteImport.update({ id: '/floor', path: '/floor', getParentRoute: () => rootRouteImport } as any)
 const HelpRoute = HelpRouteImport.update({ id: '/help', path: '/help', getParentRoute: () => rootRouteImport } as any)
 const HedgeRoute = HedgeRouteImport.update({ id: '/hedge', path: '/hedge', getParentRoute: () => rootRouteImport } as any)
@@ -39,8 +41,6 @@ const ShowRoute = ShowRouteImport.update({ id: '/show', path: '/show', getParent
 const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getParentRoute: () => rootRouteImport } as any)
 const ThinRoute = ThinRouteImport.update({ id: '/thin', path: '/thin', getParentRoute: () => rootRouteImport } as any)
 
-const paths = ['/', '/agent', '/board', '/charge', '/claim', '/demo', '/desert', '/floor', '/help', '/hedge', '/market', '/mint', '/notes', '/show', '/stack', '/thin'] as const
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agent': typeof AgentRoute
@@ -49,6 +49,7 @@ export interface FileRoutesByFullPath {
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
   '/desert': typeof DesertRoute
+  '/enter': typeof EnterRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -67,6 +68,7 @@ export interface FileRoutesByTo {
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
   '/desert': typeof DesertRoute
+  '/enter': typeof EnterRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -86,6 +88,7 @@ export interface FileRoutesById {
   '/claim': typeof ClaimRoute
   '/demo': typeof DemoRoute
   '/desert': typeof DesertRoute
+  '/enter': typeof EnterRoute
   '/floor': typeof FloorRoute
   '/help': typeof HelpRoute
   '/hedge': typeof HedgeRoute
@@ -98,10 +101,10 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  fullPaths: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
-  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  to: '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  id: '__root__' | '/' | '/agent' | '/board' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -112,6 +115,7 @@ export interface RootRouteChildren {
   ClaimRoute: typeof ClaimRoute
   DemoRoute: typeof DemoRoute
   DesertRoute: typeof DesertRoute
+  EnterRoute: typeof EnterRoute
   FloorRoute: typeof FloorRoute
   HelpRoute: typeof HelpRoute
   HedgeRoute: typeof HedgeRoute
@@ -132,6 +136,7 @@ declare module '@tanstack/react-router' {
     '/claim': { id: '/claim'; path: '/claim'; fullPath: '/claim'; preLoaderRoute: typeof ClaimRouteImport; parentRoute: typeof rootRouteImport }
     '/demo': { id: '/demo'; path: '/demo'; fullPath: '/demo'; preLoaderRoute: typeof DemoRouteImport; parentRoute: typeof rootRouteImport }
     '/desert': { id: '/desert'; path: '/desert'; fullPath: '/desert'; preLoaderRoute: typeof DesertRouteImport; parentRoute: typeof rootRouteImport }
+    '/enter': { id: '/enter'; path: '/enter'; fullPath: '/enter'; preLoaderRoute: typeof EnterRouteImport; parentRoute: typeof rootRouteImport }
     '/floor': { id: '/floor'; path: '/floor'; fullPath: '/floor'; preLoaderRoute: typeof FloorRouteImport; parentRoute: typeof rootRouteImport }
     '/help': { id: '/help'; path: '/help'; fullPath: '/help'; preLoaderRoute: typeof HelpRouteImport; parentRoute: typeof rootRouteImport }
     '/hedge': { id: '/hedge'; path: '/hedge'; fullPath: '/hedge'; preLoaderRoute: typeof HedgeRouteImport; parentRoute: typeof rootRouteImport }
@@ -152,6 +157,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClaimRoute: ClaimRoute,
   DemoRoute: DemoRoute,
   DesertRoute: DesertRoute,
+  EnterRoute: EnterRoute,
   FloorRoute: FloorRoute,
   HelpRoute: HelpRoute,
   HedgeRoute: HedgeRoute,
