@@ -103,12 +103,17 @@ export function AgentPage() {
       </section>
 
       <p className="mt-10 text-sm text-muted">
-        <Link to="/desert" className="text-fg underline decoration-border underline-offset-4">
-          Desert
+        Next notes:{" "}
+        <Link to="/thin" className="text-fg underline decoration-border underline-offset-4">
+          thin books
         </Link>
         {" · "}
-        <Link to="/show" className="text-fg underline decoration-border underline-offset-4">
-          What the tape shows
+        <Link to="/claim" className="text-fg underline decoration-border underline-offset-4">
+          the floor claim
+        </Link>
+        {" · "}
+        <Link to="/desert" className="text-fg underline decoration-border underline-offset-4">
+          Desert
         </Link>
         {" · "}
         <Link to="/stack" className="text-fg underline decoration-border underline-offset-4">
