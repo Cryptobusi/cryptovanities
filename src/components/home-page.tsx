@@ -125,7 +125,7 @@ function Marks() {
           />
           <div
             className="absolute grid grid-cols-4"
-            style={{ left: "11.95%", right: "11.95%", top: "26.43%", bottom: "28.93%", columnGap: "1.85%" }}
+            style={{ left: "9.0%", right: "10.0%", top: "41.0%", bottom: "39.0%", columnGap: "1.4%" }}
           >
             {MARKS.map((mark) => (
               <button
