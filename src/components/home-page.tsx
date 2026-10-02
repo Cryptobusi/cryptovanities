@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MARKS, LAYER_BOARD } from "@/lib/site-data";
+import { MARKS, LAYER_BOARD, DESERT } from "@/lib/site-data";
 import { KILO_MARKS } from "@/lib/kilo-marks";
 import { Opening, Hero, Thesis } from "@/components/home-front";
 import { Provenance, Agents } from "@/components/home-mid";
@@ -38,7 +38,7 @@ function LayerBoard() {
   return (
     <div className="mx-auto max-w-6xl px-5 pt-4">
       <div className="rounded-xl border border-[#3a2a14] bg-[#12080c] px-2 py-3 sm:px-3">
-        <div className="grid grid-cols-8 gap-1.5 sm:gap-2">
+        <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
           {LAYER_BOARD.map((item, i) => {
             const value = levels[i];
             const tone = (value - 1) / 7;
@@ -70,6 +70,9 @@ function LayerBoard() {
             {layer.id} · {layer.aka}
           </p>
           <p className="mt-1 text-sm leading-snug text-[#f3e6c8]">{layer.body}</p>
+          <p className="mt-3 text-sm leading-snug text-[#d4b56a]">
+            {DESERT.name}. {DESERT.body}
+          </p>
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { LAYER_BOARD } from "@/lib/site-data";
-
-const ROWS = LAYER_BOARD.filter((row) => row.fiat);
+import { DESERT, LAYER_BOARD } from "@/lib/site-data";
 
 export function StackPage() {
   return (
@@ -25,7 +23,7 @@ export function StackPage() {
       </p>
 
       <ol className="mt-12 space-y-4">
-        {ROWS.map((row) => (
+        {LAYER_BOARD.map((row) => (
           <li key={row.id} className="rounded-lg border border-border bg-surface p-5">
             <p className="font-mono text-xs text-subtle">{row.id}</p>
             <h2 className="mt-2 font-display text-3xl">{row.name}</h2>
@@ -43,6 +41,22 @@ export function StackPage() {
           </li>
         ))}
       </ol>
+
+      <section className="mt-4 rounded-lg border border-border bg-surface p-5">
+        <p className="font-mono text-xs tracking-widest text-subtle uppercase">Beyond the layers</p>
+        <h2 className="mt-2 font-display text-3xl">{DESERT.name}</h2>
+        <p className="mt-1 font-mono text-xs tracking-wide text-subtle uppercase">{DESERT.aka}</p>
+        <div className="mt-5 grid gap-6 md:grid-cols-2">
+          <div>
+            <p className="font-mono text-xs tracking-widest text-subtle uppercase">This stack</p>
+            <p className="mt-2 text-fg">{DESERT.body}</p>
+          </div>
+          <div>
+            <p className="font-mono text-xs tracking-widest text-subtle uppercase">Fiat</p>
+            <p className="mt-2 text-muted">{DESERT.fiat}</p>
+          </div>
+        </div>
+      </section>
 
       <section className="mt-14 border-t border-border pt-10">
         <h2 className="font-display text-3xl">What that buys. What it costs.</h2>

@@ -134,10 +134,10 @@ export const FLOORS = [
   { n: "02", title: "Mint", body: "A scarce public meter. It does not stretch in secret. Seigniorage is a listed price." },
   { n: "03", title: "Issue", body: "Equal facility on the same rail. Named credit is not money at par." },
   { n: "04", title: "Tape", body: "One append-only ledger. If it cannot be shown, it is not policy." },
-  { n: "05", title: "Residual", body: "After the floor and the risk charge, the rest is yours. That is profit. Confiscating it does not make the books fair." },
+  { n: "05", title: "Agent", body: "Peer software does the public duties. No privileged mint. No unsupervised vote." },
 ];
 
-/** Live eight-layer board and the stack contrast. Bodies state the operational stack. */
+/** Five operational layers. Desert is not one of them. */
 export const LAYER_BOARD = [
   {
     id: "01",
@@ -169,33 +169,19 @@ export const LAYER_BOARD = [
   },
   {
     id: "05",
-    name: "Charge",
-    aka: "Listed risk price",
-    body: "The risk charge is posted beside the discount, not folded inside it. Paid when the instrument is written. Transparent. Not a fee discovered after the fact.",
-    fiat: null,
-  },
-  {
-    id: "06",
     name: "Agent",
     aka: "Public-good agency",
     body: "Peer agents watch the ledger and carry mandated public duties: disburse the floor, flag basket arbitrage, catch a double mint. Every act leaves an audit trail. No privileged mint. No unsupervised vote.",
     fiat: "Offices with discretion. Audit is periodic. In a crisis the office can rewrite the mint.",
   },
-  {
-    id: "07",
-    name: "Thin",
-    aka: "Honest books",
-    body: "Width is information. No quiet club, no emergency print, no frozen official rate. A book you cannot read is not a rule.",
-    fiat: null,
-  },
-  {
-    id: "08",
-    name: "Desert",
-    aka: "Residuals",
-    body: "Private profit and market ambition sit on the floor. Residuals are owned and tradable after the transparent risk charge and the floor contribution.",
-    fiat: "After-tax surplus, then occasional socialization of the tail. The charge arrives late.",
-  },
 ] as const;
+
+export const DESERT = {
+  name: "Desert",
+  aka: "Residuals",
+  body: "Private profit and market ambition sit on the floor. Residuals are owned and tradable after the transparent risk charge and the floor contribution.",
+  fiat: "After-tax surplus, then occasional socialization of the tail. The charge arrives late.",
+} as const;
 
 export const WORK = [
   { title: "One timeline, many auditors", body: "A shipment, credit, or identity assertion is written once. Authorized parties see the same append-only history instead of reconciling local copies." },

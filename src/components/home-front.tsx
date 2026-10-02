@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FLOORS, HANDLE, TRAILS, TRUST_TOKEN } from "@/lib/site-data";
+import { FLOORS, HANDLE, TRAILS, TRUST_TOKEN, DESERT } from "@/lib/site-data";
 
 export function Kicker({ children }: { children: React.ReactNode }) {
   return <p className="font-mono text-xs tracking-widest text-subtle uppercase">{children}</p>;
@@ -155,6 +155,9 @@ export function Thesis() {
             </li>
           ))}
         </ol>
+        <p className="mt-8 max-w-2xl text-muted">
+          {DESERT.name} is not a sixth layer. {DESERT.body} Confiscating the residual does not make the books fair.
+        </p>
       </div>
     </section>
   );
