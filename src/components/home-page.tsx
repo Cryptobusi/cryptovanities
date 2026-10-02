@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MARKS } from "@/lib/site-data";
+import { MARKS, LAYER_BOARD } from "@/lib/site-data";
 import { KILO_MARKS } from "@/lib/kilo-marks";
 import { Opening, Hero, Thesis } from "@/components/home-front";
 import { Provenance, Agents } from "@/components/home-mid";
@@ -21,19 +21,10 @@ function openMark(href: string, onBack: () => void) {
   }, 400);
 }
 
-const LAYERS = [
-  { id: "01", name: "Floor" },
-  { id: "02", name: "Mint" },
-  { id: "03", name: "Issue" },
-  { id: "04", name: "Tape" },
-  { id: "05", name: "Charge" },
-  { id: "06", name: "Agent" },
-  { id: "07", name: "Thin" },
-  { id: "08", name: "Desert" },
-];
-
 function LayerBoard() {
-  const [levels, setLevels] = useState(() => LAYERS.map(() => 1 + Math.random() * 6));
+  const [levels, setLevels] = useState(() => LAYER_BOARD.map(() => 1 + Math.random() * 6));
+  const [open, setOpen] = useState(0);
+  const layer = LAYER_BOARD[open];
 
   useEffect(() => {
     const tick = window.setInterval(() => {
@@ -46,23 +37,40 @@ function LayerBoard() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 pt-4">
-      <div className="grid grid-cols-8 gap-1.5 rounded-xl border border-[#3a2a14] bg-[#12080c] px-2 py-3 sm:gap-2 sm:px-3">
-        {LAYERS.map((layer, i) => {
-          const value = levels[i];
-          const tone = (value - 1) / 7;
-          const color = `hsl(${Math.round(tone * 122)} 78% ${38 + tone * 8}%)`;
-          return (
-            <div key={layer.id} className="flex flex-col items-center gap-1">
-              <div className="relative h-20 w-full overflow-hidden rounded-sm bg-[#1c1014] sm:h-24">
-                <div
-                  className="absolute inset-x-0 bottom-0 transition-all duration-500"
-                  style={{ height: `${(value / 8) * 100}%`, background: color }}
-                />
-              </div>
-              <span className="font-mono text-[10px] tracking-wide text-[#d4b56a]">{layer.id}</span>
-            </div>
-          );
-        })}
+      <div className="rounded-xl border border-[#3a2a14] bg-[#12080c] px-2 py-3 sm:px-3">
+        <div className="grid grid-cols-8 gap-1.5 sm:gap-2">
+          {LAYER_BOARD.map((item, i) => {
+            const value = levels[i];
+            const tone = (value - 1) / 7;
+            const color = `hsl(${Math.round(tone * 122)} 78% ${38 + tone * 8}%)`;
+            const selected = i === open;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setOpen(i)}
+                className="flex min-w-0 flex-col items-center gap-1"
+              >
+                <div className="relative h-16 w-full overflow-hidden rounded-sm bg-[#1c1014] sm:h-24">
+                  <div
+                    className="absolute inset-x-0 bottom-0 transition-all duration-500"
+                    style={{ height: `${(value / 8) * 100}%`, background: color }}
+                  />
+                </div>
+                <span className={selected ? "font-mono text-[10px] tracking-wide text-[#f3e6c8]" : "font-mono text-[10px] tracking-wide text-[#d4b56a]"}>
+                  {item.name}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="mt-3 border-t border-[#3a2a14] px-1 pt-3 sm:px-2">
+          <p className="font-mono text-[10px] tracking-widest text-[#d4b56a] uppercase">
+            {layer.id} · {layer.aka}
+          </p>
+          <p className="mt-1 text-sm leading-snug text-[#f3e6c8]">{layer.body}</p>
+        </div>
       </div>
     </div>
   );

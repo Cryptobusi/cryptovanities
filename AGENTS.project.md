@@ -18,7 +18,7 @@ A Grok export to `Cryptobusi/star-acorn-jade-craft` does not update the public s
 
 - Door: "Same rails. Anyone may issue. No one may hide the print."
 - Actions: Issue on the tape, Put an agent on the tape, Begin the ledger.
-- Thesis is five rules: Floor, Mint, Issue, Tape, Residual. Profit is what remains after the floor and the risk charge.
+- Thesis is five rules: Floor, Mint, Issue, Tape, Residual. The operational wording now states the Equitable Economic Stack: bargaining-chip floor (UBI plus shelter, staple food, primary care, connectivity), a meter that does not stretch in secret, equal issue of invoices bonds escrow and options, one append-only tape, peer agents with no mint and no unsupervised vote, and Desert as owned residuals. The eight-layer board under the marks names each layer and shows that text. /stack uses the same sentences against fiat.
 - Agents section: four duties. An agent does not mint and does not set the basket.
 - Coins has a **TRUST Tokenomics** button. Pressing it opens the explainer: what $TRUST pays for, the 100 billion genesis, the issuer's 1% ceiling, and the six vesting buckets. Pressing again closes it.
 - Do not revive "10,000,000 TRUST" or "the supply type is infinite, so there is no cap." Minted supply is 100,000,000,000 TRUST. The Hedera record has no max supply. The published cap is the issuer contract: genesis × 1.01ⁿ. The issuance controller `0.0.10607410` holds none. The 15 billion treasury allocation is `0.0.10607423`.

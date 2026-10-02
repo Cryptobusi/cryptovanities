@@ -1,43 +1,7 @@
 import { Link } from "@tanstack/react-router";
+import { LAYER_BOARD } from "@/lib/site-data";
 
-const ROWS = [
-  {
-    n: "01",
-    title: "Floor",
-    stack: "A small basket and a small income come first. Survival is not priced at the door.",
-    fiat: "Welfare is residual. It waits on eligibility, a fiscal fight, and a caseworker.",
-  },
-  {
-    n: "02",
-    title: "Mint",
-    stack: "One scarce meter. Seigniorage is a listed price. No actor, including the state, prints off the schedule.",
-    fiat: "The base stretches when a facility says so. The reaction is a mandate. The weekend toolkit is discovered in public after the fact.",
-  },
-  {
-    n: "03",
-    title: "Issue",
-    stack: "Household, firm, and treasury issue named credit on the same rail. That paper is not money at par. Checkout converts it at a market discount.",
-    fiat: "Licensed banks create deposits that clear at par with legal tender. Other paper is credit until a backstop makes it look like cash.",
-  },
-  {
-    n: "04",
-    title: "Tape",
-    stack: "Title, mint, lien, agent act, revocation. If it cannot be shown, it is not policy.",
-    fiat: "Bank books, land registries, courts, and statistics. A valid act can still be unpublished.",
-  },
-  {
-    n: "05",
-    title: "Agent",
-    stack: "Software pays the floor, flags a price that leaves the book, and refuses a second print. It does not mint. It does not vote unsupervised.",
-    fiat: "Offices with discretion. Audit is periodic. In a crisis the office can rewrite the mint.",
-  },
-  {
-    n: "06",
-    title: "Residual",
-    stack: "After the floor and the listed risk charge, the rest is yours. That is profit.",
-    fiat: "After-tax surplus, then occasional socialization of the tail. The charge arrives late.",
-  },
-];
+const ROWS = LAYER_BOARD.filter((row) => row.fiat);
 
 export function StackPage() {
   return (
@@ -49,6 +13,10 @@ export function StackPage() {
         senior, the mint is public, private paper does not clear at par, and an unpublished act is not policy.
       </p>
       <p className="mt-4 max-w-2xl text-muted">
+        Five operational layers, then Desert. Equanimity, a public book, and the same rules for a household, a firm,
+        and a treasury.
+      </p>
+      <p className="mt-4 max-w-2xl text-muted">
         The working form stays the same.{" "}
         <Link to="/floor" hash="desk" className="text-fg underline decoration-border underline-offset-4">
           Reserve the floor, write the tape, then issue
@@ -58,13 +26,14 @@ export function StackPage() {
 
       <ol className="mt-12 space-y-4">
         {ROWS.map((row) => (
-          <li key={row.n} className="rounded-lg border border-border bg-surface p-5">
-            <p className="font-mono text-xs text-subtle">{row.n}</p>
-            <h2 className="mt-2 font-display text-3xl">{row.title}</h2>
+          <li key={row.id} className="rounded-lg border border-border bg-surface p-5">
+            <p className="font-mono text-xs text-subtle">{row.id}</p>
+            <h2 className="mt-2 font-display text-3xl">{row.name}</h2>
+            <p className="mt-1 font-mono text-xs tracking-wide text-subtle uppercase">{row.aka}</p>
             <div className="mt-5 grid gap-6 md:grid-cols-2">
               <div>
                 <p className="font-mono text-xs tracking-widest text-subtle uppercase">This stack</p>
-                <p className="mt-2 text-fg">{row.stack}</p>
+                <p className="mt-2 text-fg">{row.body}</p>
               </div>
               <div>
                 <p className="font-mono text-xs tracking-widest text-subtle uppercase">Fiat</p>

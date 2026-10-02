@@ -4,17 +4,17 @@ import { PaperShell } from "@/components/paper-shell";
 import { dmUrl, HANDLE } from "@/lib/site-data";
 
 const CHAPTERS = [
-  { n: "I", title: "Door", to: "/#thesis", body: "Same rails. Anyone may issue. No one may hide the print." },
-  { n: "II", title: "Stack against fiat", to: "/stack", body: "Senior floor, public mint, no par paper." },
-  { n: "III", title: "Invoice conversion", to: "/hedge", body: "Face is paper. Window lock on ratio and charge." },
-  { n: "IV", title: "What the tape shows", to: "/show", body: "Title, mint, lien, conversion, agent act." },
-  { n: "V", title: "Listed risk charge", to: "/charge", body: "Beside the discount, not inside it." },
-  { n: "VI", title: "Mint as a price", to: "/mint", body: "One meter. No weekend facility." },
-  { n: "VII", title: "Desert", to: "/desert", body: "After floor and listed prices, the remainder is titled." },
-  { n: "VIII", title: "Agent", to: "/agent", body: "Does not mint, set the basket, or harvest Desert." },
-  { n: "IX", title: "Thin books", to: "/thin", body: "Width is information. No quiet club." },
-  { n: "X", title: "Floor claim", to: "/claim", body: "Senior to paper. Small on purpose." },
-  { n: "XI", title: "The desk", to: "/floor", body: "Reserve the floor, write the tape, then issue." },
+  { n: "I", title: "Door", to: "/", hash: "thesis", body: "Same rails. Anyone may issue. No one may hide the print." },
+  { n: "II", title: "Stack against fiat", to: "/stack", hash: undefined, body: "Five operational layers, then Desert. Senior floor, public mint, no par paper." },
+  { n: "III", title: "Invoice conversion", to: "/hedge", hash: undefined, body: "Face is paper. Window lock on ratio and charge." },
+  { n: "IV", title: "What the tape shows", to: "/show", hash: undefined, body: "Title, mint, lien, conversion, agent act." },
+  { n: "V", title: "Listed risk charge", to: "/charge", hash: undefined, body: "Beside the discount, not inside it." },
+  { n: "VI", title: "Mint as a price", to: "/mint", hash: undefined, body: "One meter. No weekend facility." },
+  { n: "VII", title: "Desert", to: "/desert", hash: undefined, body: "After floor and listed prices, the remainder is titled." },
+  { n: "VIII", title: "Agent", to: "/agent", hash: undefined, body: "Does not mint, set the basket, or harvest Desert." },
+  { n: "IX", title: "Thin books", to: "/thin", hash: undefined, body: "Width is information. No quiet club." },
+  { n: "X", title: "Floor claim", to: "/claim", hash: undefined, body: "Senior to paper. Small on purpose." },
+  { n: "XI", title: "The desk", to: "/floor", hash: undefined, body: "Reserve the floor, write the tape, then issue." },
 ] as const;
 
 export function NotesPage() {
@@ -60,7 +60,7 @@ export function NotesPage() {
             <li key={row.n}>
               <p className="font-sans text-xs tracking-widest text-subtle uppercase">Chapter {row.n}</p>
               <h3 className="mt-1 text-xl text-fg">
-                <Link to={row.to} className="underline decoration-border underline-offset-4">
+                <Link to={row.to} hash={row.hash} className="underline decoration-border underline-offset-4">
                   {row.title}
                 </Link>
               </h3>

@@ -130,12 +130,72 @@ export const TRAILS: Trail[] = [
 ];
 
 export const FLOORS = [
-  { n: "01", title: "Floor", body: "Survival is not priced at the door. A small basket, funded in the open, not by a silent print." },
-  { n: "02", title: "Mint", body: "The base unit is scarce. Seigniorage is a listed price. The state does not clear at a made-up par." },
-  { n: "03", title: "Issue", body: "Household, firm, and treasury print named credit on the same rail. That paper is not money at par." },
-  { n: "04", title: "Tape", body: "Title, mint, lien, agent act, revocation. If it cannot be shown, it is not policy." },
+  { n: "01", title: "Floor", body: "Nobody's survival is a bargaining chip. A small basket, funded in the open, not by a silent print." },
+  { n: "02", title: "Mint", body: "A scarce public meter. It does not stretch in secret. Seigniorage is a listed price." },
+  { n: "03", title: "Issue", body: "Equal facility on the same rail. Named credit is not money at par." },
+  { n: "04", title: "Tape", body: "One append-only ledger. If it cannot be shown, it is not policy." },
   { n: "05", title: "Residual", body: "After the floor and the risk charge, the rest is yours. That is profit. Confiscating it does not make the books fair." },
 ];
+
+/** Live eight-layer board and the stack contrast. Bodies state the operational stack. */
+export const LAYER_BOARD = [
+  {
+    id: "01",
+    name: "Floor",
+    aka: "UBI + basic basket",
+    body: "A mandatory public floor, so nobody's survival is a bargaining chip. A small income plus a defined basket: shelter band, staple food, primary care, basic connectivity. Funded by a first claim on preference-economy surplus and by auctioned issuance, not by unbacked printing.",
+    fiat: "Welfare is residual. It waits on eligibility, a fiscal fight, and a caseworker.",
+  },
+  {
+    id: "02",
+    name: "Mint",
+    aka: "One or few base units",
+    body: "A scarce public meter that does not stretch in secret. New units follow a hard schedule or a public auction, at a listed seigniorage price. No actor, including the state, mints outside the published rules.",
+    fiat: "The base stretches when a facility says so. The reaction is a mandate. The weekend toolkit is discovered in public after the fact.",
+  },
+  {
+    id: "03",
+    name: "Issue",
+    aka: "Open credit",
+    body: "Every actor has equal facility on the same programmable rail: invoices, bonds, escrow, options. Private instruments do not clear at legal-tender par. Checkout converts them into basket units at a dynamic market discount.",
+    fiat: "Licensed banks create deposits that clear at par with legal tender. Other paper is credit until a backstop makes it look like cash.",
+  },
+  {
+    id: "04",
+    name: "Tape",
+    aka: "DLT provenance",
+    body: "One append-only ledger records title, minting, liens, agency actions, and revocations. If it cannot be shown, it is not policy.",
+    fiat: "Bank books, land registries, courts, and statistics. A valid act can still be unpublished.",
+  },
+  {
+    id: "05",
+    name: "Charge",
+    aka: "Listed risk price",
+    body: "The risk charge is posted beside the discount, not folded inside it. Paid when the instrument is written. Transparent. Not a fee discovered after the fact.",
+    fiat: null,
+  },
+  {
+    id: "06",
+    name: "Agent",
+    aka: "Public-good agency",
+    body: "Peer agents watch the ledger and carry mandated public duties: disburse the floor, flag basket arbitrage, catch a double mint. Every act leaves an audit trail. No privileged mint. No unsupervised vote.",
+    fiat: "Offices with discretion. Audit is periodic. In a crisis the office can rewrite the mint.",
+  },
+  {
+    id: "07",
+    name: "Thin",
+    aka: "Honest books",
+    body: "Width is information. No quiet club, no emergency print, no frozen official rate. A book you cannot read is not a rule.",
+    fiat: null,
+  },
+  {
+    id: "08",
+    name: "Desert",
+    aka: "Residuals",
+    body: "Private profit and market ambition sit on the floor. Residuals are owned and tradable after the transparent risk charge and the floor contribution.",
+    fiat: "After-tax surplus, then occasional socialization of the tail. The charge arrives late.",
+  },
+] as const;
 
 export const WORK = [
   { title: "One timeline, many auditors", body: "A shipment, credit, or identity assertion is written once. Authorized parties see the same append-only history instead of reconciling local copies." },
