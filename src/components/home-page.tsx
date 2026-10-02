@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MARKS } from "@/lib/site-data";
+import { KILO_MARKS } from "@/lib/kilo-marks";
 import { Opening, Hero, Thesis } from "@/components/home-front";
 import { Provenance, Agents } from "@/components/home-mid";
 import { Price } from "@/components/home-price";
@@ -18,6 +19,28 @@ function openMark(href: string, onBack: () => void) {
       window.focus();
     }
   }, 400);
+}
+
+function KiloRow() {
+  function back() {
+    window.focus();
+  }
+  return (
+    <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-1.5 px-4 pt-4">
+      {KILO_MARKS.map((mark) => (
+        <button
+          key={mark.src}
+          type="button"
+          title={mark.label}
+          aria-label={mark.label}
+          onClick={() => openMark(mark.href, back)}
+          className="grid h-7 w-7 place-items-center rounded-sm bg-[#1a1024]"
+        >
+          <img src={mark.src} alt={mark.label} className="h-5 w-5 object-contain" />
+        </button>
+      ))}
+    </div>
+  );
 }
 
 function Marks() {
@@ -76,6 +99,7 @@ function Marks() {
 export function HomePage() {
   return (
     <>
+      <KiloRow />
       <Marks />
       <Opening />
       <Hero />
