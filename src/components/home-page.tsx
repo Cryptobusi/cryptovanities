@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MARKS } from "@/lib/site-data";
 import { KILO_MARKS } from "@/lib/kilo-marks";
 import { Opening, Hero, Thesis } from "@/components/home-front";
@@ -19,6 +19,53 @@ function openMark(href: string, onBack: () => void) {
       window.focus();
     }
   }, 400);
+}
+
+const LAYERS = [
+  { id: "01", name: "Floor" },
+  { id: "02", name: "Mint" },
+  { id: "03", name: "Issue" },
+  { id: "04", name: "Tape" },
+  { id: "05", name: "Charge" },
+  { id: "06", name: "Agent" },
+  { id: "07", name: "Thin" },
+  { id: "08", name: "Desert" },
+];
+
+function LayerBoard() {
+  const [levels, setLevels] = useState(() => LAYERS.map(() => 1 + Math.random() * 6));
+
+  useEffect(() => {
+    const tick = window.setInterval(() => {
+      setLevels((prev) =>
+        prev.map((value) => Math.min(8, Math.max(1, value + (Math.random() - 0.42) * 1.6))),
+      );
+    }, 650);
+    return () => window.clearInterval(tick);
+  }, []);
+
+  return (
+    <div className="mx-auto max-w-6xl px-5 pt-4">
+      <div className="grid grid-cols-8 gap-1.5 rounded-xl border border-[#3a2a14] bg-[#12080c] px-2 py-3 sm:gap-2 sm:px-3">
+        {LAYERS.map((layer, i) => {
+          const value = levels[i];
+          const tone = (value - 1) / 7;
+          const color = `hsl(${Math.round(tone * 122)} 78% ${38 + tone * 8}%)`;
+          return (
+            <div key={layer.id} className="flex flex-col items-center gap-1">
+              <div className="relative h-20 w-full overflow-hidden rounded-sm bg-[#1c1014] sm:h-24">
+                <div
+                  className="absolute inset-x-0 bottom-0 transition-all duration-500"
+                  style={{ height: `${(value / 8) * 100}%`, background: color }}
+                />
+              </div>
+              <span className="font-mono text-[10px] tracking-wide text-[#d4b56a]">{layer.id}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function KiloRow() {
@@ -100,6 +147,7 @@ export function HomePage() {
   return (
     <>
       <KiloRow />
+      <LayerBoard />
       <Marks />
       <Opening />
       <Hero />
