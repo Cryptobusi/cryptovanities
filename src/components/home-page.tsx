@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MARKS, LAYER_BOARD, DESERT } from "@/lib/site-data";
 import { KILO_MARKS } from "@/lib/kilo-marks";
 import { Opening, Hero, Thesis } from "@/components/home-front";
+import { Fidelity } from "@/components/fidelity-note";
 import { Provenance, Agents } from "@/components/home-mid";
 import { Price } from "@/components/home-price";
 import { BoardPreview, Invitation } from "@/components/home-end";
@@ -163,6 +164,7 @@ export function HomePage() {
       <Opening />
       <Hero />
       <Thesis />
+      <Fidelity />
       <Provenance />
       <Agents />
       <Price />
