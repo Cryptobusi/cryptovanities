@@ -156,6 +156,16 @@ export function Thesis() {
           ))}
         </ol>
         <p className="mt-8 max-w-2xl text-muted">
+          When a value is made and swapped as abstract lyrics scored as a number, it loses fidelity. When the same value
+          is contracted, then tokenized in a way that is logical, rational, and practical, and passed until it settles,
+          the fidelity of the true value rises. A lyric scored as a number is not a measure. It is a label, and a label
+          loses fidelity each time it is passed. The true value is what the tape can still show at settlement.{" "}
+          <a href="#fidelity" className="text-fg underline decoration-border underline-offset-4">
+            The separate note
+          </a>
+          .
+        </p>
+        <p className="mt-8 max-w-2xl text-muted">
           {DESERT.name} is not a sixth layer. {DESERT.body} Confiscating the residual does not make the books fair.
         </p>
       </div>
