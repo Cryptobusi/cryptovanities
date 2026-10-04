@@ -26,6 +26,7 @@ const LAYERS: Item[] = [
 
 const BOOK: Item[] = [
   { label: "Thesis", href: "/#thesis", note: "Door" },
+  { label: "Fidelity", href: "/#fidelity", note: "Lyric to settlement" },
   { label: "Stack", to: "/stack", note: "Against fiat" },
   { label: "Notes", to: "/notes", note: "Bound order" },
   { label: "Board", to: "/board", note: "Pairs" },

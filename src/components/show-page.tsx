@@ -55,6 +55,15 @@ export function ShowPage() {
         A public tape is not a glass house. It is a rule about which acts count. Title, mint, lien, conversion, and agent
         act count. The rest is not a line, and a missing line is not a secret privilege.
       </p>
+      <p className="mt-5 max-w-2xl text-muted">
+        When a value is made and swapped as abstract lyrics scored as a number, it loses fidelity. When the same value
+        is contracted, then tokenized in a way that is logical, rational, and practical, and passed until it settles,
+        the fidelity of the true value rises. A lyric scored as a number is not a measure. It is a label. A contracted
+        value, tokenized so the rule can be read, and passed until it settles, keeps the origin. The true value is what
+        the tape can still show at settlement. If it cannot be shown, it is only a story. Refuse a settlement with no
+        provenance. Same rails. Anyone may issue. No one may hide the print.
+      </p>
+
       <p className="mt-4 max-w-2xl text-muted">
         Fiat already splits the record across banks, registries, courts, and statistics. A valid act can still be unpublished.
         Here the opposite failure is the risk: publishing a life because a claim was written.{" "}
