@@ -22,6 +22,7 @@ import { Route as MintRouteImport } from './routes/mint'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as ShowRouteImport } from './routes/show'
 import { Route as StackRouteImport } from './routes/stack'
+import { Route as RefusalRouteImport } from './routes/refusal'
 import { Route as ThinRouteImport } from './routes/thin'
 
 const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
@@ -41,6 +42,7 @@ const MintRoute = MintRouteImport.update({ id: '/mint', path: '/mint', getParent
 const NotesRoute = NotesRouteImport.update({ id: '/notes', path: '/notes', getParentRoute: () => rootRouteImport } as any)
 const ShowRoute = ShowRouteImport.update({ id: '/show', path: '/show', getParentRoute: () => rootRouteImport } as any)
 const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getParentRoute: () => rootRouteImport } as any)
+const RefusalRoute = RefusalRouteImport.update({ id: '/refusal', path: '/refusal', getParentRoute: () => rootRouteImport } as any)
 const ThinRoute = ThinRouteImport.update({ id: '/thin', path: '/thin', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
@@ -61,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
+  '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
 }
 export interface FileRoutesByTo {
@@ -81,6 +84,7 @@ export interface FileRoutesByTo {
   '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
+  '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
 }
 export interface FileRoutesById {
@@ -102,14 +106,15 @@ export interface FileRoutesById {
   '/notes': typeof NotesRoute
   '/show': typeof ShowRoute
   '/stack': typeof StackRoute
+  '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
-  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/thin'
+  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
+  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -152,6 +157,7 @@ declare module '@tanstack/react-router' {
     '/notes': { id: '/notes'; path: '/notes'; fullPath: '/notes'; preLoaderRoute: typeof NotesRouteImport; parentRoute: typeof rootRouteImport }
     '/show': { id: '/show'; path: '/show'; fullPath: '/show'; preLoaderRoute: typeof ShowRouteImport; parentRoute: typeof rootRouteImport }
     '/stack': { id: '/stack'; path: '/stack'; fullPath: '/stack'; preLoaderRoute: typeof StackRouteImport; parentRoute: typeof rootRouteImport }
+    '/refusal': { id: '/refusal'; path: '/refusal'; fullPath: '/refusal'; preLoaderRoute: typeof RefusalRouteImport; parentRoute: typeof rootRouteImport }
     '/thin': { id: '/thin'; path: '/thin'; fullPath: '/thin'; preLoaderRoute: typeof ThinRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
@@ -174,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotesRoute: NotesRoute,
   ShowRoute: ShowRoute,
   StackRoute: StackRoute,
+  RefusalRoute: RefusalRoute,
   ThinRoute: ThinRoute,
 }
 export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()

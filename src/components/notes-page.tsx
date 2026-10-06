@@ -15,6 +15,7 @@ const CHAPTERS = [
   { n: "IX", title: "Thin books", to: "/thin", hash: undefined, body: "Width is information. No quiet club." },
   { n: "X", title: "Floor claim", to: "/claim", hash: undefined, body: "Senior to paper. Small on purpose." },
   { n: "XI", title: "The desk", to: "/floor", hash: undefined, body: "Reserve the floor, write the tape, then issue." },
+  { n: "XII", title: "Sovereignty is the refusal", to: "/refusal", hash: undefined, body: "One floor. Three actors. Claims only from recorded exchange. Liabilities only by consent." },
 ] as const;
 
 export function NotesPage() {

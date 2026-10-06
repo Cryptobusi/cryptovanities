@@ -144,7 +144,11 @@ export function Thesis() {
           <a href="/stack" className="text-fg underline decoration-border underline-offset-4">
             How this differs from fiat
           </a>
-          .
+          .{" "}
+          <a href="/refusal" className="text-fg underline decoration-border underline-offset-4">
+            Sovereignty is the refusal
+          </a>
+          : the same facilities for the state, the firm, and the person.
         </p>
         <ol className="mt-10 grid gap-4 md:grid-cols-2">
           {FLOORS.map((item) => (
