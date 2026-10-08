@@ -6,6 +6,7 @@ import { Fidelity } from "@/components/fidelity-note";
 import { Provenance, Agents } from "@/components/home-mid";
 import { Price } from "@/components/home-price";
 import { BoardPreview, Invitation } from "@/components/home-end";
+import { HederaEcosystemMenu } from "@/components/hedera-ecosystem";
 
 function openMark(href: string, onBack: () => void) {
   const child = window.open(href, "_blank");
@@ -159,6 +160,7 @@ export function HomePage() {
   return (
     <>
       <KiloRow />
+      <HederaEcosystemMenu />
       <LayerBoard />
       <Marks />
       <Opening />
