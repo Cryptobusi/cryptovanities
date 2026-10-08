@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Mark } from "@/components/mark";
 
@@ -52,11 +51,9 @@ function NavLink({ item, className, onClick }: { item: Item; className: string; 
 }
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState<"act" | "layers" | "book" | null>(null);
 
   function close() {
-    setOpen(false);
     setPanel(null);
   }
 
@@ -68,7 +65,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <Mark />
             <span className="font-display text-lg tracking-tight">Egonomic Anonymous</span>
           </Link>
-          <nav className="hidden items-center gap-1 text-sm text-muted lg:flex" aria-label="Graph">
+          <nav className="flex flex-wrap items-center justify-end gap-1 text-sm text-muted" aria-label="Graph">
             {(
               [
                 ["act", "Act"],
@@ -89,12 +86,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
               Desk
             </Link>
           </nav>
-          <button type="button" className="inline-flex size-11 items-center justify-center border border-border text-fg lg:hidden" aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((v) => !v)}>
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
         </div>
         {panel ? (
-          <div className="hidden border-t border-border lg:block">
+          <div className="border-t border-border">
             <div className="mx-auto grid max-w-6xl gap-6 px-5 py-6 sm:px-8 md:grid-cols-4">
               {(panel === "act" ? ACT : panel === "layers" ? LAYERS : BOOK).map((item) => (
                 <NavLink key={item.label} item={item} className="text-sm text-muted hover:text-fg" onClick={close} />
@@ -106,23 +100,6 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
               </p>
             ) : null}
           </div>
-        ) : null}
-        {open ? (
-          <nav className="flex flex-col gap-1 border-t border-border px-5 py-4 text-sm lg:hidden" aria-label="Graph">
-            <p className="px-2 font-mono text-xs tracking-widest text-subtle uppercase">Act</p>
-            {ACT.map((item) => (
-              <NavLink key={item.label} item={item} className="px-2 py-3 text-fg" onClick={close} />
-            ))}
-            <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Layers</p>
-            <p className="px-2 pb-2 font-mono text-xs text-subtle">Floor → Mint → Issue → Tape → Charge → Agent → Thin → Desert</p>
-            {LAYERS.map((item) => (
-              <NavLink key={item.label} item={item} className="px-2 py-3 text-fg" onClick={close} />
-            ))}
-            <p className="px-2 pt-3 font-mono text-xs tracking-widest text-subtle uppercase">Book</p>
-            {BOOK.map((item) => (
-              <NavLink key={item.label} item={item} className="px-2 py-3 text-fg" onClick={close} />
-            ))}
-          </nav>
         ) : null}
       </header>
       <main>{children}</main>
