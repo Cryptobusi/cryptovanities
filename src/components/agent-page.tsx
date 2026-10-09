@@ -3,18 +3,18 @@ import { Link } from "@tanstack/react-router";
 const DUTIES = [
   {
     n: "01",
-    title: "Catch a double mint",
-    body: "Two prints of the same unit, one tape. The second fails in public. The agent does not open a second window to make the books match.",
+    title: "Pay the floor on the clock",
+    body: "The disbursement runs when the schedule says. The agent does not choose who deserves the basket this period.",
   },
   {
     n: "02",
-    title: "Flag a price off the tape",
+    title: "Flag a side price",
     body: "A discount or a charge that only works in a side book is marked. The mark is a line. It is not a quiet call to the issuer.",
   },
   {
     n: "03",
-    title: "Pay the floor on the clock",
-    body: "The disbursement runs when the schedule says. The agent does not choose who deserves the basket this period.",
+    title: "Refuse a second print",
+    body: "Two prints of the same unit, one tape. The second fails in public. The agent does not open a second window to make the books match.",
   },
   {
     n: "04",
@@ -31,7 +31,7 @@ const RULES = [
   },
   {
     n: "02",
-    title: "Does not set the basket",
+    title: "Does not set the basket or decide eligibility",
     body: "The floor is a posted claim, not a mood. An agent that reallocates the basket to ‘those who need it more’ has left the duty.",
   },
   {
@@ -65,7 +65,8 @@ export function AgentPage() {
       </p>
 
       <section className="mt-12">
-        <h2 className="font-display text-3xl">The duty</h2>
+        <h2 className="font-display text-3xl">The four duties — public checklist</h2>
+        <p className="mt-2 text-sm text-muted">An agent never mints and never decides eligibility.</p>
         <ol className="mt-6 space-y-4">
           {DUTIES.map((row) => (
             <li key={row.n} className="rounded-lg border border-border bg-surface p-5">
