@@ -30,6 +30,7 @@ const BOOK: Item[] = [
   { label: "Refusal", to: "/refusal", note: "One floor, three actors" },
   { label: "Notes", to: "/notes", note: "Bound order" },
   { label: "Status", to: "/status", note: "Dated tape" },
+  { label: "Third Seat", to: "/third-seat", note: "Sitting checklist" },
   { label: "Board", to: "/board", note: "Pairs" },
   { label: "Help", to: "/help", note: "Index" },
 ];
