@@ -43,7 +43,7 @@ export function NotesPage() {
     <PaperShell
       folio="Contents"
       title="Notes, examples, sources."
-      abstract="One book of the Equitable Economic Stack. Each chapter is a live page. This leaf is the bound order. If an in-chat preview host fails, open this path on egonomicanonymous.live."
+      abstract="The single bound order of the Equitable Economic Stack. Each chapter is a live page. Desks model the steps; this leaf is the rule. If an in-chat preview host fails, open this path on egonomicanonymous.live."
     >
       <section>
         <h2 className="text-2xl text-fg">How to download</h2>
@@ -55,7 +55,8 @@ export function NotesPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl text-fg">Chapters</h2>
+        <h2 className="text-2xl text-fg">Chapters — the bound order</h2>
+        <p className="mt-2 text-sm text-muted">This is the source. Interactive desks implement the chapters; they do not rewrite the order.</p>
         <ol className="mt-6 space-y-6">
           {CHAPTERS.map((row) => (
             <li key={row.n}>
