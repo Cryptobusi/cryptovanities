@@ -53,6 +53,26 @@ export function StatusPage() {
       </section>
 
       <section>
+        <h2 className="text-2xl text-fg">Contribution accounting</h2>
+        <p className="mt-4">
+          Optional gifts may be sent from an X wallet to the X wallet @trancesage. The site does not hold keys or take the transfer.
+        </p>
+        <dl className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div>
+            <dt className="font-mono text-xs text-subtle">Public split</dt>
+            <dd className="mt-1">Half floor / half development</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs text-subtle">Cadence</dt>
+            <dd className="mt-1">Shown on this Status tape when gifts arrive</dd>
+          </div>
+        </dl>
+        <p className="mt-4 text-sm text-muted">
+          The split is public. An unpublished accounting is not accounting. No quieter standard for the person who receives the gift.
+        </p>
+      </section>
+
+      <section>
         <h2 className="text-2xl text-fg">Recommended next steps</h2>
         <ol className="mt-4 list-decimal space-y-2 pl-5">
           <li>Publish this dated block on the Status tape.</li>
