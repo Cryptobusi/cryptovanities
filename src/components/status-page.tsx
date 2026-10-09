@@ -73,19 +73,23 @@ export function StatusPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl text-fg">Recommended next steps</h2>
+        <h2 className="text-2xl text-fg">Status tape — 9 October 2026 (update)</h2>
+        <p className="mt-4 text-sm text-muted">Record of the ten recommended steps from the opening block. Each is a public line.</p>
         <ol className="mt-4 list-decimal space-y-2 pl-5">
-          <li>Publish this dated block on the Status tape.</li>
-          <li>Stabilize Notes as the single bound order; link desks back to chapters.</li>
-          <li>Post one fully worked public invoice example with all five tape lines.</li>
-          <li>Publish the current basket figure and its funding source.</li>
-          <li>List the four agent duties as a public checklist.</li>
-          <li>Post the gift split (floor / development) on a cadence if gifts arrive.</li>
-          <li>Expand the Third Seat sitting checklist.</li>
-          <li>Note on Market that a thin book stays wide.</li>
-          <li>Clarify zero remainder and named-debt retirement.</li>
-          <li>Keep Status as a running public tape. An unpublished change is not a change.</li>
+          <li>Done — Dated Status block published. Downloadable full report linked.</li>
+          <li>Done — Notes stabilized as the single bound order. Chapters link out; desks implement the rule.</li>
+          <li>Done — Worked invoice on Notes now shows all five tape lines explicitly.</li>
+          <li>Done — Current basket figure ($1,470), named-surplus source, and on-the-clock schedule published on Floor.</li>
+          <li>Done — Four agent duties listed as a public checklist. Agent never mints and never decides eligibility.</li>
+          <li>Done — Public contribution split (half floor / half development) posted. Shown when gifts arrive.</li>
+          <li>Done — Third Seat sitting checklist published (/third-seat): three numbers, five lines, write only when must be shown, HashPack for signature only.</li>
+          <li>Done — Thin-book rule noted on Market: a thin book stays wide; inventing a tight price is a skipped line. Width is information.</li>
+          <li>Done — Zero remainder and named-debt retirement clarified on Desert as public lines, not quiet adjustments.</li>
+          <li>In force — Status remains the running public tape. An unpublished change is not a change.</li>
         </ol>
+        <p className="mt-4 text-sm text-muted">
+          No new mint. No quieter standard for any seat. Floor stays senior. Same rules bind state, firm, and person.
+        </p>
       </section>
 
       <section>
