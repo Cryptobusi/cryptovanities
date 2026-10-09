@@ -41,6 +41,31 @@ export function FloorPage() {
       </p>
 
       <section className="mt-10 rounded-xl border border-border bg-surface p-5 sm:p-8">
+        <p className="font-mono text-xs tracking-widest text-subtle uppercase">Current floor — 9 October 2026</p>
+        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Basket $1,470</h2>
+        <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div>
+            <dt className="font-mono text-xs text-subtle">Figure</dt>
+            <dd className="mt-1 font-display text-2xl">$1,470</dd>
+            <dd className="text-sm text-muted">Opening basket plus small income. Example figure; editable only by a dated public post.</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs text-subtle">Source</dt>
+            <dd className="mt-1 font-display text-2xl">Named surplus</dd>
+            <dd className="text-sm text-muted">Paid first from surplus already titled. Not residual after fiscal fights. Not printed to cover the claim.</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs text-subtle">Schedule</dt>
+            <dd className="mt-1 font-display text-2xl">On the clock</dd>
+            <dd className="text-sm text-muted">Agent pays the posted floor on the clock from the reserve. A missed floor is not rescued by a mint.</dd>
+          </div>
+        </dl>
+        <p className="mt-6 text-sm text-muted">
+          The floor is senior and cannot be raided to service old debt. Changing the number requires a dated line on the Status tape. An unpublished change is not a change.
+        </p>
+      </section>
+
+      <section className="mt-10 rounded-xl border border-border bg-surface p-5 sm:p-8">
         <p className="font-mono text-xs tracking-widest text-subtle uppercase">Recommended</p>
         <h2 className="mt-3 font-display text-4xl sm:text-5xl">Hedera</h2>
         <p className="mt-4 max-w-2xl text-muted">
