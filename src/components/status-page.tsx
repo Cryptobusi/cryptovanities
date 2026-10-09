@@ -69,8 +69,15 @@ export function StatusPage() {
       </section>
 
       <section>
-        <p className="mt-6 text-sm text-muted">
-          Full report available in the working book and notes. Voice of @trancesage. #LeGoMiEgo
+        <h2 className="text-2xl text-fg">Full report</h2>
+        <p className="mt-4">
+          <a href="/status-2026-10-09.md" download className="underline">
+            Download the full status report (Markdown, 9 October 2026)
+          </a>
+        </p>
+        <p className="mt-4 text-sm text-muted">
+          Includes the complete block, report under the block, ten next steps, and the continuation prompt.
+          Voice of @trancesage. #LeGoMiEgo
         </p>
       </section>
     </PaperShell>
