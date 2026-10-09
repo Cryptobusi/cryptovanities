@@ -88,6 +88,17 @@ export function DesertPage() {
       </ol>
 
       <section className="mt-14">
+        <h2 className="font-display text-3xl">Zero remainder and named debt</h2>
+        <p className="mt-4 max-w-2xl text-muted">
+          A zero remainder is a public line. It is titled as zero. It is not a quiet adjustment and it is not an invitation to print. A named debt is retired by a public line that names the debt, the payment, and the remaining face. Both stay on the tape. An unpublished retirement is not a retirement.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-muted">
+          <li>Zero remainder: shown, titled, left alone. No mint to “cover” it.</li>
+          <li>Named debt retirement: payment written, face reduced, residual (including zero) titled. No side letter.</li>
+        </ul>
+      </section>
+
+      <section className="mt-14">
         <h2 className="font-display text-3xl">Across the layers</h2>
         <ol className="mt-6 grid gap-4 md:grid-cols-2">
           {LAYERS.map((row) => (
