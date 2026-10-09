@@ -73,12 +73,18 @@ export function NotesPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl text-fg">Worked invoice</h2>
+        <h2 className="text-2xl text-fg">Worked invoice — five tape lines</h2>
         <p className="mt-4">
-          A mill invoices a baker 10,000 paper units due in 30 days. Checkout quotes 8 percent, so live value is 9,200
-          basket units. At due date live d is 14 percent. Conversion is 8,600. A book locked at 0.60 pays its advertised
-          gap. Face was never cash.
+          A mill invoices a baker 10,000 paper units due in 30 days. Checkout quotes an 8 percent discount, so live value is 9,200 basket units. Payroll cannot bear a move to 18 percent. The mill writes a put at a 10 percent strike and pays the listed charge for that class. At due date the live discount is 14 percent. Checkout converts to 8,600. The put pays 400. Net before floor and charge: 9,000. Face was never cash.
         </p>
+        <ol className="mt-6 list-decimal space-y-3 pl-5">
+          <li><strong>Title</strong> — Who holds the claim: Mill issued the receivable to Baker. Who held it last is named. A transfer that cannot name both sides is not a transfer.</li>
+          <li><strong>Mint</strong> — No new units were minted for this invoice. The paper is named credit on the existing rail. A second print of the same unit would fail in public.</li>
+          <li><strong>Lien</strong> — The put (hedge) sits on the claim in the 30-day window. The grant is the listed strike and charge. Authority that can grow itself is not authority.</li>
+          <li><strong>Conversion</strong> — Receivable face 10,000 → live discount 14% → 8,600 basket units. Hedge pays the gap of 400. Four lines or the register refuses. Checkout into basket units is shown.</li>
+          <li><strong>Agent act</strong> — The agent recorded the write, enforced the window lock, paid the floor on the clock from named surplus, and refused any settlement missing provenance. The refusal (if any) is itself a line. Software does not get a quieter standard.</li>
+        </ol>
+        <p className="mt-4 text-sm text-muted">If any of these five cannot be shown, the act is a story, not policy. Private life stays off the tape.</p>
       </section>
 
       <section>
