@@ -10,12 +10,12 @@ export function EnclosurePage() {
       <section>
         <p>
           <a
-            href="https://www.youtube.com/watch?v=r5c6GXYZZMU"
+            href="https://youtu.be/vwJO5Ly3_Z0"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block border border-border px-4 py-2 text-fg underline-offset-4 hover:underline"
           >
-            Watch the video: Who REALLY Runs The World? (It’s Not Who You Think) →
+            Watch the video: Who Is Really Running the World? (It’s Not Who You Think) →
           </a>
         </p>
         <p className="mt-4">
