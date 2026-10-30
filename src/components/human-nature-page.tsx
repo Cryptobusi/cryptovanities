@@ -79,6 +79,42 @@ export function HumanNaturePage() {
       </section>
 
       <section>
+        <h2 className="text-2xl text-fg">Cognitive Biases</h2>
+        <p className="mt-4">These map directly onto the human-nature synthesis (Greene’s laws → economic pathologies) and the core claims of the project: floor first, visible tape, third-seat refusal, vote-by-doing.</p>
+        <h3 className="mt-6 text-xl text-fg">High-impact biases in monetary and credit systems</h3>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="py-2 pr-4 text-left text-fg">Bias</th>
+                <th className="py-2 pr-4 text-left text-fg">Core mechanism</th>
+                <th className="py-2 pr-4 text-left text-fg">Economic manifestation</th>
+                <th className="py-2 text-left text-fg">Egonomic counter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Hyperbolic discounting</td><td className="py-2 pr-4">Present self overweights immediate rewards vs. future self</td><td className="py-2 pr-4">Excess debt, short-term extraction, unpaid floor</td><td className="py-2">Senior living floor paid from named surplus before any residual claim</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Status quo / loss aversion</td><td className="py-2 pr-4">Losses loom larger than equivalent gains; change feels costly</td><td className="py-2 pr-4">Defense of quiet prints, resistance to visible tape</td><td className="py-2">Refusal is a recorded act; unpublished change is not policy</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Herding / social proof</td><td className="py-2 pr-4">Copy others when uncertain</td><td className="py-2 pr-4">Asset bubbles, Keynesian beauty contests, Minsky cycles</td><td className="py-2">Public tape makes the sequence visible; one verified person, one vote</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Envy / positional goods (Veblen)</td><td className="py-2 pr-4">Relative status drives desire</td><td className="py-2 pr-4">Conspicuous consumption, capital to status rather than floor</td><td className="py-2">Floor is absolute (basket), not relative; residual is titled even at zero</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Overconfidence / hubris</td><td className="py-2 pr-4">Systematic overestimation of control and foresight</td><td className="py-2 pr-4">Executive M&A destruction, leverage spirals</td><td className="py-2">Same rules bind state, firm, and person; agent cannot mint the gap</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Present bias + generational myopia</td><td className="py-2 pr-4">Future costs discounted or externalized</td><td className="py-2 pr-4">Stability breeds fragility; intergenerational debt</td><td className="py-2">Floor stays senior; residual is titled, not erased</td></tr>
+              <tr className="border-b border-border/50"><td className="py-2 pr-4">Confirmation / motivated reasoning</td><td className="py-2 pr-4">Seek evidence that protects existing claims</td><td className="py-2 pr-4">Quiet prints rationalized as necessary</td><td className="py-2">If it cannot be shown on the tape, it is not policy</td></tr>
+              <tr><td className="py-2 pr-4">Sunk-cost / commitment bias</td><td className="py-2 pr-4">Continue a failing line because prior investment exists</td><td className="py-2 pr-4">Debit abandonment in historical mutual-credit systems</td><td className="py-2">Non-recourse clearing; refusal stays on the record</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 className="mt-6 text-xl text-fg">Deeper structural ones</h3>
+        <ul className="mt-4 list-disc space-y-2 pl-5">
+          <li><strong>Illusory superiority / Dunning–Kruger in institutional form:</strong> Private enclosures or central mints act as if they can see and manage the whole system. The third seat exists precisely because no seat is assumed omniscient.</li>
+          <li><strong>Zero-sum bias:</strong> Treating the economy as a fixed pie where one person’s gain requires another’s loss. Floor-first from surplus rejects this; the basket is paid without requiring a new print.</li>
+          <li><strong>Ambiguity aversion:</strong> Preference for known (even if extractive) systems over transparent but novel rules. Opt-in parallel rails lower the adoption barrier.</li>
+          <li><strong>Projection / shadow (Jungian link):</strong> Unacknowledged extraction is labeled “fiduciary duty” or “shareholder value.” The public tape forces the act to be named.</li>
+        </ul>
+        <p className="mt-4">Classical <em>Homo economicus</em> assumes biases can be averaged away or corrected by information. The synthesis treats them as evolutionary defaults that override rational self-interest under scarcity, anonymity, or status pressure. The operational response is not “educate people out of the bias.” It is to change the conditions: floor paid first removes the survival hostage; visible tape makes herding and quiet prints legible; third-seat refusal gives a structural exit; vote-by-doing removes capital-weighted governance.</p>
+      </section>
+
+      <section>
         <h2 className="text-2xl text-fg">Part 3: Empowering Relational Faculties</h2>
         <p className="mt-4">Durable organization requires:</p>
         <ul className="mt-4 list-disc space-y-2 pl-5">
