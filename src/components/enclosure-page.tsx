@@ -65,6 +65,12 @@ export function EnclosurePage() {
         </p>
 
         <p className="mt-6 text-sm">Floor stays senior. Same rules bind state, firm, and person. If it cannot be shown, it is not policy. Sovereignty is the refusal.</p>
+
+        <p className="mt-6">
+          <a href="/ezego" className="text-fg underline-offset-4 hover:underline">Ecosystem (EZego) →</a>
+          {" · "}
+          <a href="/human-nature-synthesis" className="text-fg underline-offset-4 hover:underline">Human Nature →</a>
+        </p>
       </section>
     </PaperShell>
   );
