@@ -32,6 +32,7 @@ const BOOK: Item[] = [
   { label: "Status", to: "/status", note: "Dated tape" },
   { label: "Third Seat", to: "/third-seat", note: "Sitting checklist" },
   { label: "Human Nature", to: "/human-nature-synthesis", note: "Greene synthesis" },
+  { label: "Enclosure", to: "/operating-system-of-enclosure", note: "Operating system" },
   { label: "Board", to: "/board", note: "Pairs" },
   { label: "Help", to: "/help", note: "Index" },
 ];
