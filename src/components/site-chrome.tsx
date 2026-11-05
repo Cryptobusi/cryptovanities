@@ -38,6 +38,8 @@ const BOOK: Item[] = [
   { label: "Help", to: "/help", note: "Index" },
 ];
 
+const ALL: Item[] = [...ACT, ...LAYERS, ...BOOK];
+
 function NavLink({ item, className, onClick }: { item: Item; className: string; onClick?: () => void }) {
   if (item.to) {
     return (
@@ -57,10 +59,19 @@ function NavLink({ item, className, onClick }: { item: Item; className: string; 
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const [panel, setPanel] = useState<"act" | "layers" | "book" | null>(null);
+  const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
 
   function close() {
     setPanel(null);
+    setSearchOpen(false);
   }
+
+  const results = query.trim()
+    ? ALL.filter((item) =>
+        (item.label + " " + (item.note ?? "")).toLowerCase().includes(query.toLowerCase())
+      )
+    : [];
 
   return (
     <div className="relative min-h-dvh text-fg">
@@ -70,27 +81,52 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <Mark />
             <span className="font-display text-lg tracking-tight">Egonomic Anonymous</span>
           </Link>
-          <nav className="flex flex-wrap items-center justify-end gap-1 text-sm text-muted" aria-label="Graph">
-            {(
-              [
-                ["act", "Act"],
-                ["layers", "Layers"],
-                ["book", "Book"],
-              ] as const
-            ).map(([id, label]) => (
-              <button
-                key={id}
-                type="button"
-                className={panel === id ? "px-3 py-2 text-fg" : "px-3 py-2 hover:text-fg"}
-                onClick={() => setPanel((now) => (now === id ? null : id))}
-              >
-                {label}
-              </button>
-            ))}
-            <Link to="/enter" className="ml-2 border border-border px-3 py-2 text-fg">
-              Desk
-            </Link>
-          </nav>
+          <div className="relative flex items-center gap-2">
+            <input
+              type="search"
+              placeholder="Search the book"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSearchOpen(true);
+              }}
+              onFocus={() => setSearchOpen(true)}
+              className="w-36 rounded border border-border bg-bg px-2 py-1 text-sm text-fg placeholder:text-subtle sm:w-48"
+            />
+            {searchOpen && results.length > 0 ? (
+              <div className="absolute left-0 sm:right-0 sm:left-auto top-full z-30 mt-1 w-full sm:w-[min(24rem,calc(100vw-2.5rem))] border border-border bg-bg text-fg shadow-xl">
+                {results.map((item) => (
+                  <NavLink
+                    key={item.label}
+                    item={item}
+                    className="block px-3 py-2 text-sm hover:bg-surface"
+                    onClick={close}
+                  />
+                ))}
+              </div>
+            ) : null}
+            <nav className="flex flex-wrap items-center justify-end gap-1 text-sm text-muted" aria-label="Graph">
+              {(
+                [
+                  ["act", "Act"],
+                  ["layers", "Layers"],
+                  ["book", "Book"],
+                ] as const
+              ).map(([id, label]) => (
+                <button
+                  key={id}
+                  type="button"
+                  className={panel === id ? "px-3 py-2 text-fg" : "px-3 py-2 hover:text-fg"}
+                  onClick={() => setPanel((now) => (now === id ? null : id))}
+                >
+                  {label}
+                </button>
+              ))}
+              <Link to="/enter" className="ml-2 border border-border px-3 py-2 text-fg">
+                Desk
+              </Link>
+            </nav>
+          </div>
         </div>
         {panel ? (
           <div className="border-t border-border">
