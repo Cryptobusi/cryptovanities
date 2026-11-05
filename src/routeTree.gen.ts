@@ -24,6 +24,7 @@ import { Route as ShowRouteImport } from './routes/show'
 import { Route as StackRouteImport } from './routes/stack'
 import { Route as RefusalRouteImport } from './routes/refusal'
 import { Route as ThinRouteImport } from './routes/thin'
+import { Route as HumanAgencyRouteImport } from './routes/human-agency'
 
 const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
 const AgentRoute = AgentRouteImport.update({ id: '/agent', path: '/agent', getParentRoute: () => rootRouteImport } as any)
@@ -44,6 +45,7 @@ const ShowRoute = ShowRouteImport.update({ id: '/show', path: '/show', getParent
 const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getParentRoute: () => rootRouteImport } as any)
 const RefusalRoute = RefusalRouteImport.update({ id: '/refusal', path: '/refusal', getParentRoute: () => rootRouteImport } as any)
 const ThinRoute = ThinRouteImport.update({ id: '/thin', path: '/thin', getParentRoute: () => rootRouteImport } as any)
+const HumanAgencyRoute = HumanAgencyRouteImport.update({ id: '/human-agency', path: '/human-agency', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/stack': typeof StackRoute
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
+  '/human-agency': typeof HumanAgencyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +89,7 @@ export interface FileRoutesByTo {
   '/stack': typeof StackRoute
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
+  '/human-agency': typeof HumanAgencyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -108,13 +112,14 @@ export interface FileRoutesById {
   '/stack': typeof StackRoute
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
+  '/human-agency': typeof HumanAgencyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
+  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
-  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin'
+  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
+  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -136,6 +141,7 @@ export interface RootRouteChildren {
   ShowRoute: typeof ShowRoute
   StackRoute: typeof StackRoute
   ThinRoute: typeof ThinRoute
+  HumanAgencyRoute: typeof HumanAgencyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -159,6 +165,7 @@ declare module '@tanstack/react-router' {
     '/stack': { id: '/stack'; path: '/stack'; fullPath: '/stack'; preLoaderRoute: typeof StackRouteImport; parentRoute: typeof rootRouteImport }
     '/refusal': { id: '/refusal'; path: '/refusal'; fullPath: '/refusal'; preLoaderRoute: typeof RefusalRouteImport; parentRoute: typeof rootRouteImport }
     '/thin': { id: '/thin'; path: '/thin'; fullPath: '/thin'; preLoaderRoute: typeof ThinRouteImport; parentRoute: typeof rootRouteImport }
+    '/human-agency': { id: '/human-agency'; path: '/human-agency'; fullPath: '/human-agency'; preLoaderRoute: typeof HumanAgencyRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -182,6 +189,7 @@ const rootRouteChildren: RootRouteChildren = {
   StackRoute: StackRoute,
   RefusalRoute: RefusalRoute,
   ThinRoute: ThinRoute,
+  HumanAgencyRoute: HumanAgencyRoute,
 }
 export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
 
