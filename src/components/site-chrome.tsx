@@ -31,6 +31,7 @@ const BOOK: Item[] = [
   { label: "Notes", to: "/notes", note: "Bound order" },
   { label: "Status", to: "/status", note: "Dated tape" },
   { label: "Third Seat", to: "/third-seat", note: "Sitting checklist" },
+  { label: "Human Agency", to: "/human-agency", note: "Preservation of prerogatives" },
   { label: "Human Nature", to: "/human-nature-synthesis", note: "Greene synthesis" },
   { label: "Enclosure", to: "/operating-system-of-enclosure", note: "Operating system" },
   { label: "Legalese", to: "/legalese", note: "Immutable, contested" },
