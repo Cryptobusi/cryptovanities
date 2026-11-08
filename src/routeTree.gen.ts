@@ -25,6 +25,7 @@ import { Route as StackRouteImport } from './routes/stack'
 import { Route as RefusalRouteImport } from './routes/refusal'
 import { Route as ThinRouteImport } from './routes/thin'
 import { Route as HumanAgencyRouteImport } from './routes/human-agency'
+import { Route as AiDltAgencyRouteImport } from './routes/ai-dlt-agency'
 
 const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
 const AgentRoute = AgentRouteImport.update({ id: '/agent', path: '/agent', getParentRoute: () => rootRouteImport } as any)
@@ -46,6 +47,7 @@ const StackRoute = StackRouteImport.update({ id: '/stack', path: '/stack', getPa
 const RefusalRoute = RefusalRouteImport.update({ id: '/refusal', path: '/refusal', getParentRoute: () => rootRouteImport } as any)
 const ThinRoute = ThinRouteImport.update({ id: '/thin', path: '/thin', getParentRoute: () => rootRouteImport } as any)
 const HumanAgencyRoute = HumanAgencyRouteImport.update({ id: '/human-agency', path: '/human-agency', getParentRoute: () => rootRouteImport } as any)
+const AiDltAgencyRoute = AiDltAgencyRouteImport.update({ id: '/ai-dlt-agency', path: '/ai-dlt-agency', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
   '/human-agency': typeof HumanAgencyRoute
+  '/ai-dlt-agency': typeof AiDltAgencyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -90,6 +93,7 @@ export interface FileRoutesByTo {
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
   '/human-agency': typeof HumanAgencyRoute
+  '/ai-dlt-agency': typeof AiDltAgencyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -113,13 +117,14 @@ export interface FileRoutesById {
   '/refusal': typeof RefusalRoute
   '/thin': typeof ThinRoute
   '/human-agency': typeof HumanAgencyRoute
+  '/ai-dlt-agency': typeof AiDltAgencyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
+  fullPaths: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency' | '/ai-dlt-agency'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
-  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency'
+  to: '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency' | '/ai-dlt-agency'
+  id: '__root__' | '/' | '/agent' | '/board' | '/catalog' | '/charge' | '/claim' | '/demo' | '/desert' | '/enter' | '/floor' | '/help' | '/hedge' | '/market' | '/mint' | '/notes' | '/show' | '/stack' | '/refusal' | '/thin' | '/human-agency' | '/ai-dlt-agency'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -142,6 +147,7 @@ export interface RootRouteChildren {
   StackRoute: typeof StackRoute
   ThinRoute: typeof ThinRoute
   HumanAgencyRoute: typeof HumanAgencyRoute
+  AiDltAgencyRoute: typeof AiDltAgencyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -166,6 +172,7 @@ declare module '@tanstack/react-router' {
     '/refusal': { id: '/refusal'; path: '/refusal'; fullPath: '/refusal'; preLoaderRoute: typeof RefusalRouteImport; parentRoute: typeof rootRouteImport }
     '/thin': { id: '/thin'; path: '/thin'; fullPath: '/thin'; preLoaderRoute: typeof ThinRouteImport; parentRoute: typeof rootRouteImport }
     '/human-agency': { id: '/human-agency'; path: '/human-agency'; fullPath: '/human-agency'; preLoaderRoute: typeof HumanAgencyRouteImport; parentRoute: typeof rootRouteImport }
+    '/ai-dlt-agency': { id: '/ai-dlt-agency'; path: '/ai-dlt-agency'; fullPath: '/ai-dlt-agency'; preLoaderRoute: typeof AiDltAgencyRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -190,6 +197,7 @@ const rootRouteChildren: RootRouteChildren = {
   RefusalRoute: RefusalRoute,
   ThinRoute: ThinRoute,
   HumanAgencyRoute: HumanAgencyRoute,
+  AiDltAgencyRoute: AiDltAgencyRoute,
 }
 export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
 
