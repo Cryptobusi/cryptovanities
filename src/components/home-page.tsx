@@ -23,6 +23,29 @@ function openMark(href: string, onBack: () => void) {
   }, 400);
 }
 
+function ViralBanner() {
+  return (
+    <div className="border-b border-[#3a2a14] bg-[#12080c]">
+      <div className="mx-auto max-w-6xl px-5 py-3 text-center sm:px-8">
+        <a
+          href="/ai-dlt-agency"
+          className="group inline-flex flex-col items-center gap-1 sm:flex-row sm:gap-3"
+        >
+          <span className="font-mono text-[10px] tracking-widest text-[#d4b56a] uppercase">
+            New · Analytical Brief
+          </span>
+          <span className="font-display text-sm text-[#f3e6c8] sm:text-base">
+            When human effort is anchored to an immutable consensus sequence, value shifts from platform rent-seeking back to mutual coordination.
+          </span>
+          <span className="font-mono text-xs text-[#d4b56a] underline decoration-[#d4b56a]/40 underline-offset-4 group-hover:text-[#f3e6c8]">
+            Read the Architecture of Human Agency: AI & DLT →
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function LayerBoard() {
   const [levels, setLevels] = useState(() => LAYER_BOARD.map(() => 1 + Math.random() * 6));
   const [open, setOpen] = useState(0);
@@ -159,6 +182,7 @@ function Marks() {
 export function HomePage() {
   return (
     <>
+      <ViralBanner />
       <KiloRow />
       <HederaEcosystemMenu />
       <LayerBoard />
